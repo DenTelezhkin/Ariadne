@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		3E3E0FAA21623CD90055258B /* Ariadne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3E0FA021623CD90055258B /* Ariadne.framework */; };
 		3E3E0FC721623D6B0055258B /* AriadneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3E0FBD21623D560055258B /* AriadneTests.swift */; };
-		3E3E0FC921623DB30055258B /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3E0FC821623DB30055258B /* ViewFactory.swift */; };
+		3E3E0FC921623DB30055258B /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3E0FC821623DB30055258B /* ViewBuilder.swift */; };
+		3E8448CD216F6C73003A10BE /* Ariadne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8448CC216F6C73003A10BE /* Ariadne.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +29,8 @@
 		3E3E0FBD21623D560055258B /* AriadneTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AriadneTests.swift; sourceTree = "<group>"; };
 		3E3E0FBF21623D560055258B /* Tests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tests.plist; sourceTree = "<group>"; };
 		3E3E0FC021623D560055258B /* Framework.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Framework.plist; sourceTree = "<group>"; };
-		3E3E0FC821623DB30055258B /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		3E3E0FC821623DB30055258B /* ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
+		3E8448CC216F6C73003A10BE /* Ariadne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ariadne.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +74,8 @@
 		3E3E0FBA21623D560055258B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				3E3E0FC821623DB30055258B /* ViewFactory.swift */,
+				3E3E0FC821623DB30055258B /* ViewBuilder.swift */,
+				3E8448CC216F6C73003A10BE /* Ariadne.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -202,7 +205,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E3E0FC921623DB30055258B /* ViewFactory.swift in Sources */,
+				3E8448CD216F6C73003A10BE /* Ariadne.swift in Sources */,
+				3E3E0FC921623DB30055258B /* ViewBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
