@@ -20,24 +20,22 @@ public protocol ViewBuilder {
 }
 
 public protocol ViewFinder {
-    func findView<T:ViewBuilder>(for builder: T, with context:T.Context) -> View?
+    func currentlyVisibleView() -> View?
 }
 
-public protocol Transition {
+public protocol ViewTransition {
+    associatedtype Finder: ViewFinder
+    
     func perform(with view: View,
-                 on existing: View,
                  completion: ((Bool) -> ())?)
 }
 
-open class Route<Builder: ViewBuilder> {
-    var finder: ViewFinder
+open class Route<Builder: ViewBuilder, Transition: ViewTransition> {
     var builder: Builder
     var transition: Transition
     
-    public init(finder: ViewFinder,
-                builder: Builder,
+    public init(builder: Builder,
                 transition: Transition) {
-        self.finder = finder
         self.builder = builder
         self.transition = transition
     }
@@ -47,7 +45,7 @@ open class Router {
     
     public init() {}
     
-    open func navigate<T>(to route: Route<T>,
+    open func navigate<T, U>(to route: Route<T,U>,
                                 with context: T.Context,
                                 completion: ((Bool) -> ())? = nil)
     {
@@ -55,10 +53,6 @@ open class Router {
             // Failed to build view
             return
         }
-        guard let from = route.finder.findView(for: route.builder, with: context) else {
-            // Failed to find required view
-            return
-        }
-        route.transition.perform(with: to, on: from, completion: completion)
+        route.transition.perform(with: to, completion: completion)
     }
 }

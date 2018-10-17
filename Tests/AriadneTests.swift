@@ -8,27 +8,38 @@
 
 import XCTest
 @testable import Ariadne
+import UIKit
+
+class XibBuildingFactory<T:View> : ViewBuilder {
+    func build(with context: String) throws -> T {
+        return T(nibName: nil, bundle: nil)
+    }
+}
+
+class FooViewController: UIViewController {}
 
 class AriadneTests: XCTestCase {
+    
+    var root: View? {
+        return testableWindow?.rootViewController
+    }
+    
+    var testableWindow : UIWindow?
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        super.setUp()
+        testableWindow = UIWindow(frame: UIScreen.main.bounds)
     }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testPushTransition() {
+        let router = Router()
+        let pushRoute = Route(builder: XibBuildingFactory<FooViewController>(),
+                              transition: NavigationTransition(type: .push(animated: true),
+                                                               finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+        testableWindow?.rootViewController = UINavigationController()
+        router.navigate(to: pushRoute, with: "foo")
+        
+        XCTAssertEqual((root as? UINavigationController)?.viewControllers.count, 1)
     }
 
 }
