@@ -19,3 +19,12 @@ open class NavigationControllerEmbeddingViewFactory<T:View>: ViewBuilder {
 }
 
 #endif
+
+public class NonBuildableView : View {}
+
+open class NonBuilder : ViewBuilder {
+    public func build(with context: ()) throws -> NonBuildableView {
+        assertionFailure("NonBuilder should not be asked to build a view")
+        return NonBuildableView()
+    }
+}

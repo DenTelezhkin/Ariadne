@@ -1,5 +1,5 @@
 //
-//  Transitions.swift
+//  NavigationTransition.swift
 //  Ariadne
 //
 //  Created by Denys Telezhkin on 10/11/18.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-open class NavigationTransition<Finder: ViewFinder> : ViewTransition {
+open class NavigationTransition: ViewTransition {
     
     public enum TransitionType {
         case push(animated: Bool)
@@ -17,15 +17,22 @@ open class NavigationTransition<Finder: ViewFinder> : ViewTransition {
     }
     
     public let type: TransitionType
-    public let finder: Finder
+    public let finder: ViewFinder
     
-    init(type: TransitionType = .push(animated: true), finder: Finder) {
+    public var requiresBuiltView: Bool {
+        switch type {
+        case .push: return true
+        case .pop: return false
+        }
+    }
+    
+    init(type: TransitionType = .push(animated: true), finder: ViewFinder) {
         self.type = type
         self.finder = finder
     }
     
-    public func perform(with view: View, completion: ((Bool) -> ())?) {
-        guard let visibleView = finder.currentlyVisibleView() else {
+    public func perform(with view: View?, completion: ((Bool) -> ())?) {
+        guard let visibleView = finder.currentlyVisibleView(startingFrom: nil) else {
             completion?(false)
             return
         }
@@ -35,9 +42,15 @@ open class NavigationTransition<Finder: ViewFinder> : ViewTransition {
         }
         switch type {
         case .push(animated: let animated):
-            navigation.pushViewController(view, animated: animated)
+            if let view = view {
+                navigation.pushViewController(view, animated: animated)
+                completion?(true)
+            } else {
+                completion?(false)
+            }
         case .pop(animated: let animated):
             navigation.popViewController(animated: animated)
+            completion?(true)
         }
     }
 }

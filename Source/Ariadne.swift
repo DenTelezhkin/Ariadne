@@ -20,13 +20,13 @@ public protocol ViewBuilder {
 }
 
 public protocol ViewFinder {
-    func currentlyVisibleView() -> View?
+    func currentlyVisibleView(startingFrom: View?) -> View?
 }
 
 public protocol ViewTransition {
-    associatedtype Finder: ViewFinder
+    var requiresBuiltView : Bool { get }
     
-    func perform(with view: View,
+    func perform(with view: View?,
                  completion: ((Bool) -> ())?)
 }
 
@@ -49,10 +49,14 @@ open class Router {
                                 with context: T.Context,
                                 completion: ((Bool) -> ())? = nil)
     {
-        guard let to = try? route.builder.build(with: context) else {
-            // Failed to build view
-            return
+        if route.transition.requiresBuiltView {
+            if let destination = try? route.builder.build(with: context) {
+                route.transition.perform(with: destination, completion: completion)
+            } else {
+                completion?(false)
+            }
+        } else {
+            route.transition.perform(with: nil, completion: completion)
         }
-        route.transition.perform(with: to, completion: completion)
     }
 }

@@ -17,21 +17,21 @@ open class CurrentlyVisibleViewFinder : ViewFinder {
         self.window = window
     }
     
-    public func currentlyVisibleView() -> View? {
-        return currentlyVisibleView(startingFrom: window?.rootViewController)
+    public func currentlyVisibleView(startingFrom view: View? = nil) -> View? {
+        return _currentlyVisibleView(startingFrom: view ?? window?.rootViewController)
     }
     
-    func currentlyVisibleView(startingFrom view: View?) -> View? {
+    func _currentlyVisibleView(startingFrom view: View?) -> View? {
         guard let view = view else { return nil }
         
         var visibleView: View?
         switch view {
         case let tabBar as UITabBarController:
-            visibleView = currentlyVisibleView(startingFrom: tabBar.selectedViewController ?? tabBar.presentedViewController) ?? tabBar
+            visibleView = _currentlyVisibleView(startingFrom: tabBar.selectedViewController ?? tabBar.presentedViewController) ?? tabBar
         case let navigation as UINavigationController:
-            visibleView = currentlyVisibleView(startingFrom: navigation.visibleViewController) ?? navigation
+            visibleView = _currentlyVisibleView(startingFrom: navigation.visibleViewController) ?? navigation
         default:
-            visibleView = currentlyVisibleView(startingFrom: view.presentedViewController) ?? view
+            visibleView = _currentlyVisibleView(startingFrom: view.presentedViewController) ?? view
         }
         return visibleView ?? view
     }
