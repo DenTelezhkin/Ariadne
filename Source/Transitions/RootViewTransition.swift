@@ -17,14 +17,14 @@ open class RootViewTransition: ViewTransition {
     
     open var duration: TimeInterval = 0.3
     open var animationOptions = UIView.AnimationOptions.transitionCrossDissolve
-    open var animationsEnabled : Bool = true
+    open var isAnimated : Bool = true
     
     public init(window: UIWindow) {
         self.window = window
     }
     
     open func perform(with view: View?, completion: ((Bool) -> ())?) {
-        if animationsEnabled {
+        if isAnimated {
             let oldState = UIView.areAnimationsEnabled
             UIView.setAnimationsEnabled(false)
             UIView.transition(with: window, duration: duration,

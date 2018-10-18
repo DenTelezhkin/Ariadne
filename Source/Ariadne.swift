@@ -25,6 +25,7 @@ public protocol ViewFinder {
 
 public protocol ViewTransition {
     var requiresBuiltView : Bool { get }
+    var isAnimated: Bool { get }
     
     func perform(with view: View?,
                  completion: ((Bool) -> ())?)

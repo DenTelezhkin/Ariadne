@@ -12,12 +12,13 @@ import UIKit
 open class NavigationTransition: ViewTransition {
     
     public enum TransitionType {
-        case push(animated: Bool)
-        case pop(animated: Bool)
+        case push
+        case pop
     }
     
     public let type: TransitionType
     public let finder: ViewFinder
+    public var isAnimated: Bool = true
     
     public var requiresBuiltView: Bool {
         switch type {
@@ -26,7 +27,7 @@ open class NavigationTransition: ViewTransition {
         }
     }
     
-    init(type: TransitionType = .push(animated: true), finder: ViewFinder) {
+    init(type: TransitionType = .push, finder: ViewFinder) {
         self.type = type
         self.finder = finder
     }
@@ -41,15 +42,15 @@ open class NavigationTransition: ViewTransition {
             return
         }
         switch type {
-        case .push(animated: let animated):
+        case .push:
             if let view = view {
-                navigation.pushViewController(view, animated: animated)
+                navigation.pushViewController(view, animated: isAnimated)
                 completion?(true)
             } else {
                 completion?(false)
             }
-        case .pop(animated: let animated):
-            navigation.popViewController(animated: animated)
+        case .pop:
+            navigation.popViewController(animated: isAnimated)
             completion?(true)
         }
     }
