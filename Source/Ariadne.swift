@@ -19,15 +19,22 @@ public protocol ViewBuilder {
     func build(with context: Context) throws -> ViewType
 }
 
+public enum TransitionType {
+    case hide
+    case show
+}
+
 public protocol ViewFinder {
     func currentlyVisibleView(startingFrom: View?) -> View?
 }
 
 public protocol ViewTransition {
-    var requiresBuiltView : Bool { get }
     var isAnimated: Bool { get }
+    var transitionType: TransitionType { get }
+    var viewFinder: ViewFinder { get }
     
-    func perform(with view: View?,
+    func perform(with view: View,
+                 on visibleView: View?,
                  completion: ((Bool) -> ())?)
 }
 
@@ -50,14 +57,17 @@ open class Router {
                                 with context: T.Context,
                                 completion: ((Bool) -> ())? = nil)
     {
-        if route.transition.requiresBuiltView {
-            if let destination = try? route.builder.build(with: context) {
-                route.transition.perform(with: destination, completion: completion)
-            } else {
-                completion?(false)
+        guard let visibleView = route.transition.viewFinder.currentlyVisibleView(startingFrom: nil) else {
+            completion?(false); return
+        }
+        switch route.transition.transitionType {
+        case .hide:
+            route.transition.perform(with: visibleView, on: nil, completion: completion)
+        case .show:
+            guard let viewToShow = try? route.builder.build(with: context) else {
+                completion?(false); return
             }
-        } else {
-            route.transition.perform(with: nil, completion: completion)
+            route.transition.perform(with: viewToShow, on: visibleView, completion: completion)
         }
     }
 }

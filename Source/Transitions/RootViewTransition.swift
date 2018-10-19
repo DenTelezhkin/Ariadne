@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 open class RootViewTransition: ViewTransition {
+    public var transitionType: TransitionType = .show
+    public var viewFinder: ViewFinder
 
-    open var requiresBuiltView: Bool { return true }
-    
     public let window: UIWindow
     
     open var duration: TimeInterval = 0.3
@@ -21,9 +21,10 @@ open class RootViewTransition: ViewTransition {
     
     public init(window: UIWindow) {
         self.window = window
+        viewFinder = CurrentlyVisibleViewFinder(window: window)
     }
     
-    open func perform(with view: View?, completion: ((Bool) -> ())?) {
+    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
         if isAnimated {
             let oldState = UIView.areAnimationsEnabled
             UIView.setAnimationsEnabled(false)

@@ -8,23 +8,32 @@
 
 import Foundation
 
-open class PresentationTransition : ViewTransition {
-    open var requiresBuiltView: Bool { return true }
-    public let finder : ViewFinder
-    
-    open var isAnimated : Bool  = true
-    
+open class BaseAnimatedTransition {
+    public var isAnimated: Bool = true
+    public let viewFinder : ViewFinder
     public init(finder: ViewFinder) {
-        self.finder = finder
+        viewFinder = finder
     }
+}
+
+open class PresentationTransition : BaseAnimatedTransition, ViewTransition {
+    public let transitionType: TransitionType = .show
     
-    public func perform(with view: View?, completion: ((Bool) -> ())?) {
-        guard let view = view else { completion?(false); return }
-        guard let visibleView = finder.currentlyVisibleView(startingFrom: nil) else {
-            completion?(false); return
-        }
+    public func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
+        guard let visibleView = visibleView else { completion?(false); return }
         visibleView.present(view, animated: isAnimated) {
             completion?(true)
         }
     }
+}
+
+open class DismissTransition: BaseAnimatedTransition, ViewTransition {
+    public var transitionType: TransitionType = .hide
+    
+    public func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
+        view.dismiss(animated: isAnimated) {
+            completion?(true)
+        }
+    }
+    
 }

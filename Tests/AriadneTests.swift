@@ -16,8 +16,23 @@ class XibBuildingFactory<T:View> : ViewBuilder {
     }
 }
 
-class FooViewController: UIViewController {}
-class BarViewController: UIViewController {}
+class FooViewController: UIViewController {
+    var dismissCalled = false
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        dismissCalled = true
+        super.dismiss(animated: flag, completion: completion)
+    }
+}
+class BarViewController: UIViewController {
+    
+    var dismissCalled = false
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        dismissCalled = true
+        super.dismiss(animated: flag, completion: completion)
+    }
+}
 
 class AriadneTests: XCTestCase {
     
@@ -36,8 +51,7 @@ class AriadneTests: XCTestCase {
     
     func testPushTransition() {
         let pushRoute = Route(builder: XibBuildingFactory<FooViewController>(),
-                              transition: NavigationTransition(type: .push,
-                                                               finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+                              transition: PushNavigationTransition(finder: CurrentlyVisibleViewFinder(window: testableWindow)))
         testableWindow?.rootViewController = UINavigationController()
         router.navigate(to: pushRoute, with: ())
         
@@ -47,8 +61,7 @@ class AriadneTests: XCTestCase {
     func testPopTransition() {
         let exp = expectation(description: "NavigationCompletion")
         let popRoute = Route(builder: NonBuilder(),
-                              transition: NavigationTransition(type: .pop,
-                                                               finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+                              transition: PopNavigationTransition(finder: CurrentlyVisibleViewFinder(window: testableWindow)))
         popRoute.transition.isAnimated = false
         let navigation = UINavigationController()
         navigation.setViewControllers([FooViewController(),FooViewController()], animated: false)
@@ -88,4 +101,31 @@ class AriadneTests: XCTestCase {
         waitForExpectations(timeout: 0.2)
     }
 
+    func testDismissTransition() {
+        let presentExpectation = expectation(description: "Presentation expectation")
+        let presentationRoute = Route(builder: XibBuildingFactory<FooViewController>(),
+                                      transition: PresentationTransition(finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+        presentationRoute.transition.isAnimated = false
+        testableWindow.rootViewController = BarViewController()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssert(self.testableWindow.rootViewController is BarViewController)
+            XCTAssert(self.testableWindow.rootViewController?.presentedViewController is FooViewController)
+            presentExpectation.fulfill()
+        }
+        router.navigate(to: presentationRoute, with: ())
+        waitForExpectations(timeout: 0.2)
+        
+        let dismissalRoute = Route(builder: NonBuilder(), transition: DismissTransition(finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+        dismissalRoute.transition.isAnimated = false
+        
+        let dismissalExpectation = expectation(description: "Dismissal expectation")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let presented = self.testableWindow.rootViewController?.presentedViewController as? FooViewController
+            XCTAssert(presented?.dismissCalled ?? false)
+            dismissalExpectation.fulfill()
+        }
+        router.navigate(to: dismissalRoute, with: ())
+        
+        waitForExpectations(timeout: 0.2)
+    }
 }

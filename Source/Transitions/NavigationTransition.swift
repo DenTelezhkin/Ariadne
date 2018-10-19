@@ -9,49 +9,23 @@
 import Foundation
 import UIKit
 
-open class NavigationTransition: ViewTransition {
+open class PushNavigationTransition: BaseAnimatedTransition, ViewTransition {
+    public let transitionType: TransitionType = .show
     
-    public enum TransitionType {
-        case push
-        case pop
+    public func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
+        guard let navigation = (visibleView as? UINavigationController) ?? visibleView?.navigationController else {
+            completion?(false); return
+        }
+        navigation.pushViewController(view, animated: isAnimated)
+        completion?(true)
     }
+}
+
+open class PopNavigationTransition: BaseAnimatedTransition, ViewTransition {
+    public var transitionType: TransitionType = .hide
     
-    public let type: TransitionType
-    public let finder: ViewFinder
-    public var isAnimated: Bool = true
-    
-    public var requiresBuiltView: Bool {
-        switch type {
-        case .push: return true
-        case .pop: return false
-        }
-    }
-    
-    init(type: TransitionType = .push, finder: ViewFinder) {
-        self.type = type
-        self.finder = finder
-    }
-    
-    public func perform(with view: View?, completion: ((Bool) -> ())?) {
-        guard let visibleView = finder.currentlyVisibleView(startingFrom: nil) else {
-            completion?(false)
-            return
-        }
-        guard let navigation = (visibleView as? UINavigationController) ?? visibleView.navigationController else {
-            completion?(false)
-            return
-        }
-        switch type {
-        case .push:
-            if let view = view {
-                navigation.pushViewController(view, animated: isAnimated)
-                completion?(true)
-            } else {
-                completion?(false)
-            }
-        case .pop:
-            navigation.popViewController(animated: isAnimated)
-            completion?(true)
-        }
+    public func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
+        view.navigationController?.popViewController(animated: isAnimated)
+        completion?(true)
     }
 }
