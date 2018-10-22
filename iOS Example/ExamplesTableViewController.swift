@@ -11,10 +11,14 @@ import Ariadne
 
 enum Examples: Int, CaseIterable {
     case rootChange
+    case push
+    case present
     
     var title: String {
         switch self {
         case .rootChange: return "Change root view"
+        case .push: return "Push controller in navigation"
+        case .present: return "Present controller modally"
         }
     }
 }
@@ -30,10 +34,18 @@ class RootViewControllerFactory : ViewBuilder {
 class ExamplesTableViewController: UITableViewController {
     
     let router = Router()
+    
+    var window: UIWindow! {
+        return UIApplication.shared.keyWindow
+    }
+    
+    var finder: CurrentlyVisibleViewFinder {
+        return CurrentlyVisibleViewFinder(window: window)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        clearsSelectionOnViewWillAppear = false
+        clearsSelectionOnViewWillAppear = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: kExampleCellReuseIdentifier)
     }
 
@@ -62,14 +74,33 @@ class ExamplesTableViewController: UITableViewController {
         }
         switch example {
         case .rootChange: animateRootChange()
+        case .push: pushNewControllerInNavigation()
+        case .present: presentControllerModally()
         }
     }
     
     func animateRootChange() {
-        guard let window = UIApplication.shared.keyWindow else { return }
         let transition = RootViewTransition(window: window)
         transition.animationOptions = .transitionCurlUp
         let switchRootRoute = Route(builder: RootViewControllerFactory(), transition: transition)
         router.navigate(to: switchRootRoute, with: ())
+    }
+    
+    func pushNewControllerInNavigation() {
+        let pushRoute = Route(builder: ExampleViewBuilder(), transition: PushNavigationTransition(finder: finder))
+        let popRoute = Route(builder: NonBuilder(), transition: PopNavigationTransition(finder: finder))
+        let model = ExampleData(title: "This is a pushed view controller", buttonTitle: "Pop back") { [weak self] in
+            self?.router.navigate(to: popRoute, with: ())
+        }
+        router.navigate(to: pushRoute, with: model)
+    }
+    
+    func presentControllerModally() {
+        let presentRoute = Route(builder: ExampleViewBuilder(), transition: PresentationTransition(finder: finder))
+        let dismissRoute = Route(builder: NonBuilder(), transition: DismissTransition(finder: finder))
+        let model = ExampleData(title: "This is modally presented controller", buttonTitle: "Tap to dismiss") { [weak self] in
+            self?.router.navigate(to: dismissRoute, with: ())
+        }
+        router.navigate(to: presentRoute, with: model)
     }
 }

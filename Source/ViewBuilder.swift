@@ -11,7 +11,7 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
-open class NavigationEmbeddingFactory: ViewBuilder {
+open class NavigationEmbeddingBuilder: ViewBuilder {
     
     var navigationControllerClosure : () -> UINavigationController = { .init() }
     
@@ -22,7 +22,7 @@ open class NavigationEmbeddingFactory: ViewBuilder {
     }
 }
 
-open class SingleViewNavigationEmbeddingFactory<T:ViewBuilder> : ViewBuilder {
+open class SingleViewNavigationEmbeddingBuilder<T:ViewBuilder> : ViewBuilder {
     public typealias Context = T.Context
     
     public let builder : T
@@ -45,6 +45,7 @@ open class SingleViewNavigationEmbeddingFactory<T:ViewBuilder> : ViewBuilder {
 public class NonBuildableView : View {}
 
 open class NonBuilder : ViewBuilder {
+    public init() {} 
     public func build(with context: ()) throws -> NonBuildableView {
         assertionFailure("NonBuilder should not be asked to build a view")
         return NonBuildableView()

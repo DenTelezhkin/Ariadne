@@ -132,7 +132,7 @@ class AriadneTests: XCTestCase {
     func testNavigationControllerEmbedding() {
         testableWindow.rootViewController = BarViewController()
         let transition = RootViewTransition(window: testableWindow)
-        let route = Route(builder: NavigationEmbeddingFactory(), transition: transition)
+        let route = Route(builder: NavigationEmbeddingBuilder(), transition: transition)
         transition.isAnimated = false
         let fooBuilder = XibBuildingFactory<FooViewController>()
         router.navigate(to: route, with: [
@@ -146,7 +146,7 @@ class AriadneTests: XCTestCase {
     func testSingleNavigationViewEmbedding() {
         testableWindow.rootViewController = BarViewController()
         let transition = RootViewTransition(window: testableWindow)
-        let route = Route(builder: SingleViewNavigationEmbeddingFactory(builder: XibBuildingFactory<FooViewController>()),
+        let route = Route(builder: SingleViewNavigationEmbeddingBuilder(builder: XibBuildingFactory<FooViewController>()),
                           transition: transition)
         transition.isAnimated = false
         router.navigate(to: route, with: ())

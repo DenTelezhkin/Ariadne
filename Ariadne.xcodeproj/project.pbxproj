@@ -20,6 +20,10 @@
 		9A5A7010217DF23100DA5152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A700F217DF23100DA5152 /* Assets.xcassets */; };
 		9A5A7013217DF23100DA5152 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A7011217DF23100DA5152 /* LaunchScreen.storyboard */; };
 		9A5A7019217DF33B00DA5152 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A7018217DF33B00DA5152 /* ExamplesTableViewController.swift */; };
+		9A5A701B217E181700DA5152 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A701A217E181700DA5152 /* ExampleViewController.swift */; };
+		9A5A701D217E184300DA5152 /* ExampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A701C217E184300DA5152 /* ExampleViewController.storyboard */; };
+		9A5A701E217E1A1100DA5152 /* Ariadne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3E0FA021623CD90055258B /* Ariadne.framework */; };
+		9A5A701F217E1A1100DA5152 /* Ariadne.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3E0FA021623CD90055258B /* Ariadne.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +34,28 @@
 			remoteGlobalIDString = 3E3E0F9F21623CD90055258B;
 			remoteInfo = Ariadne;
 		};
+		9A5A7020217E1A1100DA5152 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E3E0F9721623CD90055258B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3E3E0F9F21623CD90055258B;
+			remoteInfo = Ariadne;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9A5A7022217E1A1100DA5152 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9A5A701F217E1A1100DA5152 /* Ariadne.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3E3E0FA021623CD90055258B /* Ariadne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Ariadne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +76,8 @@
 		9A5A7012217DF23100DA5152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9A5A7014217DF23100DA5152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A5A7018217DF33B00DA5152 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
+		9A5A701A217E181700DA5152 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		9A5A701C217E184300DA5152 /* ExampleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExampleViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5A701E217E1A1100DA5152 /* Ariadne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +171,8 @@
 			children = (
 				9A5A7008217DF23000DA5152 /* AppDelegate.swift */,
 				9A5A7018217DF33B00DA5152 /* ExamplesTableViewController.swift */,
+				9A5A701A217E181700DA5152 /* ExampleViewController.swift */,
+				9A5A701C217E184300DA5152 /* ExampleViewController.storyboard */,
 				9A5A700C217DF23000DA5152 /* Main.storyboard */,
 				9A5A700F217DF23100DA5152 /* Assets.xcassets */,
 				9A5A7011217DF23100DA5152 /* LaunchScreen.storyboard */,
@@ -207,10 +237,12 @@
 				9A5A7002217DF23000DA5152 /* Sources */,
 				9A5A7003217DF23000DA5152 /* Frameworks */,
 				9A5A7004217DF23000DA5152 /* Resources */,
+				9A5A7022217E1A1100DA5152 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9A5A7021217E1A1100DA5152 /* PBXTargetDependency */,
 			);
 			name = "iOS Example";
 			productName = "iOS Example";
@@ -278,6 +310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5A701D217E184300DA5152 /* ExampleViewController.storyboard in Resources */,
 				9A5A7013217DF23100DA5152 /* LaunchScreen.storyboard in Resources */,
 				9A5A7010217DF23100DA5152 /* Assets.xcassets in Resources */,
 				9A5A700E217DF23000DA5152 /* Main.storyboard in Resources */,
@@ -314,6 +347,7 @@
 			files = (
 				9A5A7009217DF23000DA5152 /* AppDelegate.swift in Sources */,
 				9A5A7019217DF33B00DA5152 /* ExamplesTableViewController.swift in Sources */,
+				9A5A701B217E181700DA5152 /* ExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +358,11 @@
 			isa = PBXTargetDependency;
 			target = 3E3E0F9F21623CD90055258B /* Ariadne */;
 			targetProxy = 3E3E0FAB21623CD90055258B /* PBXContainerItemProxy */;
+		};
+		9A5A7021217E1A1100DA5152 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3E3E0F9F21623CD90055258B /* Ariadne */;
+			targetProxy = 9A5A7020217E1A1100DA5152 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -559,6 +598,7 @@
 		9A5A7015217DF23100DA5152 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
@@ -576,6 +616,7 @@
 		9A5A7016217DF23100DA5152 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
