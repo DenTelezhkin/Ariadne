@@ -11,10 +11,14 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
-open class NavigationControllerEmbeddingViewFactory<T:View>: ViewBuilder {
+open class NavigationControllerEmbeddingViewFactory: ViewBuilder {
     
-    public func build(with context: T) throws -> UINavigationController {
-        return UINavigationController(rootViewController: context)
+    var navigationControllerClosure : () -> UINavigationController = { .init() }
+    
+    public func build(with context: [View]) throws -> UINavigationController {
+        let navigation = navigationControllerClosure()
+        navigation.viewControllers = context
+        return navigation
     }
 }
 

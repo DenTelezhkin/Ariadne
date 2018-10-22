@@ -128,4 +128,18 @@ class AriadneTests: XCTestCase {
         
         waitForExpectations(timeout: 0.2)
     }
+
+    func testNavigationControllerEmbedding() {
+        testableWindow.rootViewController = BarViewController()
+        let transition = RootViewTransition(window: testableWindow)
+        let route = Route(builder: NavigationControllerEmbeddingViewFactory(), transition: transition)
+        transition.isAnimated = false
+        let fooBuilder = XibBuildingFactory<FooViewController>()
+        router.navigate(to: route, with: [
+            try? fooBuilder.build(with: ())
+            ].compactMap { $0 })
+        
+        XCTAssertEqual((root as? UINavigationController)?.viewControllers.count, 1)
+        XCTAssert((root as? UINavigationController)?.viewControllers.first is FooViewController)
+    }
 }
