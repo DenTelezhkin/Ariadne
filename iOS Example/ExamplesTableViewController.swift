@@ -25,7 +25,7 @@ enum Examples: Int, CaseIterable {
 
 private let kExampleCellReuseIdentifier = "ExampleReuseIdentifier"
 
-class RootViewControllerFactory : ViewBuilder {
+class RootViewBuilder : ViewBuilder {
     func build(with context: ()) throws -> UINavigationController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as? UINavigationController ?? .init()
     }
@@ -40,7 +40,7 @@ class ExamplesTableViewController: UITableViewController {
     }
     
     var finder: CurrentlyVisibleViewFinder {
-        return CurrentlyVisibleViewFinder(window: window)
+        return CurrentlyVisibleViewFinder()
     }
 
     override func viewDidLoad() {
@@ -82,7 +82,7 @@ class ExamplesTableViewController: UITableViewController {
     func animateRootChange() {
         let transition = RootViewTransition(window: window)
         transition.animationOptions = .transitionCurlUp
-        let switchRootRoute = Route(builder: RootViewControllerFactory(), transition: transition)
+        let switchRootRoute = Route(builder: RootViewBuilder(), transition: transition)
         router.navigate(to: switchRootRoute, with: ())
     }
     

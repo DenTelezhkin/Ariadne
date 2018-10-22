@@ -9,16 +9,21 @@
 import Foundation
 import UIKit
 
+public protocol RootViewProvider {
+    var rootViewController: View? { get }
+}
+extension UIWindow: RootViewProvider {}
+
 open class CurrentlyVisibleViewFinder : ViewFinder {
     
-    public let window: UIWindow?
+    public let rootViewProvider: RootViewProvider?
     
-    public init(window: UIWindow? = UIApplication.shared.keyWindow) {
-        self.window = window
+    public init(rootViewProvider: RootViewProvider? = UIApplication.shared.keyWindow) {
+        self.rootViewProvider = rootViewProvider
     }
     
     public func currentlyVisibleView(startingFrom view: View? = nil) -> View? {
-        return _currentlyVisibleView(startingFrom: view ?? window?.rootViewController)
+        return _currentlyVisibleView(startingFrom: view ?? rootViewProvider?.rootViewController)
     }
     
     func _currentlyVisibleView(startingFrom view: View?) -> View? {

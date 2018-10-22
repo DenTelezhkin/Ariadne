@@ -21,7 +21,7 @@ open class RootViewTransition: ViewTransition {
     
     public init(window: UIWindow) {
         self.window = window
-        viewFinder = CurrentlyVisibleViewFinder(window: window)
+        viewFinder = CurrentlyVisibleViewFinder(rootViewProvider: window)
     }
     
     open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {

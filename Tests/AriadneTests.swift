@@ -51,7 +51,7 @@ class AriadneTests: XCTestCase {
     
     func testPushTransition() {
         let pushRoute = Route(builder: XibBuildingFactory<FooViewController>(),
-                              transition: PushNavigationTransition(finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+                              transition: PushNavigationTransition(finder: CurrentlyVisibleViewFinder(rootViewProvider: testableWindow)))
         testableWindow?.rootViewController = UINavigationController()
         router.navigate(to: pushRoute, with: ())
         
@@ -61,7 +61,7 @@ class AriadneTests: XCTestCase {
     func testPopTransition() {
         let exp = expectation(description: "NavigationCompletion")
         let popRoute = Route(builder: NonBuilder(),
-                              transition: PopNavigationTransition(finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+                              transition: PopNavigationTransition(finder: CurrentlyVisibleViewFinder(rootViewProvider: testableWindow)))
         popRoute.transition.isAnimated = false
         let navigation = UINavigationController()
         navigation.setViewControllers([FooViewController(),FooViewController()], animated: false)
@@ -89,7 +89,7 @@ class AriadneTests: XCTestCase {
     func testPresentationTransition() {
         let presentExpectation = expectation(description: "Presentation expectation")
         let presentationRoute = Route(builder: XibBuildingFactory<FooViewController>(),
-                                      transition: PresentationTransition(finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+                                      transition: PresentationTransition(finder: CurrentlyVisibleViewFinder(rootViewProvider: testableWindow)))
         presentationRoute.transition.isAnimated = false
         testableWindow.rootViewController = BarViewController()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -104,7 +104,7 @@ class AriadneTests: XCTestCase {
     func testDismissTransition() {
         let presentExpectation = expectation(description: "Presentation expectation")
         let presentationRoute = Route(builder: XibBuildingFactory<FooViewController>(),
-                                      transition: PresentationTransition(finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+                                      transition: PresentationTransition(finder: CurrentlyVisibleViewFinder(rootViewProvider: testableWindow)))
         presentationRoute.transition.isAnimated = false
         testableWindow.rootViewController = BarViewController()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -115,7 +115,7 @@ class AriadneTests: XCTestCase {
         router.navigate(to: presentationRoute, with: ())
         waitForExpectations(timeout: 0.2)
         
-        let dismissalRoute = Route(builder: NonBuilder(), transition: DismissTransition(finder: CurrentlyVisibleViewFinder(window: testableWindow)))
+        let dismissalRoute = Route(builder: NonBuilder(), transition: DismissTransition(finder: CurrentlyVisibleViewFinder(rootViewProvider: testableWindow)))
         dismissalRoute.transition.isAnimated = false
         
         let dismissalExpectation = expectation(description: "Dismissal expectation")
