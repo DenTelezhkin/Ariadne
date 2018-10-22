@@ -11,13 +11,31 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
-open class NavigationControllerEmbeddingViewFactory: ViewBuilder {
+open class NavigationEmbeddingFactory: ViewBuilder {
     
     var navigationControllerClosure : () -> UINavigationController = { .init() }
     
     public func build(with context: [View]) throws -> UINavigationController {
         let navigation = navigationControllerClosure()
         navigation.viewControllers = context
+        return navigation
+    }
+}
+
+open class SingleViewNavigationEmbeddingFactory<T:ViewBuilder> : ViewBuilder {
+    public typealias Context = T.Context
+    
+    public let builder : T
+    var navigationControllerClosure : () -> UINavigationController = { .init() }
+    
+    public init(builder: T) {
+        self.builder = builder
+    }
+    
+    public func build(with context: Context) throws -> UINavigationController {
+        let view = try builder.build(with: context)
+        let navigation = navigationControllerClosure()
+        navigation.viewControllers = [view]
         return navigation
     }
 }
