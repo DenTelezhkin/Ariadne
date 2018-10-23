@@ -31,16 +31,12 @@ class ExampleViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     
-    var exampleData: ExampleData?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        textLabel.text = exampleData?.title
-        actionButton.setTitle(exampleData?.buttonTitle, for: .normal)
+    var exampleData: ExampleData? {
+        didSet {
+            loadViewIfNeeded()
+            textLabel.text = exampleData?.title
+            actionButton.setTitle(exampleData?.buttonTitle, for: .normal)
+        }
     }
 
     @IBAction func buttonTapped() {

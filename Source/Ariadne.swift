@@ -19,6 +19,16 @@ public protocol ViewBuilder {
     func build(with context: Context) throws -> ViewType
 }
 
+public protocol ContextUpdatable {
+    associatedtype Context
+    
+    func update(with context: Context)
+}
+
+public protocol ViewUpdater : ViewBuilder where ViewType: ContextUpdatable {
+    func findUpdatableView(for context: Context) -> ViewType?
+}
+
 public enum TransitionType {
     case hide
     case show
@@ -69,5 +79,18 @@ open class Router {
             }
             route.transition.perform(with: viewToShow, on: visibleView, completion: completion)
         }
+    }
+    
+    open func updateOrNavigate<T: ViewUpdater,U>(to route: Route<T, U>,
+                                                 with context: T.Context,
+                                                 completion: ((T.ViewType?,Bool) -> ())? = nil)
+        where T.Context == T.ViewType.Context
+    {
+        guard let updatableView = route.builder.findUpdatableView(for: context) else {
+            navigate(to: route, with: context) { completion?(nil, $0) }
+            return
+        }
+        updatableView.update(with: context)
+        completion?(updatableView, true)
     }
 }

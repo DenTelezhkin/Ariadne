@@ -34,6 +34,45 @@ class BarViewController: UIViewController {
     }
 }
 
+class IntViewController : UIViewController, ContextUpdatable {
+    
+    var value: Int = 0
+    var wasUpdated : Bool = false
+    var wasCreated: Bool = true
+    
+    init(value: Int) {
+        self.value = value
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+    
+    func update(with context: Int) {
+        value = context
+        wasCreated = false
+        wasUpdated = true
+    }
+}
+
+class IntFactory : ViewBuilder, ViewUpdater {
+    
+    let window : UIWindow
+    
+    init(window: UIWindow) {
+        self.window = window
+    }
+    
+    func build(with context: Int) throws -> IntViewController {
+        return IntViewController(value: context)
+    }
+    
+    func findUpdatableView(for context: Int) -> IntViewController? {
+        return CurrentlyVisibleViewFinder(rootViewProvider: window).currentlyVisibleView() as? IntViewController
+    }
+}
+
 class AriadneTests: XCTestCase {
     
     var root: View? {
@@ -153,5 +192,23 @@ class AriadneTests: XCTestCase {
         
         XCTAssertEqual((root as? UINavigationController)?.viewControllers.count, 1)
         XCTAssert((root as? UINavigationController)?.viewControllers.first is FooViewController)
+    }
+    
+    func testFindingAndUpdatingAlreadyPresentedView() {
+        testableWindow.rootViewController = BarViewController()
+        let transition = RootViewTransition(window: testableWindow)
+        transition.isAnimated = false
+        let route = Route(builder: IntFactory(window: testableWindow), transition: transition)
+        router.updateOrNavigate(to: route, with: 1)
+        
+        XCTAssertEqual((root as? IntViewController)?.value, 1)
+        XCTAssertFalse((root as? IntViewController)?.wasUpdated ?? true)
+        XCTAssertTrue((root as? IntViewController)?.wasCreated ?? false)
+        
+        router.updateOrNavigate(to: route, with: 2)
+        
+        XCTAssertEqual((root as? IntViewController)?.value, 2)
+        XCTAssertTrue((root as? IntViewController)?.wasUpdated ?? false)
+        XCTAssertFalse((root as? IntViewController)?.wasCreated ?? true)
     }
 }
