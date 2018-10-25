@@ -13,12 +13,14 @@ enum Examples: Int, CaseIterable {
     case rootChange
     case push
     case present
+    case findAndUpdateView
     
     var title: String {
         switch self {
         case .rootChange: return "Change root view"
         case .push: return "Push controller in navigation"
         case .present: return "Present controller modally"
+        case .findAndUpdateView: return "Find and update view"
         }
     }
 }
@@ -76,6 +78,7 @@ class ExamplesTableViewController: UITableViewController {
         case .rootChange: animateRootChange()
         case .push: pushNewControllerInNavigation()
         case .present: presentControllerModally()
+        case .findAndUpdateView: findAndUpdateView()
         }
     }
     
@@ -102,5 +105,17 @@ class ExamplesTableViewController: UITableViewController {
             self?.router.navigate(to: dismissRoute, with: ())
         }
         router.navigate(to: presentRoute, with: model)
+    }
+    
+    func findAndUpdateView() {
+        let pushRoute = Route(builder: ExampleViewBuilder(), transition: PushNavigationTransition(finder: finder))
+        let popRoute = Route(builder: NonBuilder(), transition: PopNavigationTransition(finder: finder))
+        let newModel = ExampleData(title: "Controller was updated with new data instead of pushing a new controller", buttonTitle: "Tap to go back to list of examples") { [weak self] in
+            self?.router.navigate(to: popRoute, with: ())
+        }
+        let model = ExampleData(title: "This is a newly created view controller", buttonTitle: "Update with new model") { [weak self] in
+            self?.router.updateOrNavigate(to: pushRoute, with: newModel)
+        }
+        router.navigate(to: pushRoute, with: model)
     }
 }

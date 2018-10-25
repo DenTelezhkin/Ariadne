@@ -15,7 +15,7 @@ struct ExampleData {
     let buttonAction: () -> ()
 }
 
-struct ExampleViewBuilder : ViewBuilder {
+struct ExampleViewBuilder : ViewBuilder, ViewUpdater {
     struct BuildError: Error {}
     func build(with context: ExampleData) throws -> ExampleViewController {
         guard let controller = UIStoryboard(name: String(describing: ExampleViewController.self),
@@ -25,9 +25,13 @@ struct ExampleViewBuilder : ViewBuilder {
         controller.exampleData = context
         return controller
     }
+    
+    func findUpdatableView(for context: ExampleData) -> ExampleViewController? {
+        return (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)?.viewControllers.last as? ExampleViewController
+    }
 }
 
-class ExampleViewController: UIViewController {
+class ExampleViewController: UIViewController, ContextUpdatable {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     
@@ -37,6 +41,10 @@ class ExampleViewController: UIViewController {
             textLabel.text = exampleData?.title
             actionButton.setTitle(exampleData?.buttonTitle, for: .normal)
         }
+    }
+    
+    func update(with context: ExampleData) {
+        exampleData = context
     }
 
     @IBAction func buttonTapped() {

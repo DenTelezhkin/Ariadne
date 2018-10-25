@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8TU-Rh-IDy">
-                                <rect key="frame" x="164.5" y="308.5" width="46" height="50.5"/>
+                                <rect key="frame" x="20" y="308.5" width="335" height="50.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmT-5s-NGi">
-                                        <rect key="frame" x="2" y="0.0" width="42" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmT-5s-NGi">
+                                        <rect key="frame" x="146.5" y="0.0" width="42" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyk-rN-CxE">
-                                        <rect key="frame" x="0.0" y="20.5" width="46" height="30"/>
+                                        <rect key="frame" x="144.5" y="20.5" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="buttonTapped" destination="EPJ-fc-BCY" eventType="touchUpInside" id="zPA-h9-jql"/>
@@ -39,7 +39,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8TU-Rh-IDy" firstAttribute="centerX" secondItem="Td5-NS-SGB" secondAttribute="centerX" id="DZs-DD-OUk"/>
+                            <constraint firstItem="8TU-Rh-IDy" firstAttribute="leading" secondItem="06R-pa-Ff8" secondAttribute="leading" constant="20" id="Y5W-mQ-YON"/>
                             <constraint firstItem="8TU-Rh-IDy" firstAttribute="centerY" secondItem="Td5-NS-SGB" secondAttribute="centerY" id="a9O-kb-qRv"/>
+                            <constraint firstItem="06R-pa-Ff8" firstAttribute="trailing" secondItem="8TU-Rh-IDy" secondAttribute="trailing" constant="20" id="exC-hE-E6I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="06R-pa-Ff8"/>
                     </view>
