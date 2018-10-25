@@ -86,6 +86,7 @@ class AriadneTests: XCTestCase {
         super.setUp()
         testableWindow = UIWindow(frame: UIScreen.main.bounds)
         testableWindow.isHidden = false
+        testableWindow.rootViewController = BarViewController()
     }
     
     func testPushTransition() {
@@ -117,12 +118,11 @@ class AriadneTests: XCTestCase {
     }
     
     func testRootViewTransition() {
-        testableWindow.rootViewController = FooViewController()
-        let switchRootViewRoute = Route(builder: XibBuildingFactory<BarViewController>(), transition: RootViewTransition(window: testableWindow))
+        let switchRootViewRoute = Route(builder: XibBuildingFactory<FooViewController>(), transition: RootViewTransition(window: testableWindow))
         switchRootViewRoute.transition.isAnimated = false
         router.navigate(to: switchRootViewRoute, with: ())
         
-        XCTAssert(testableWindow.rootViewController is BarViewController)
+        XCTAssert(testableWindow.rootViewController is FooViewController)
     }
     
     func testPresentationTransition() {
@@ -130,7 +130,6 @@ class AriadneTests: XCTestCase {
         let presentationRoute = Route(builder: XibBuildingFactory<FooViewController>(),
                                       transition: PresentationTransition(finder: CurrentlyVisibleViewFinder(rootViewProvider: testableWindow)))
         presentationRoute.transition.isAnimated = false
-        testableWindow.rootViewController = BarViewController()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssert(self.testableWindow.rootViewController is BarViewController)
             XCTAssert(self.testableWindow.rootViewController?.presentedViewController is FooViewController)
@@ -145,7 +144,6 @@ class AriadneTests: XCTestCase {
         let presentationRoute = Route(builder: XibBuildingFactory<FooViewController>(),
                                       transition: PresentationTransition(finder: CurrentlyVisibleViewFinder(rootViewProvider: testableWindow)))
         presentationRoute.transition.isAnimated = false
-        testableWindow.rootViewController = BarViewController()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssert(self.testableWindow.rootViewController is BarViewController)
             XCTAssert(self.testableWindow.rootViewController?.presentedViewController is FooViewController)
@@ -169,7 +167,6 @@ class AriadneTests: XCTestCase {
     }
 
     func testNavigationControllerEmbedding() {
-        testableWindow.rootViewController = BarViewController()
         let transition = RootViewTransition(window: testableWindow)
         let route = Route(builder: NavigationEmbeddingBuilder(), transition: transition)
         transition.isAnimated = false
@@ -183,7 +180,6 @@ class AriadneTests: XCTestCase {
     }
     
     func testSingleNavigationViewEmbedding() {
-        testableWindow.rootViewController = BarViewController()
         let transition = RootViewTransition(window: testableWindow)
         let route = Route(builder: SingleViewNavigationEmbeddingBuilder(builder: XibBuildingFactory<FooViewController>()),
                           transition: transition)
@@ -195,7 +191,6 @@ class AriadneTests: XCTestCase {
     }
     
     func testFindingAndUpdatingAlreadyPresentedView() {
-        testableWindow.rootViewController = BarViewController()
         let transition = RootViewTransition(window: testableWindow)
         transition.isAnimated = false
         let route = Route(builder: IntFactory(window: testableWindow), transition: transition)
@@ -210,5 +205,45 @@ class AriadneTests: XCTestCase {
         XCTAssertEqual((root as? IntViewController)?.value, 2)
         XCTAssertTrue((root as? IntViewController)?.wasUpdated ?? false)
         XCTAssertFalse((root as? IntViewController)?.wasCreated ?? true)
+    }
+    
+    func testViewCanBeConfiguredPriorToKickingOffTransition() {
+        testableWindow.rootViewController = UINavigationController()
+        let transition = PushNavigationTransition(finder: CurrentlyVisibleViewFinder(rootViewProvider: testableWindow))
+        let route = Route(builder: XibBuildingFactory<FooViewController>(), transition: transition)
+        route.prepareForShowTransition = { newView, transition, oldView in
+            newView.title = "Foo"
+            oldView?.title = "Bar"
+        }
+        XCTAssertNil(testableWindow.rootViewController?.title)
+        
+        router.navigate(to: route, with: ())
+        
+        XCTAssertEqual(testableWindow.rootViewController?.title, "Foo")
+        XCTAssertEqual((testableWindow.rootViewController as? UINavigationController)?.viewControllers.first?.title, "Foo")
+    }
+    
+    func testViewCanBeConfiguredPriorToHideTransition() {
+        let exp = expectation(description: "NavigationCompletion")
+        let popRoute = Route(builder: NonBuilder(),
+                             transition: PopNavigationTransition(finder: CurrentlyVisibleViewFinder(rootViewProvider: testableWindow)))
+        popRoute.prepareForHideTransition = { view, transition in
+            view.title = "Foo"
+        }
+        popRoute.transition.isAnimated = false
+        let navigation = UINavigationController()
+        navigation.setViewControllers([FooViewController(),FooViewController()], animated: false)
+        let foo = navigation.viewControllers.last
+        testableWindow?.rootViewController = navigation
+        router.navigate(to: popRoute, with: ()) { result in
+            if result {
+                XCTAssertEqual((self.root as? UINavigationController)?.viewControllers.count, 1)
+                XCTAssertEqual(foo?.title, "Foo")
+                exp.fulfill()
+            } else {
+                XCTFail("failed to perform transition")
+            }
+        }
+        waitForExpectations(timeout: 0.1)
     }
 }

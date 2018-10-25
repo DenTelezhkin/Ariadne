@@ -52,6 +52,9 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition> {
     var builder: Builder
     var transition: Transition
     
+    var prepareForHideTransition: ((_ visibleView: View, _ transition: Transition) -> ())?
+    var prepareForShowTransition: ((_ view: Builder.ViewType, _ transition: Transition, _ toView: View?) -> ())?
+    
     public init(builder: Builder,
                 transition: Transition) {
         self.builder = builder
@@ -72,11 +75,13 @@ open class Router {
         }
         switch route.transition.transitionType {
         case .hide:
+            route.prepareForHideTransition?(visibleView, route.transition)
             route.transition.perform(with: visibleView, on: nil, completion: completion)
         case .show:
             guard let viewToShow = try? route.builder.build(with: context) else {
                 completion?(false); return
             }
+            route.prepareForShowTransition?(viewToShow, route.transition, visibleView)
             route.transition.perform(with: viewToShow, on: visibleView, completion: completion)
         }
     }
