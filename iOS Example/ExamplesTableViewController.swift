@@ -193,7 +193,7 @@ extension ExamplesTableViewController : UIViewControllerPreviewingDelegate {
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        navigationController?.pushViewController(viewControllerToCommit, animated: true)
+        peekAndPopRoute.transition.perform(with: viewControllerToCommit, on: self, completion: nil)
     }
 }
 
