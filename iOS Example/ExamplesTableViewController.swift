@@ -14,6 +14,7 @@ enum Examples: Int, CaseIterable {
     case push
     case present
     case findAndUpdateView
+    case customTransitions
     
     var title: String {
         switch self {
@@ -21,6 +22,7 @@ enum Examples: Int, CaseIterable {
         case .push: return "Push controller in navigation"
         case .present: return "Present controller modally"
         case .findAndUpdateView: return "Find and update view"
+        case .customTransitions: return "Custom navigation transitions"
         }
     }
 }
@@ -44,11 +46,14 @@ class ExamplesTableViewController: UITableViewController {
     var finder: CurrentlyVisibleViewFinder {
         return CurrentlyVisibleViewFinder()
     }
+    
+    var transitioningToExample: Examples?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: kExampleCellReuseIdentifier)
+        navigationController?.delegate = self
     }
 
     // MARK: - Table view data source
@@ -74,11 +79,13 @@ class ExamplesTableViewController: UITableViewController {
         guard let example = Examples(rawValue: indexPath.row) else {
             fatalError("Unsupported example")
         }
+        transitioningToExample = example
         switch example {
         case .rootChange: animateRootChange()
         case .push: pushNewControllerInNavigation()
         case .present: presentControllerModally()
         case .findAndUpdateView: findAndUpdateView()
+        case .customTransitions: customNavigationTransitions()
         }
     }
     
@@ -118,4 +125,51 @@ class ExamplesTableViewController: UITableViewController {
         }
         router.navigate(to: pushRoute, with: model)
     }
+    
+    func customNavigationTransitions() {
+        let pushRoute = Route(builder: ExampleViewBuilder(), transition: PushNavigationTransition(finder: finder))
+        let popRoute = Route(builder: NonBuilder(), transition: PopNavigationTransition(finder: finder))
+        let model = ExampleData(title: "This view was pushed with custom transition", buttonTitle: "Tap to pop with custom transition") { [weak self] in
+            self?.router.navigate(to: popRoute, with: ())
+        }
+        router.navigate(to: pushRoute, with: model)
+    }
+}
+
+extension ExamplesTableViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard transitioningToExample == Examples.customTransitions else { return nil }
+        return NavigationAnimator(direction: operation)
+    }
+}
+
+class NavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+    
+    let direction: UINavigationController.Operation
+    
+    init(direction: UINavigationController.Operation) {
+        self.direction = direction
+    }
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0.2
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let container = transitionContext.containerView
+        guard let toView = transitionContext.view(forKey: .to),
+            let fromView = transitionContext.view(forKey: .from) else { return }
+        toView.alpha = 0
+        container.addSubview(toView)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            fromView.alpha = 0
+            toView.alpha = 1
+        }, completion: { finished in
+            fromView.removeFromSuperview()
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled && finished)
+        })
+    }
+    
+    
 }
