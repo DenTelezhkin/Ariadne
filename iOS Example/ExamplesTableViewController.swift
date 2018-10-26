@@ -16,6 +16,7 @@ enum Examples: Int, CaseIterable {
     case findAndUpdateView
     case customTransitions
     case customPresentations
+    case peekAndPop
     
     var title: String {
         switch self {
@@ -25,6 +26,7 @@ enum Examples: Int, CaseIterable {
         case .findAndUpdateView: return "Find and update view"
         case .customTransitions: return "Custom navigation transitions"
         case .customPresentations: return "Custom presentation and dismissal"
+        case .peekAndPop: return "Peek and Pop with 3D Touch"
         }
     }
 }
@@ -50,12 +52,22 @@ class ExamplesTableViewController: UITableViewController {
     }
     
     var transitioningToExample: Examples?
+    
+    var peekAndPopRoute : Route<ExampleViewBuilder,PushNavigationTransition>!
+    var peekAndPopModel: ExampleData!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         clearsSelectionOnViewWillAppear = true
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: kExampleCellReuseIdentifier)
         navigationController?.delegate = self
+        
+        peekAndPopRoute = Route(builder: ExampleViewBuilder(), transition: PushNavigationTransition(finder: finder))
+        let popRoute = Route(builder: NonBuilder(), transition: PopNavigationTransition(finder: finder))
+        peekAndPopModel = ExampleData(title: "This view can be peeked and popped", buttonTitle: "Tap to pop back to list") { [weak self] in
+            self?.router.navigate(to: popRoute, with: ())
+        }
+        registerForPreviewing(with: self, sourceView: tableView)
     }
 
     // MARK: - Table view data source
@@ -89,6 +101,7 @@ class ExamplesTableViewController: UITableViewController {
         case .findAndUpdateView: findAndUpdateView()
         case .customTransitions: customNavigationTransitions()
         case .customPresentations: customPresentationAndDismissal()
+        case .peekAndPop: router.navigate(to: peekAndPopRoute, with: peekAndPopModel)
         }
     }
     
@@ -168,6 +181,22 @@ extension ExamplesTableViewController: UINavigationControllerDelegate {
     }
 }
 
+extension ExamplesTableViewController : UIViewControllerPreviewingDelegate {
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = tableView.indexPathForRow(at: location),
+            let cell = tableView.cellForRow(at: indexPath)
+            else { return nil }
+        guard let example = Examples(rawValue: indexPath.row), example == .peekAndPop else { return nil }
+        previewingContext.sourceRect = cell.frame
+        return try? peekAndPopRoute.builder.build(with: peekAndPopModel)
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: true)
+    }
+}
+
 class AlphaAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -189,6 +218,5 @@ class AlphaAnimator: NSObject, UIViewControllerAnimatedTransitioning {
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled && finished)
         })
     }
-    
     
 }
