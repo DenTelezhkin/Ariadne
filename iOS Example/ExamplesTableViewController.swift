@@ -15,6 +15,7 @@ enum Examples: Int, CaseIterable {
     case present
     case findAndUpdateView
     case customTransitions
+    case customPresentations
     
     var title: String {
         switch self {
@@ -23,6 +24,7 @@ enum Examples: Int, CaseIterable {
         case .present: return "Present controller modally"
         case .findAndUpdateView: return "Find and update view"
         case .customTransitions: return "Custom navigation transitions"
+        case .customPresentations: return "Custom presentation and dismissal"
         }
     }
 }
@@ -86,6 +88,7 @@ class ExamplesTableViewController: UITableViewController {
         case .present: presentControllerModally()
         case .findAndUpdateView: findAndUpdateView()
         case .customTransitions: customNavigationTransitions()
+        case .customPresentations: customPresentationAndDismissal()
         }
     }
     
@@ -134,25 +137,41 @@ class ExamplesTableViewController: UITableViewController {
         }
         router.navigate(to: pushRoute, with: model)
     }
+    
+    func customPresentationAndDismissal() {
+        let presentRoute = Route(builder: ExampleViewBuilder(), transition: PresentationTransition(finder: finder))
+        presentRoute.prepareForShowTransition = { [weak self] newView, transition, oldView in
+            newView.transitioningDelegate = self
+        }
+        let dismissRoute = Route(builder: NonBuilder(), transition: DismissTransition(finder: finder))
+        let model = ExampleData(title: "This is modally presented view with custom animation", buttonTitle: "Tap to dismiss with custom animation") { [weak self] in
+            self?.router.navigate(to: dismissRoute, with: ())
+        }
+        router.navigate(to: presentRoute, with: model)
+    }
+}
+
+extension ExamplesTableViewController : UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AlphaAnimator()
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AlphaAnimator()
+    }
 }
 
 extension ExamplesTableViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         guard transitioningToExample == Examples.customTransitions else { return nil }
-        return NavigationAnimator(direction: operation)
+        return AlphaAnimator()
     }
 }
 
-class NavigationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    
-    let direction: UINavigationController.Operation
-    
-    init(direction: UINavigationController.Operation) {
-        self.direction = direction
-    }
+class AlphaAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.2
+        return 0.5
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

@@ -49,11 +49,11 @@ public protocol ViewTransition {
 }
 
 open class Route<Builder: ViewBuilder, Transition: ViewTransition> {
-    var builder: Builder
-    var transition: Transition
+    open var builder: Builder
+    open var transition: Transition
     
-    var prepareForHideTransition: ((_ visibleView: View, _ transition: Transition) -> ())?
-    var prepareForShowTransition: ((_ view: Builder.ViewType, _ transition: Transition, _ toView: View?) -> ())?
+    open var prepareForHideTransition: ((_ visibleView: View, _ transition: Transition) -> ())?
+    open var prepareForShowTransition: ((_ view: Builder.ViewType, _ transition: Transition, _ toView: View?) -> ())?
     
     public init(builder: Builder,
                 transition: Transition) {
