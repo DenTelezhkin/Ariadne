@@ -41,3 +41,16 @@ open class CurrentlyVisibleViewFinder : ViewFinder {
         return visibleView ?? view
     }
 }
+
+open class InstanceViewRootProvider : RootViewProvider {
+    
+    public let rootView : View
+    
+    public init(view: View) {
+        rootView = view
+    }
+    
+    public var rootViewController: View? {
+        return rootView
+    }
+}

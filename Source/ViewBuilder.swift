@@ -13,10 +13,10 @@ import UIKit
 
 open class NavigationEmbeddingBuilder: ViewBuilder {
     
-    var navigationControllerClosure : () -> UINavigationController = { .init() }
+    open var navigationControllerBuilder : () -> UINavigationController = { .init() }
     
     public func build(with context: [View]) throws -> UINavigationController {
-        let navigation = navigationControllerClosure()
+        let navigation = navigationControllerBuilder()
         navigation.viewControllers = context
         return navigation
     }
@@ -26,7 +26,7 @@ open class SingleViewNavigationEmbeddingBuilder<T:ViewBuilder> : ViewBuilder {
     public typealias Context = T.Context
     
     public let builder : T
-    var navigationControllerClosure : () -> UINavigationController = { .init() }
+    open var navigationControllerBuilder : () -> UINavigationController = { .init() }
     
     public init(builder: T) {
         self.builder = builder
@@ -34,7 +34,7 @@ open class SingleViewNavigationEmbeddingBuilder<T:ViewBuilder> : ViewBuilder {
     
     public func build(with context: Context) throws -> UINavigationController {
         let view = try builder.build(with: context)
-        let navigation = navigationControllerClosure()
+        let navigation = navigationControllerBuilder()
         navigation.viewControllers = [view]
         return navigation
     }
