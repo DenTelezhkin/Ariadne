@@ -22,7 +22,7 @@ open class NavigationEmbeddingBuilder: ViewBuilder {
     }
 }
 
-open class SingleViewNavigationEmbeddingBuilder<T:ViewBuilder> : ViewBuilder {
+open class NavigationSingleViewEmbeddingBuilder<T:ViewBuilder> : ViewBuilder {
     public typealias Context = T.Context
     
     public let builder : T

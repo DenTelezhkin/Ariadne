@@ -181,7 +181,7 @@ class AriadneTests: XCTestCase {
     
     func testSingleNavigationViewEmbedding() {
         let transition = RootViewTransition(window: testableWindow)
-        let route = Route(builder: SingleViewNavigationEmbeddingBuilder(builder: XibBuildingFactory<FooViewController>()),
+        let route = Route(builder: NavigationSingleViewEmbeddingBuilder(builder: XibBuildingFactory<FooViewController>()),
                           transition: transition)
         transition.isAnimated = false
         router.navigate(to: route, with: ())
@@ -267,5 +267,16 @@ class AriadneTests: XCTestCase {
         XCTAssertEqual(split.viewControllers.count, 2)
         XCTAssert(split.viewControllers.first is FooViewController)
         XCTAssert(split.viewControllers.last is BarViewController)
+    }
+    
+    func testCompositionOfNavigationAndTabBarBuilding() throws {
+        let builder = TabBarEmbeddingBuilder()
+        let tabBar = try builder.build(with: [
+            NavigationSingleViewEmbeddingBuilder(builder: XibBuildingFactory<FooViewController>()).build(with: ()),
+            NavigationSingleViewEmbeddingBuilder(builder: XibBuildingFactory<BarViewController>()).build(with: ())
+        ])
+        
+        XCTAssert((tabBar.viewControllers?.first as? UINavigationController)?.viewControllers.first is FooViewController)
+        XCTAssert((tabBar.viewControllers?.last as? UINavigationController)?.viewControllers.first is BarViewController)
     }
 }
