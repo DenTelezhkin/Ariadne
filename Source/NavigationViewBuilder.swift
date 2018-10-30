@@ -1,5 +1,5 @@
 //
-//  ViewFactory.swift
+//  NavigationViewBuilder.swift
 //  Ariadne
 //
 //  Created by Denys Telezhkin on 10/1/18.
@@ -41,13 +41,3 @@ open class SingleViewNavigationEmbeddingBuilder<T:ViewBuilder> : ViewBuilder {
 }
 
 #endif
-
-public class NonBuildableView : View {}
-
-open class NonBuilder : ViewBuilder {
-    public init() {} 
-    public func build(with context: ()) throws -> NonBuildableView {
-        assertionFailure("NonBuilder should not be asked to build a view")
-        return NonBuildableView()
-    }
-}

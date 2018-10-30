@@ -246,4 +246,26 @@ class AriadneTests: XCTestCase {
         }
         waitForExpectations(timeout: 0.1)
     }
+    
+    func testTabBarIsBuildable() throws {
+        let builder = TabBarEmbeddingBuilder()
+        let tabBar = try builder.build(with: [
+            XibBuildingFactory<FooViewController>().build(with: ()),
+            XibBuildingFactory<BarViewController>().build(with: ())
+        ])
+        
+        XCTAssertEqual(tabBar.viewControllers?.count, 2)
+        XCTAssert(tabBar.viewControllers?.first is FooViewController)
+        XCTAssert(tabBar.viewControllers?.last is BarViewController)
+    }
+    
+    func testSplitViewIsBuildable() throws {
+        let builder = SplitViewBuilder(masterBuilder: XibBuildingFactory<FooViewController>(),
+                                       detailBuilder: XibBuildingFactory<BarViewController>())
+        let split = try builder.build(with: ((), ()))
+        
+        XCTAssertEqual(split.viewControllers.count, 2)
+        XCTAssert(split.viewControllers.first is FooViewController)
+        XCTAssert(split.viewControllers.last is BarViewController)
+    }
 }
