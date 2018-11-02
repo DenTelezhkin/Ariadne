@@ -9,10 +9,11 @@
 import Foundation
 
 open class BaseAnimatedTransition {
-    public var isAnimated: Bool = true
-    public let viewFinder : ViewFinder
-    public init(finder: ViewFinder) {
+    public var isAnimated: Bool
+    public let viewFinder : ViewFinder?
+    public init(finder: ViewFinder? = nil, isAnimated: Bool = true) {
         viewFinder = finder
+        self.isAnimated = isAnimated
     }
 }
 

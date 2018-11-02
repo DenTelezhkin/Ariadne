@@ -41,7 +41,7 @@ public protocol ViewFinder {
 public protocol ViewTransition {
     var isAnimated: Bool { get }
     var transitionType: TransitionType { get }
-    var viewFinder: ViewFinder { get }
+    var viewFinder: ViewFinder? { get }
     
     func perform(with view: View,
                  on visibleView: View?,
@@ -64,13 +64,35 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition> {
 
 open class Router {
     
-    public init() {}
+    public var viewFinder: ViewFinder
+    public let rootViewProvider: RootViewProvider
+    
+    public init(rootViewProvider: RootViewProvider) {
+        self.viewFinder = CurrentlyVisibleViewFinder(rootViewProvider: rootViewProvider)
+        self.rootViewProvider = rootViewProvider
+    }
+    
+    open func pushNavigationRoute<T:ViewBuilder>(with builder: T, isAnimated: Bool = true) -> Route<T, PushNavigationTransition> {
+        return Route(builder: builder, transition: PushNavigationTransition(isAnimated: isAnimated))
+    }
+    
+    open func popNavigationRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+        return Route(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
+    }
+    
+    open func presentRoute<T:ViewBuilder>(with builder: T, isAnimated: Bool = true) -> Route<T, PresentationTransition> {
+        return Route(builder: builder, transition: PresentationTransition(isAnimated: isAnimated))
+    }
+    
+    open func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
+        return Route(builder: NonBuilder(), transition: DismissTransition(isAnimated: isAnimated))
+    }
     
     open func navigate<T, U>(to route: Route<T,U>,
                                 with context: T.Context,
                                 completion: ((Bool) -> ())? = nil)
     {
-        guard let visibleView = route.transition.viewFinder.currentlyVisibleView(startingFrom: nil) else {
+        guard let visibleView = (route.transition.viewFinder ?? viewFinder).currentlyVisibleView(startingFrom: nil) else {
             completion?(false); return
         }
         switch route.transition.transitionType {
