@@ -58,7 +58,7 @@ class ExamplesTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: kExampleCellReuseIdentifier)
         navigationController?.delegate = self
         
-        peekAndPopRoute = router.pushNavigationRoute(with: ExampleViewBuilder())
+        peekAndPopRoute = ExampleViewBuilder().pushNavigationRoute()
         let popRoute = router.popNavigationRoute()
         peekAndPopModel = ExampleData(title: "This view can be peeked and popped", buttonTitle: "Tap to pop back to list") { [weak self] in
             self?.router.navigate(to: popRoute, with: ())
@@ -109,7 +109,7 @@ class ExamplesTableViewController: UITableViewController {
     }
     
     func pushNewControllerInNavigation() {
-        let pushRoute = router.pushNavigationRoute(with: ExampleViewBuilder())
+        let pushRoute = ExampleViewBuilder().pushNavigationRoute()
         let popRoute = router.popNavigationRoute()
         let model = ExampleData(title: "This is a pushed view controller", buttonTitle: "Pop back") { [weak self] in
             self?.router.navigate(to: popRoute, with: ())
@@ -118,7 +118,7 @@ class ExamplesTableViewController: UITableViewController {
     }
     
     func presentControllerModally() {
-        let presentRoute = router.presentRoute(with: ExampleViewBuilder())
+        let presentRoute = ExampleViewBuilder().pushNavigationRoute()
         let dismissRoute = router.dismissRoute()
         let model = ExampleData(title: "This is modally presented controller", buttonTitle: "Tap to dismiss") { [weak self] in
             self?.router.navigate(to: dismissRoute, with: ())
@@ -127,7 +127,7 @@ class ExamplesTableViewController: UITableViewController {
     }
     
     func findAndUpdateView() {
-        let pushRoute = router.pushNavigationRoute(with: ExampleViewBuilder())
+        let pushRoute = ExampleViewBuilder().pushNavigationRoute()
         let popRoute = router.popNavigationRoute()
         let newModel = ExampleData(title: "Controller was updated with new data instead of pushing a new controller", buttonTitle: "Tap to go back to list of examples") { [weak self] in
             self?.router.navigate(to: popRoute, with: ())
@@ -139,7 +139,7 @@ class ExamplesTableViewController: UITableViewController {
     }
     
     func customNavigationTransitions() {
-        let pushRoute = router.pushNavigationRoute(with: ExampleViewBuilder())
+        let pushRoute = ExampleViewBuilder().pushNavigationRoute()
         let popRoute = router.popNavigationRoute()
         let model = ExampleData(title: "This view was pushed with custom transition", buttonTitle: "Tap to pop with custom transition") { [weak self] in
             self?.router.navigate(to: popRoute, with: ())
@@ -148,7 +148,7 @@ class ExamplesTableViewController: UITableViewController {
     }
     
     func customPresentationAndDismissal() {
-        let presentRoute = router.presentRoute(with: ExampleViewBuilder())
+        let presentRoute = ExampleViewBuilder().presentRoute()
         presentRoute.prepareForShowTransition = { [weak self] newView, transition, oldView in
             newView.transitioningDelegate = self
         }

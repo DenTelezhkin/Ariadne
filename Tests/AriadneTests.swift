@@ -90,7 +90,7 @@ class AriadneTests: XCTestCase {
     }
     
     func testPushTransition() {
-        let pushRoute = router.pushNavigationRoute(with: XibBuildingFactory<FooViewController>())
+        let pushRoute = XibBuildingFactory<FooViewController>().pushNavigationRoute()
         testableWindow?.rootViewController = UINavigationController()
         router.navigate(to: pushRoute, with: ())
         XCTAssertEqual((root as? UINavigationController)?.viewControllers.count, 1)
@@ -123,8 +123,7 @@ class AriadneTests: XCTestCase {
     
     func testPresentationTransition() {
         let presentExpectation = expectation(description: "Presentation expectation")
-        let presentationRoute = router.presentRoute(with: XibBuildingFactory<FooViewController>(),
-                                                    isAnimated: false)
+        let presentationRoute = XibBuildingFactory<FooViewController>().presentRoute(isAnimated: false)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssert(self.testableWindow.rootViewController is BarViewController)
             XCTAssert(self.testableWindow.rootViewController?.presentedViewController is FooViewController)
@@ -136,8 +135,7 @@ class AriadneTests: XCTestCase {
 
     func testDismissTransition() {
         let presentExpectation = expectation(description: "Presentation expectation")
-        let presentationRoute = router.presentRoute(with: XibBuildingFactory<FooViewController>(),
-                                                    isAnimated: false)
+        let presentationRoute = XibBuildingFactory<FooViewController>().presentRoute(isAnimated: false)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssert(self.testableWindow.rootViewController is BarViewController)
             XCTAssert(self.testableWindow.rootViewController?.presentedViewController is FooViewController)
@@ -172,7 +170,7 @@ class AriadneTests: XCTestCase {
     }
     
     func testSingleNavigationViewEmbedding() {
-        let route = Route(builder: NavigationSingleViewEmbeddingBuilder(builder: XibBuildingFactory<FooViewController>()),
+        let route = Route(builder: XibBuildingFactory<FooViewController>().embeddedInNavigation(),
                           transition: RootViewTransition(window: testableWindow, isAnimated: false))
         router.navigate(to: route, with: ())
         
@@ -198,7 +196,7 @@ class AriadneTests: XCTestCase {
     
     func testViewCanBeConfiguredPriorToKickingOffTransition() {
         testableWindow.rootViewController = UINavigationController()
-        let route = router.pushNavigationRoute(with: XibBuildingFactory<FooViewController>())
+        let route = XibBuildingFactory<FooViewController>().pushNavigationRoute()
         route.prepareForShowTransition = { newView, transition, oldView in
             newView.title = "Foo"
             oldView?.title = "Bar"
@@ -258,8 +256,8 @@ class AriadneTests: XCTestCase {
     func testCompositionOfNavigationAndTabBarBuilding() throws {
         let builder = TabBarEmbeddingBuilder()
         let tabBar = try builder.build(with: [
-            NavigationSingleViewEmbeddingBuilder(builder: XibBuildingFactory<FooViewController>()).build(with: ()),
-            NavigationSingleViewEmbeddingBuilder(builder: XibBuildingFactory<BarViewController>()).build(with: ())
+            XibBuildingFactory<FooViewController>().embeddedInNavigation().build(with: ()),
+            XibBuildingFactory<BarViewController>().embeddedInNavigation().build(with: ())
         ])
         
         XCTAssert((tabBar.viewControllers?.first as? UINavigationController)?.viewControllers.first is FooViewController)

@@ -62,6 +62,16 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition> {
     }
 }
 
+extension ViewBuilder {
+    public func pushNavigationRoute(isAnimated: Bool = true) -> Route<Self, PushNavigationTransition> {
+        return Route(builder: self, transition: PushNavigationTransition(isAnimated: isAnimated))
+    }
+    
+    public func presentRoute(isAnimated: Bool = true) -> Route<Self, PresentationTransition> {
+        return Route(builder: self, transition: PresentationTransition(isAnimated: isAnimated))
+    }
+}
+
 open class Router {
     
     public var viewFinder: ViewFinder
@@ -72,16 +82,8 @@ open class Router {
         self.rootViewProvider = rootViewProvider
     }
     
-    open func pushNavigationRoute<T:ViewBuilder>(with builder: T, isAnimated: Bool = true) -> Route<T, PushNavigationTransition> {
-        return Route(builder: builder, transition: PushNavigationTransition(isAnimated: isAnimated))
-    }
-    
     open func popNavigationRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Route(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
-    }
-    
-    open func presentRoute<T:ViewBuilder>(with builder: T, isAnimated: Bool = true) -> Route<T, PresentationTransition> {
-        return Route(builder: builder, transition: PresentationTransition(isAnimated: isAnimated))
     }
     
     open func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {

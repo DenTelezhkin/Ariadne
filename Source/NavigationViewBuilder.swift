@@ -40,4 +40,12 @@ open class NavigationSingleViewEmbeddingBuilder<T:ViewBuilder> : ViewBuilder {
     }
 }
 
+extension ViewBuilder {
+    public func embeddedInNavigation(navigationBuilder: @escaping () -> UINavigationController = { .init() }) -> NavigationSingleViewEmbeddingBuilder<Self> {
+        let builder = NavigationSingleViewEmbeddingBuilder(builder: self)
+        builder.navigationControllerBuilder = navigationBuilder
+        return builder
+    }
+}
+
 #endif
