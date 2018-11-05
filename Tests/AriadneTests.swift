@@ -98,7 +98,7 @@ class AriadneTests: XCTestCase {
     
     func testPopTransition() {
         let exp = expectation(description: "NavigationCompletion")
-        let popRoute = router.popNavigationRoute(isAnimated: false)
+        let popRoute = popNavigationRoute(isAnimated: false)
         let navigation = UINavigationController()
         navigation.setViewControllers([FooViewController(),FooViewController()], animated: false)
         testableWindow?.rootViewController = navigation
@@ -144,7 +144,7 @@ class AriadneTests: XCTestCase {
         router.navigate(to: presentationRoute, with: ())
         waitForExpectations(timeout: 0.2)
         
-        let dismissalRoute = router.dismissRoute(isAnimated: false)
+        let dismissalRoute = dismissRoute(isAnimated: false)
         
         let dismissalExpectation = expectation(description: "Dismissal expectation")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -211,7 +211,7 @@ class AriadneTests: XCTestCase {
     
     func testViewCanBeConfiguredPriorToHideTransition() {
         let exp = expectation(description: "NavigationCompletion")
-        let popRoute = router.popNavigationRoute(isAnimated: false)
+        let popRoute = popNavigationRoute(isAnimated: false)
         popRoute.prepareForHideTransition = { view, transition in
             view.title = "Foo"
         }

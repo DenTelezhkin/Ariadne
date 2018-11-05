@@ -72,6 +72,14 @@ extension ViewBuilder {
     }
 }
 
+public func popNavigationRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+    return Route(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
+}
+
+public func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
+    return Route(builder: NonBuilder(), transition: DismissTransition(isAnimated: isAnimated))
+}
+
 open class Router {
     
     public var viewFinder: ViewFinder
@@ -80,14 +88,6 @@ open class Router {
     public init(rootViewProvider: RootViewProvider) {
         self.viewFinder = CurrentlyVisibleViewFinder(rootViewProvider: rootViewProvider)
         self.rootViewProvider = rootViewProvider
-    }
-    
-    open func popNavigationRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
-        return Route(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
-    }
-    
-    open func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
-        return Route(builder: NonBuilder(), transition: DismissTransition(isAnimated: isAnimated))
     }
     
     open func navigate<T, U>(to route: Route<T,U>,
