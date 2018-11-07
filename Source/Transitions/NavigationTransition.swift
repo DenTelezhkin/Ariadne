@@ -29,3 +29,12 @@ open class PopNavigationTransition: BaseAnimatedTransition, ViewTransition {
         completion?(true)
     }
 }
+
+open class PopToRootNavigationTransition : BaseAnimatedTransition, ViewTransition {
+    public var transitionType: TransitionType = .hide
+    
+    public func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
+        view.navigationController?.popToRootViewController(animated: isAnimated)
+        completion?(true)
+    }
+}
