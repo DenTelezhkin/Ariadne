@@ -63,7 +63,7 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition> {
 }
 
 extension ViewBuilder {
-    public func navigationPushRoute(isAnimated: Bool = true) -> Route<Self, PushNavigationTransition> {
+    public func pushRoute(isAnimated: Bool = true) -> Route<Self, PushNavigationTransition> {
         return Route(builder: self, transition: PushNavigationTransition(isAnimated: isAnimated))
     }
     
@@ -82,20 +82,20 @@ open class Router {
         self.rootViewProvider = rootViewProvider
     }
     
-    public static func navigationPopRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+    public static func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Route<NonBuilder, PopNavigationTransition>(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
     }
     
-    public func navigationPopRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
-        return Router.navigationPopRoute(isAnimated: isAnimated)
+    public func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+        return Router.popRoute(isAnimated: isAnimated)
     }
     
-    public static func navigationPopToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
+    public static func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
         return Route<NonBuilder, PopToRootNavigationTransition>(builder: NonBuilder(), transition: PopToRootNavigationTransition(isAnimated: isAnimated))
     }
     
-    public func navigationPopToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
-        return Router.navigationPopToRootRoute(isAnimated: isAnimated)
+    public func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
+        return Router.popToRootRoute(isAnimated: isAnimated)
     }
     
     public static func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {

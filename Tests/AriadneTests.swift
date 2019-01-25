@@ -94,7 +94,7 @@ class AriadneTests: XCTestCase {
     }
     
     func testPushTransition() {
-        let pushRoute = XibBuildingFactory<FooViewController>().navigationPushRoute()
+        let pushRoute = XibBuildingFactory<FooViewController>().pushRoute()
         testableWindow?.rootViewController = UINavigationController()
         router.navigate(to: pushRoute, with: ())
         XCTAssertEqual(rootNavigation?.viewControllers.count, 1)
@@ -102,7 +102,7 @@ class AriadneTests: XCTestCase {
     
     func testPopTransition() {
         let exp = expectation(description: "NavigationCompletion")
-        let popRoute = router.navigationPopRoute(isAnimated: false)
+        let popRoute = router.popRoute(isAnimated: false)
         let navigation = UINavigationController()
         navigation.setViewControllers([FooViewController(),FooViewController()], animated: false)
         testableWindow?.rootViewController = navigation
@@ -200,7 +200,7 @@ class AriadneTests: XCTestCase {
     
     func testViewCanBeConfiguredPriorToKickingOffTransition() {
         testableWindow.rootViewController = UINavigationController()
-        let route = XibBuildingFactory<FooViewController>().navigationPushRoute()
+        let route = XibBuildingFactory<FooViewController>().pushRoute()
         route.prepareForShowTransition = { newView, transition, oldView in
             newView.title = "Foo"
             oldView?.title = "Bar"
@@ -215,7 +215,7 @@ class AriadneTests: XCTestCase {
     
     func testViewCanBeConfiguredPriorToHideTransition() {
         let exp = expectation(description: "NavigationCompletion")
-        let popRoute = router.navigationPopRoute(isAnimated: false)
+        let popRoute = router.popRoute(isAnimated: false)
         popRoute.prepareForHideTransition = { view, transition in
             view.title = "Foo"
         }
@@ -269,7 +269,7 @@ class AriadneTests: XCTestCase {
     }
     
     func testPopToRootNavigationRoute() throws {
-        let popRoute = router.navigationPopToRootRoute(isAnimated: false)
+        let popRoute = router.popToRootRoute(isAnimated: false)
         let navigation = UINavigationController(rootViewController: FooViewController())
         navigation.pushViewController(BarViewController(), animated: false)
         navigation.pushViewController(BarViewController(), animated: false)
