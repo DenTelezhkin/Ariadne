@@ -7,27 +7,6 @@
 //
 
 import Foundation
-#if canImport(UIKit)
-import UIKit
-public typealias View = UIViewController
-#endif
-
-public protocol ViewBuilder {
-    associatedtype ViewType : View
-    associatedtype Context
-    
-    func build(with context: Context) throws -> ViewType
-}
-
-public protocol ContextUpdatable {
-    associatedtype Context
-    
-    func update(with context: Context)
-}
-
-public protocol ViewUpdater : ViewBuilder where ViewType: ContextUpdatable {
-    func findUpdatableView(for context: Context) -> ViewType?
-}
 
 public enum TransitionType {
     case hide

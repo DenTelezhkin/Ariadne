@@ -282,4 +282,16 @@ class AriadneTests: XCTestCase {
         XCTAssertEqual(rootNavigation?.viewControllers.count, 1)
         XCTAssert(rootNavigation?.viewControllers.first is FooViewController)
     }
+    
+    func testPrebuiltViewCanBePresented() {
+        let presentExpectation = expectation(description: "Presentation expectation")
+        let presentationRoute = InstanceViewBuilder(prebuiltView: UINavigationController()).presentRoute(isAnimated: false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssert(self.root is BarViewController)
+            XCTAssert(self.root?.presentedViewController is UINavigationController)
+            presentExpectation.fulfill()
+        }
+        router.navigate(to: presentationRoute, with: ())
+        waitForExpectations(timeout: 0.2)
+    }
 }

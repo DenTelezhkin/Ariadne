@@ -14,8 +14,9 @@
 		3E3FDEB42178B43000E9A087 /* RootViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FDEB32178B43000E9A087 /* RootViewTransition.swift */; };
 		3E3FDEB72178CC6700E9A087 /* PresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FDEB62178CC6700E9A087 /* PresentationTransition.swift */; };
 		3E3FDEBB2188812B00E9A087 /* TabBarViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FDEBA2188812B00E9A087 /* TabBarViewBuilder.swift */; };
-		3E3FDEBD218881B900E9A087 /* NonBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FDEBC218881B900E9A087 /* NonBuilder.swift */; };
 		3E3FDEBF2188836700E9A087 /* SplitViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FDEBE2188836700E9A087 /* SplitViewBuilder.swift */; };
+		3E601DCE220054F60062E095 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E601DCD220054F60062E095 /* ViewBuilder.swift */; };
+		3E601DD02200552A0062E095 /* ViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E601DCF2200552A0062E095 /* ViewUpdater.swift */; };
 		3E8448CD216F6C73003A10BE /* Ariadne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8448CC216F6C73003A10BE /* Ariadne.swift */; };
 		3E8448CF216F94AB003A10BE /* NavigationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8448CE216F94AB003A10BE /* NavigationTransition.swift */; };
 		9A5A7009217DF23000DA5152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A7008217DF23000DA5152 /* AppDelegate.swift */; };
@@ -71,8 +72,9 @@
 		3E3FDEB32178B43000E9A087 /* RootViewTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewTransition.swift; sourceTree = "<group>"; };
 		3E3FDEB62178CC6700E9A087 /* PresentationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationTransition.swift; sourceTree = "<group>"; };
 		3E3FDEBA2188812B00E9A087 /* TabBarViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewBuilder.swift; sourceTree = "<group>"; };
-		3E3FDEBC218881B900E9A087 /* NonBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonBuilder.swift; sourceTree = "<group>"; };
 		3E3FDEBE2188836700E9A087 /* SplitViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewBuilder.swift; sourceTree = "<group>"; };
+		3E601DCD220054F60062E095 /* ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
+		3E601DCF2200552A0062E095 /* ViewUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUpdater.swift; sourceTree = "<group>"; };
 		3E8448CC216F6C73003A10BE /* Ariadne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ariadne.swift; sourceTree = "<group>"; };
 		3E8448CE216F94AB003A10BE /* NavigationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTransition.swift; sourceTree = "<group>"; };
 		9A5A7006217DF23000DA5152 /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,11 +141,12 @@
 			children = (
 				3E3FDEB52178B43500E9A087 /* Transitions */,
 				3E3E0FC821623DB30055258B /* NavigationViewBuilder.swift */,
-				3E3FDEBC218881B900E9A087 /* NonBuilder.swift */,
 				3E3FDEBA2188812B00E9A087 /* TabBarViewBuilder.swift */,
 				3E3FDEBE2188836700E9A087 /* SplitViewBuilder.swift */,
 				3E3FDEB12177836700E9A087 /* CurrentlyVisibleViewFinder.swift */,
 				3E8448CC216F6C73003A10BE /* Ariadne.swift */,
+				3E601DCD220054F60062E095 /* ViewBuilder.swift */,
+				3E601DCF2200552A0062E095 /* ViewUpdater.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -338,9 +341,10 @@
 				3E8448CF216F94AB003A10BE /* NavigationTransition.swift in Sources */,
 				3E3FDEB72178CC6700E9A087 /* PresentationTransition.swift in Sources */,
 				3E8448CD216F6C73003A10BE /* Ariadne.swift in Sources */,
-				3E3FDEBD218881B900E9A087 /* NonBuilder.swift in Sources */,
+				3E601DD02200552A0062E095 /* ViewUpdater.swift in Sources */,
 				3E3FDEBF2188836700E9A087 /* SplitViewBuilder.swift in Sources */,
 				3E3E0FC921623DB30055258B /* NavigationViewBuilder.swift in Sources */,
+				3E601DCE220054F60062E095 /* ViewBuilder.swift in Sources */,
 				3E3FDEB42178B43000E9A087 /* RootViewTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
