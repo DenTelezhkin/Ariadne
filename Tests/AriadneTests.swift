@@ -183,15 +183,15 @@ class AriadneTests: XCTestCase {
     }
     
     func testFindingAndUpdatingAlreadyPresentedView() {
-        let route = Route(builder: IntFactory(window: testableWindow),
+        let route = UpdatingRoute(builder: IntFactory(window: testableWindow),
                           transition: RootViewTransition(window: testableWindow, isAnimated: false))
-        router.updateOrNavigate(to: route, with: 1)
+        router.navigate(to: route, with: 1)
         
         XCTAssertEqual((root as? IntViewController)?.value, 1)
         XCTAssertFalse((root as? IntViewController)?.wasUpdated ?? true)
         XCTAssertTrue((root as? IntViewController)?.wasCreated ?? false)
         
-        router.updateOrNavigate(to: route, with: 2)
+        router.navigate(to: route, with: 2)
         
         XCTAssertEqual((root as? IntViewController)?.value, 2)
         XCTAssertTrue((root as? IntViewController)?.wasUpdated ?? false)

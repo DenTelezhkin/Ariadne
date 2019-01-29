@@ -27,20 +27,6 @@ public protocol ViewTransition {
                  completion: ((Bool) -> ())?)
 }
 
-open class Route<Builder: ViewBuilder, Transition: ViewTransition> {
-    open var builder: Builder
-    open var transition: Transition
-    
-    open var prepareForHideTransition: ((_ visibleView: View, _ transition: Transition) -> ())?
-    open var prepareForShowTransition: ((_ view: Builder.ViewType, _ transition: Transition, _ toView: View?) -> ())?
-    
-    public init(builder: Builder,
-                transition: Transition) {
-        self.builder = builder
-        self.transition = transition
-    }
-}
-
 extension ViewBuilder {
     public func pushRoute(isAnimated: Bool = true) -> Route<Self, PushNavigationTransition> {
         return Route(builder: self, transition: PushNavigationTransition(isAnimated: isAnimated))
@@ -89,32 +75,6 @@ open class Router {
                                 with context: T.Context,
                                 completion: ((Bool) -> ())? = nil)
     {
-        guard let visibleView = (route.transition.viewFinder ?? viewFinder).currentlyVisibleView(startingFrom: nil) else {
-            completion?(false); return
-        }
-        switch route.transition.transitionType {
-        case .hide:
-            route.prepareForHideTransition?(visibleView, route.transition)
-            route.transition.perform(with: visibleView, on: nil, completion: completion)
-        case .show:
-            guard let viewToShow = try? route.builder.build(with: context) else {
-                completion?(false); return
-            }
-            route.prepareForShowTransition?(viewToShow, route.transition, visibleView)
-            route.transition.perform(with: viewToShow, on: visibleView, completion: completion)
-        }
-    }
-    
-    open func updateOrNavigate<T: ViewUpdater,U>(to route: Route<T, U>,
-                                                 with context: T.Context,
-                                                 completion: ((T.ViewType?,Bool) -> ())? = nil)
-        where T.Context == T.ViewType.Context
-    {
-        guard let updatableView = route.builder.findUpdatableView(for: context) else {
-            navigate(to: route, with: context) { completion?(nil, $0) }
-            return
-        }
-        updatableView.update(with: context)
-        completion?(updatableView, true)
+        route.perform(withViewFinder: viewFinder, context: context, completion: completion)
     }
 }
