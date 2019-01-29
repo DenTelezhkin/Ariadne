@@ -294,4 +294,15 @@ class AriadneTests: XCTestCase {
         router.navigate(to: presentationRoute, with: ())
         waitForExpectations(timeout: 0.2)
     }
+    
+    func testRoutesCanBeChainable() {
+        let pushRoute = XibBuildingFactory<FooViewController>()
+            .pushRoute(isAnimated: false)
+            .chained(with: XibBuildingFactory<BarViewController>().pushRoute(isAnimated: false), context: ())
+        testableWindow?.rootViewController = UINavigationController()
+        router.navigate(to: pushRoute, with: ())
+        XCTAssertEqual(rootNavigation?.viewControllers.count, 2)
+        XCTAssert(rootNavigation?.viewControllers.first is FooViewController)
+        XCTAssert(rootNavigation?.viewControllers.last is BarViewController)
+    }
 }

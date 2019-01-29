@@ -37,6 +37,14 @@ extension ViewBuilder {
     }
 }
 
+public protocol Routable {
+    associatedtype Builder: ViewBuilder
+    
+    func perform(withViewFinder: ViewFinder,
+                context: Builder.Context,
+                completion: ((Bool) -> ())?)
+}
+
 open class Router {
     
     public var viewFinder: ViewFinder
@@ -71,8 +79,8 @@ open class Router {
         return Router.dismissRoute(isAnimated: isAnimated)
     }
     
-    open func navigate<T, U>(to route: Route<T,U>,
-                                with context: T.Context,
+    open func navigate<T: Routable>(to route: T,
+                                with context: T.Builder.Context,
                                 completion: ((Bool) -> ())? = nil)
     {
         route.perform(withViewFinder: viewFinder, context: context, completion: completion)
