@@ -27,6 +27,8 @@ public protocol ViewTransition {
                  completion: ((Bool) -> ())?)
 }
 
+#if canImport(UIKit)
+
 extension ViewBuilder {
     public func pushRoute(isAnimated: Bool = true) -> Route<Self, PushNavigationTransition> {
         return Route(builder: self, transition: PushNavigationTransition(isAnimated: isAnimated))
@@ -36,6 +38,8 @@ extension ViewBuilder {
         return Route(builder: self, transition: PresentationTransition(isAnimated: isAnimated))
     }
 }
+
+#endif
 
 public protocol Routable {
     associatedtype Builder: ViewBuilder
@@ -54,6 +58,8 @@ open class Router {
         self.viewFinder = CurrentlyVisibleViewFinder(rootViewProvider: rootViewProvider)
         self.rootViewProvider = rootViewProvider
     }
+    
+    #if canImport(UIKit)
     
     public static func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Route<NonBuilder, PopNavigationTransition>(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
@@ -78,6 +84,8 @@ open class Router {
     public func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
         return Router.dismissRoute(isAnimated: isAnimated)
     }
+    
+    #endif
     
     open func navigate<T: Routable>(to route: T,
                                 with context: T.Builder.Context,

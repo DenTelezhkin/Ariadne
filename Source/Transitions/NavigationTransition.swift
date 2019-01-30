@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
 
 open class PushNavigationTransition: BaseAnimatedTransition, ViewTransition {
@@ -38,3 +40,5 @@ open class PopToRootNavigationTransition : BaseAnimatedTransition, ViewTransitio
         completion?(true)
     }
 }
+
+#endif

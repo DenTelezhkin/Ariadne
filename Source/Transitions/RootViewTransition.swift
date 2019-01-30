@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+#if canImport(UIKit)
 import UIKit
 
 open class RootViewTransition: ViewTransition {
@@ -43,3 +45,5 @@ open class RootViewTransition: ViewTransition {
         }
     }
 }
+
+#endif

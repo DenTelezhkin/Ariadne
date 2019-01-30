@@ -17,6 +17,9 @@ open class BaseAnimatedTransition {
     }
 }
 
+#if canImport(UIKit)
+import UIKit
+
 open class PresentationTransition : BaseAnimatedTransition, ViewTransition {
     public let transitionType: TransitionType = .show
     
@@ -36,5 +39,6 @@ open class DismissTransition: BaseAnimatedTransition, ViewTransition {
             completion?(true)
         }
     }
-    
 }
+
+#endif

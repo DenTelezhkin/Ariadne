@@ -9,8 +9,8 @@
 import Foundation
 
 open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
-    open var builder: Builder
-    open var transition: Transition
+    public let builder: Builder
+    public let transition: Transition
     
     open var prepareForHideTransition: ((_ visibleView: View, _ transition: Transition) -> ())?
     open var prepareForShowTransition: ((_ view: Builder.ViewType, _ transition: Transition, _ toView: View?) -> ())?
@@ -60,11 +60,11 @@ open class UpdatingRoute<Builder: ViewUpdater, Transition: ViewTransition> : Rou
 
 open class ChainableRoute<T: Routable, U: Routable>: Routable {
     public typealias Builder = T.Builder
-    let headRoute: T
-    let tailRoute: U
-    let tailContext: U.Builder.Context
+    public let headRoute: T
+    public let tailRoute: U
+    public let tailContext: U.Builder.Context
     
-    init(headRoute: T, tailRoute: U, tailContext: U.Builder.Context) {
+    public init(headRoute: T, tailRoute: U, tailContext: U.Builder.Context) {
         self.headRoute = headRoute
         self.tailRoute = tailRoute
         self.tailContext = tailContext
@@ -84,7 +84,7 @@ open class ChainableRoute<T: Routable, U: Routable>: Routable {
 }
 
 extension Routable {
-    func chained<T: Routable>(with chainedRoute: T, context: T.Builder.Context) -> ChainableRoute<Self, T> {
+    public func chained<T: Routable>(with chainedRoute: T, context: T.Builder.Context) -> ChainableRoute<Self, T> {
         return ChainableRoute(headRoute: self, tailRoute: chainedRoute, tailContext: context)
     }
 }

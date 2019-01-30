@@ -7,22 +7,20 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
 
-public protocol RootViewProvider {
-    var rootViewController: View? { get }
-}
 extension UIWindow: RootViewProvider {}
 
 open class CurrentlyVisibleViewFinder : ViewFinder {
     
     public let rootViewProvider: RootViewProvider?
     
-    public init(rootViewProvider: RootViewProvider? = UIApplication.shared.keyWindow) {
+    public init(rootViewProvider: RootViewProvider?) {
         self.rootViewProvider = rootViewProvider
     }
     
-    public func currentlyVisibleView(startingFrom view: View? = nil) -> View? {
+    open func currentlyVisibleView(startingFrom view: View? = nil) -> View? {
         return _currentlyVisibleView(startingFrom: view ?? rootViewProvider?.rootViewController)
     }
     
@@ -40,6 +38,12 @@ open class CurrentlyVisibleViewFinder : ViewFinder {
         }
         return visibleView ?? view
     }
+}
+
+#endif
+
+public protocol RootViewProvider {
+    var rootViewController: View? { get }
 }
 
 open class InstanceViewRootProvider : RootViewProvider {
