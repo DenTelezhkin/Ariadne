@@ -127,13 +127,13 @@ class ExamplesTableViewController: UITableViewController {
     }
     
     func findAndUpdateView() {
-        let pushRoute = ExampleViewBuilder().pushRoute()
+        let pushRoute = ExampleViewBuilder().pushRoute().asUpdatingRoute()
         let popRoute = router.popRoute()
         let newModel = ExampleData(title: "Controller was updated with new data instead of pushing a new controller", buttonTitle: "Tap to go back to list of examples") { [weak self] in
             self?.router.navigate(to: popRoute, with: ())
         }
         let model = ExampleData(title: "This is a newly created view controller", buttonTitle: "Update with new model") { [weak self] in
-            self?.router.updateOrNavigate(to: pushRoute, with: newModel)
+            self?.router.navigate(to: pushRoute, with: newModel)
         }
         router.navigate(to: pushRoute, with: model)
     }

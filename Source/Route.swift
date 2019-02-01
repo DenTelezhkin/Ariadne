@@ -58,6 +58,12 @@ open class UpdatingRoute<Builder: ViewUpdater, Transition: ViewTransition> : Rou
     }
 }
 
+extension Route where Builder: ViewUpdater, Builder.Context == Builder.ViewType.Context {
+    public func asUpdatingRoute() -> UpdatingRoute<Builder, Transition> {
+        return UpdatingRoute(builder: builder, transition: transition)
+    }
+}
+
 open class ChainableRoute<T: Routable, U: Routable>: Routable {
     public typealias Builder = T.Builder
     public let headRoute: T
