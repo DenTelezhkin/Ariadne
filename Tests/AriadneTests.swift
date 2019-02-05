@@ -56,7 +56,7 @@ class IntViewController : UIViewController, ContextUpdatable {
     }
 }
 
-class IntFactory : ViewBuilder, ViewUpdater {
+class IntFactory : ViewBuilder {
     
     let window : UIWindow
     
@@ -66,10 +66,6 @@ class IntFactory : ViewBuilder, ViewUpdater {
     
     func build(with context: Int) throws -> IntViewController {
         return IntViewController(value: context)
-    }
-    
-    func findUpdatableView(for context: Int) -> IntViewController? {
-        return CurrentlyVisibleViewFinder(rootViewProvider: window).currentlyVisibleView() as? IntViewController
     }
 }
 
@@ -118,8 +114,8 @@ class AriadneTests: XCTestCase {
     }
     
     func testRootViewTransition() {
-        let switchRootViewRoute = Route(builder: XibBuildingFactory<FooViewController>(),
-                                        transition: RootViewTransition(window: testableWindow, isAnimated: false))
+        let switchRootViewRoute = XibBuildingFactory<FooViewController>()
+                .with(RootViewTransition(window: testableWindow, isAnimated: false))
         router.navigate(to: switchRootViewRoute, with: ())
         
         XCTAssert(testableWindow.rootViewController is FooViewController)
@@ -183,8 +179,9 @@ class AriadneTests: XCTestCase {
     }
     
     func testFindingAndUpdatingAlreadyPresentedView() {
-        let route = UpdatingRoute(builder: IntFactory(window: testableWindow),
-                          transition: RootViewTransition(window: testableWindow, isAnimated: false))
+        let route = IntFactory(window: testableWindow)
+            .with(RootViewTransition(window: testableWindow, isAnimated: false))
+            .asUpdatingRoute(withRootProvider: testableWindow)
         router.navigate(to: route, with: 1)
         
         XCTAssertEqual((root as? IntViewController)?.value, 1)
@@ -277,7 +274,7 @@ class AriadneTests: XCTestCase {
         
         XCTAssertEqual(rootNavigation?.viewControllers.count, 3)
         
-        router.navigate(to: popRoute, with: ())
+        router.navigate(to: popRoute)
         
         XCTAssertEqual(rootNavigation?.viewControllers.count, 1)
         XCTAssert(rootNavigation?.viewControllers.first is FooViewController)
@@ -285,7 +282,7 @@ class AriadneTests: XCTestCase {
     
     func testPrebuiltViewCanBePresented() {
         let presentExpectation = expectation(description: "Presentation expectation")
-        let presentationRoute = InstanceViewBuilder(prebuiltView: UINavigationController()).presentRoute(isAnimated: false)
+        let presentationRoute = InstanceViewBuilder { UINavigationController() }.presentRoute(isAnimated: false)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             XCTAssert(self.root is BarViewController)
             XCTAssert(self.root?.presentedViewController is UINavigationController)

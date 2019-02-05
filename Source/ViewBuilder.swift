@@ -31,13 +31,13 @@ open class NonBuilder : ViewBuilder {
 
 open class InstanceViewBuilder<T: View> : ViewBuilder {
     
-    let prebuiltView: T
+    public let closure: () -> T
     
-    public init(prebuiltView: T) {
-        self.prebuiltView = prebuiltView
+    public init(_ closure: @escaping () -> T) {
+        self.closure = closure
     }
     
     public func build(with context: ()) -> T {
-        return prebuiltView
+        return closure()
     }
 }

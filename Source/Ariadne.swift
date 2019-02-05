@@ -37,6 +37,10 @@ extension ViewBuilder {
     public func presentRoute(isAnimated: Bool = true) -> Route<Self, PresentationTransition> {
         return Route(builder: self, transition: PresentationTransition(isAnimated: isAnimated))
     }
+    
+    public func with<T:ViewTransition>(_ transition: T) -> Route<Self, T> {
+        return Route(builder: self, transition: transition)
+    }
 }
 
 #endif
@@ -92,5 +96,11 @@ open class Router {
                                 completion: ((Bool) -> ())? = nil)
     {
         route.perform(withViewFinder: viewFinder, context: context, completion: completion)
+    }
+    
+    open func navigate<T:Routable>(to route: T, completion: ((Bool) -> ())? = nil)
+        where T.Builder.Context == Void
+    {
+        navigate(to: route, with: (), completion: completion)
     }
 }

@@ -43,11 +43,21 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
     }
 }
 
-open class UpdatingRoute<Builder: ViewUpdater, Transition: ViewTransition> : Route<Builder, Transition>
-    where Builder.Context == Builder.ViewType.Context
+open class UpdatingRoute<Finder: UpdatableViewFinder, Builder: ViewBuilder, Transition: ViewTransition> : Route<Builder, Transition>
+    where Builder.ViewType : ContextUpdatable,
+        Builder.Context == Builder.ViewType.Context,
+        Finder.Context == Builder.Context,
+        Finder.ViewType == Builder.ViewType
 {
+    public let updatableViewFinder : Finder
+    
+    init(updatableViewFinder: Finder, builder: Builder, transition: Transition) {
+        self.updatableViewFinder = updatableViewFinder
+        super.init(builder: builder, transition: transition)
+    }
+    
     open override func perform(withViewFinder viewFinder: ViewFinder, context: Builder.Context, completion: ((Bool) -> ())?) {
-        guard let updatableView = builder.findUpdatableView(for: context) else {
+        guard let updatableView = updatableViewFinder.findUpdatableView(for: context) else {
             super.perform(withViewFinder: viewFinder,
                           context: context,
                           completion: completion)
@@ -58,9 +68,12 @@ open class UpdatingRoute<Builder: ViewUpdater, Transition: ViewTransition> : Rou
     }
 }
 
-extension Route where Builder: ViewUpdater, Builder.Context == Builder.ViewType.Context {
-    public func asUpdatingRoute() -> UpdatingRoute<Builder, Transition> {
-        return UpdatingRoute(builder: builder, transition: transition)
+extension Route where Builder.ViewType : ContextUpdatable, Builder.ViewType.Context == Builder.Context
+{
+    public func asUpdatingRoute(withRootProvider rootProvider: RootViewProvider) -> UpdatingRoute<CurrentlyVisibleUpdatableViewFinder<Builder.ViewType>,Builder, Transition> {
+        return UpdatingRoute(updatableViewFinder: CurrentlyVisibleUpdatableViewFinder(rootProvider: rootProvider),
+                             builder: builder,
+                             transition: transition)
     }
 }
 

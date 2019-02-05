@@ -15,7 +15,7 @@ struct ExampleData {
     let buttonAction: () -> ()
 }
 
-struct ExampleViewBuilder : ViewBuilder, ViewUpdater {
+struct ExampleViewBuilder : ViewBuilder, UpdatableViewFinder {
     struct BuildError: Error {}
     func build(with context: ExampleData) throws -> ExampleViewController {
         guard let controller = UIStoryboard(name: String(describing: ExampleViewController.self),
