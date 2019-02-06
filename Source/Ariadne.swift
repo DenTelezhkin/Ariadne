@@ -8,42 +8,13 @@
 
 import Foundation
 
-public enum TransitionType {
-    case hide
-    case show
-}
-
 public protocol ViewFinder {
     func currentlyVisibleView(startingFrom: View?) -> View?
 }
 
-public protocol ViewTransition {
-    var isAnimated: Bool { get }
-    var transitionType: TransitionType { get }
-    var viewFinder: ViewFinder? { get }
-    
-    func perform(with view: View,
-                 on visibleView: View?,
-                 completion: ((Bool) -> ())?)
+public protocol RootViewProvider {
+    var rootViewController: View? { get }
 }
-
-#if canImport(UIKit)
-
-extension ViewBuilder {
-    public func pushRoute(isAnimated: Bool = true) -> Route<Self, PushNavigationTransition> {
-        return Route(builder: self, transition: PushNavigationTransition(isAnimated: isAnimated))
-    }
-    
-    public func presentRoute(isAnimated: Bool = true) -> Route<Self, PresentationTransition> {
-        return Route(builder: self, transition: PresentationTransition(isAnimated: isAnimated))
-    }
-    
-    public func with<T:ViewTransition>(_ transition: T) -> Route<Self, T> {
-        return Route(builder: self, transition: transition)
-    }
-}
-
-#endif
 
 public protocol Routable {
     associatedtype Builder: ViewBuilder

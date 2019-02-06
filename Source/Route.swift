@@ -8,6 +8,21 @@
 
 import Foundation
 
+public enum TransitionType {
+    case hide
+    case show
+}
+
+public protocol ViewTransition {
+    var isAnimated: Bool { get }
+    var transitionType: TransitionType { get }
+    var viewFinder: ViewFinder? { get }
+    
+    func perform(with view: View,
+                 on visibleView: View?,
+                 completion: ((Bool) -> ())?)
+}
+
 open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
     public let builder: Builder
     public let transition: Transition

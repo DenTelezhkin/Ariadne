@@ -42,10 +42,6 @@ open class CurrentlyVisibleViewFinder : ViewFinder {
 
 #endif
 
-public protocol RootViewProvider {
-    var rootViewController: View? { get }
-}
-
 open class InstanceViewRootProvider : RootViewProvider {
     
     public let rootView : View
