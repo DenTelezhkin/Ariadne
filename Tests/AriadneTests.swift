@@ -92,7 +92,7 @@ class AriadneTests: XCTestCase {
     func testPushTransition() {
         let pushRoute = XibBuildingFactory<FooViewController>().pushRoute()
         testableWindow?.rootViewController = UINavigationController()
-        router.navigate(to: pushRoute, with: ())
+        router.navigate(to: pushRoute)
         XCTAssertEqual(rootNavigation?.viewControllers.count, 1)
     }
     
@@ -102,7 +102,7 @@ class AriadneTests: XCTestCase {
         let navigation = UINavigationController()
         navigation.setViewControllers([FooViewController(),FooViewController()], animated: false)
         testableWindow?.rootViewController = navigation
-        router.navigate(to: popRoute, with: ()) { result in
+        router.navigate(to: popRoute) { result in
             if result {
                 XCTAssertEqual((self.root as? UINavigationController)?.viewControllers.count, 1)
                 exp.fulfill()
@@ -116,7 +116,7 @@ class AriadneTests: XCTestCase {
     func testRootViewTransition() {
         let switchRootViewRoute = XibBuildingFactory<FooViewController>()
                 .with(RootViewTransition(window: testableWindow, isAnimated: false))
-        router.navigate(to: switchRootViewRoute, with: ())
+        router.navigate(to: switchRootViewRoute)
         
         XCTAssert(testableWindow.rootViewController is FooViewController)
     }
@@ -129,7 +129,7 @@ class AriadneTests: XCTestCase {
             XCTAssert(self.root?.presentedViewController is FooViewController)
             presentExpectation.fulfill()
         }
-        router.navigate(to: presentationRoute, with: ())
+        router.navigate(to: presentationRoute)
         waitForExpectations(timeout: 0.2)
     }
 
@@ -141,7 +141,7 @@ class AriadneTests: XCTestCase {
             XCTAssert(self.root?.presentedViewController is FooViewController)
             presentExpectation.fulfill()
         }
-        router.navigate(to: presentationRoute, with: ())
+        router.navigate(to: presentationRoute)
         waitForExpectations(timeout: 0.2)
         
         let dismissalRoute = router.dismissRoute(isAnimated: false)
@@ -152,7 +152,7 @@ class AriadneTests: XCTestCase {
             XCTAssert(presented?.dismissCalled ?? false)
             dismissalExpectation.fulfill()
         }
-        router.navigate(to: dismissalRoute, with: ())
+        router.navigate(to: dismissalRoute)
         
         waitForExpectations(timeout: 0.2)
     }
@@ -162,7 +162,7 @@ class AriadneTests: XCTestCase {
                           transition: RootViewTransition(window: testableWindow, isAnimated: false))
         let fooBuilder = XibBuildingFactory<FooViewController>()
         router.navigate(to: route, with: [
-            try? fooBuilder.build(with: ())
+            try? fooBuilder.build()
             ].compactMap { $0 })
         
         XCTAssertEqual(rootNavigation?.viewControllers.count, 1)
@@ -172,7 +172,7 @@ class AriadneTests: XCTestCase {
     func testSingleNavigationViewEmbedding() {
         let route = Route(builder: XibBuildingFactory<FooViewController>().embeddedInNavigation(),
                           transition: RootViewTransition(window: testableWindow, isAnimated: false))
-        router.navigate(to: route, with: ())
+        router.navigate(to: route)
         
         XCTAssertEqual(rootNavigation?.viewControllers.count, 1)
         XCTAssert(rootNavigation?.viewControllers.first is FooViewController)
@@ -204,7 +204,7 @@ class AriadneTests: XCTestCase {
         }
         XCTAssertNil(root?.title)
         
-        router.navigate(to: route, with: ())
+        router.navigate(to: route)
         
         XCTAssertEqual(root?.title, "Foo")
         XCTAssertEqual(rootNavigation?.viewControllers.first?.title, "Foo")
@@ -220,7 +220,7 @@ class AriadneTests: XCTestCase {
         navigation.setViewControllers([FooViewController(),FooViewController()], animated: false)
         let foo = navigation.viewControllers.last
         testableWindow?.rootViewController = navigation
-        router.navigate(to: popRoute, with: ()) { result in
+        router.navigate(to: popRoute) { result in
             if result {
                 XCTAssertEqual((self.root as? UINavigationController)?.viewControllers.count, 1)
                 XCTAssertEqual(foo?.title, "Foo")
@@ -235,8 +235,8 @@ class AriadneTests: XCTestCase {
     func testTabBarIsBuildable() throws {
         let builder = TabBarEmbeddingBuilder()
         let tabBar = try builder.build(with: [
-            XibBuildingFactory<FooViewController>().build(with: ()),
-            XibBuildingFactory<BarViewController>().build(with: ())
+            XibBuildingFactory<FooViewController>().build(),
+            XibBuildingFactory<BarViewController>().build()
         ])
         
         XCTAssertEqual(tabBar.viewControllers?.count, 2)
@@ -257,8 +257,8 @@ class AriadneTests: XCTestCase {
     func testCompositionOfNavigationAndTabBarBuilding() throws {
         let builder = TabBarEmbeddingBuilder()
         let tabBar = try builder.build(with: [
-            XibBuildingFactory<FooViewController>().embeddedInNavigation().build(with: ()),
-            XibBuildingFactory<BarViewController>().embeddedInNavigation().build(with: ())
+            XibBuildingFactory<FooViewController>().embeddedInNavigation().build(),
+            XibBuildingFactory<BarViewController>().embeddedInNavigation().build()
         ])
         
         XCTAssert((tabBar.viewControllers?.first as? UINavigationController)?.viewControllers.first is FooViewController)
@@ -288,16 +288,16 @@ class AriadneTests: XCTestCase {
             XCTAssert(self.root?.presentedViewController is UINavigationController)
             presentExpectation.fulfill()
         }
-        router.navigate(to: presentationRoute, with: ())
+        router.navigate(to: presentationRoute)
         waitForExpectations(timeout: 0.2)
     }
     
     func testRoutesCanBeChainable() {
         let pushRoute = XibBuildingFactory<FooViewController>()
             .pushRoute(isAnimated: false)
-            .chained(with: XibBuildingFactory<BarViewController>().pushRoute(isAnimated: false), context: ())
+            .chained(with: XibBuildingFactory<BarViewController>().pushRoute(isAnimated: false))
         testableWindow?.rootViewController = UINavigationController()
-        router.navigate(to: pushRoute, with: ())
+        router.navigate(to: pushRoute)
         XCTAssertEqual(rootNavigation?.viewControllers.count, 2)
         XCTAssert(rootNavigation?.viewControllers.first is FooViewController)
         XCTAssert(rootNavigation?.viewControllers.last is BarViewController)

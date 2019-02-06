@@ -59,7 +59,7 @@ class ExamplesTableViewController: UITableViewController, Buildable {
         peekAndPopRoute = Storyboards.Example.exampleViewController.builder.pushRoute()
         let popRoute = router.popRoute()
         peekAndPopModel = ExampleData(title: "This view can be peeked and popped", buttonTitle: "Tap to pop back to list") { [weak self] in
-            self?.router.navigate(to: popRoute, with: ())
+            self?.router.navigate(to: popRoute)
         }
         registerForPreviewing(with: self, sourceView: tableView)
     }
@@ -116,7 +116,7 @@ class ExamplesTableViewController: UITableViewController, Buildable {
         let pushRoute = exampleBuilder().pushRoute()
         let popRoute = router.popRoute()
         let model = ExampleData(title: "This is a pushed view controller", buttonTitle: "Pop back") { [weak self] in
-            self?.router.navigate(to: popRoute, with: ())
+            self?.router.navigate(to: popRoute)
         }
         router.navigate(to: pushRoute, with: model)
     }
@@ -125,7 +125,7 @@ class ExamplesTableViewController: UITableViewController, Buildable {
         let presentRoute = exampleBuilder().presentRoute()
         let dismissRoute = router.dismissRoute()
         let model = ExampleData(title: "This is modally presented controller", buttonTitle: "Tap to dismiss") { [weak self] in
-            self?.router.navigate(to: dismissRoute, with: ())
+            self?.router.navigate(to: dismissRoute)
         }
         router.navigate(to: presentRoute, with: model)
     }
@@ -134,7 +134,7 @@ class ExamplesTableViewController: UITableViewController, Buildable {
         let pushRoute = exampleBuilder().pushRoute().asUpdatingRoute(withRootProvider: router.rootViewProvider)
         let popRoute = router.popRoute()
         let newModel = ExampleData(title: "Controller was updated with new data instead of pushing a new controller", buttonTitle: "Tap to go back to list of examples") { [weak self] in
-            self?.router.navigate(to: popRoute, with: ())
+            self?.router.navigate(to: popRoute)
         }
         let model = ExampleData(title: "This is a newly created view controller", buttonTitle: "Update with new model") { [weak self] in
             self?.router.navigate(to: pushRoute, with: newModel)
@@ -146,7 +146,7 @@ class ExamplesTableViewController: UITableViewController, Buildable {
         let pushRoute = exampleBuilder().pushRoute()
         let popRoute = router.popRoute()
         let model = ExampleData(title: "This view was pushed with custom transition", buttonTitle: "Tap to pop with custom transition") { [weak self] in
-            self?.router.navigate(to: popRoute, with: ())
+            self?.router.navigate(to: popRoute)
         }
         router.navigate(to: pushRoute, with: model)
     }
@@ -158,7 +158,7 @@ class ExamplesTableViewController: UITableViewController, Buildable {
         }
         let dismissRoute = router.dismissRoute()
         let model = ExampleData(title: "This is modally presented view with custom animation", buttonTitle: "Tap to dismiss with custom animation") { [weak self] in
-            self?.router.navigate(to: dismissRoute, with: ())
+            self?.router.navigate(to: dismissRoute)
         }
         router.navigate(to: presentRoute, with: model)
     }

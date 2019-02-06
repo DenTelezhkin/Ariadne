@@ -106,4 +106,10 @@ extension Routable {
     public func chained<T: Routable>(with chainedRoute: T, context: T.Builder.Context) -> ChainableRoute<Self, T> {
         return ChainableRoute(headRoute: self, tailRoute: chainedRoute, tailContext: context)
     }
+    
+    public func chained<T:Routable>(with chainedRoute: T) -> ChainableRoute<Self, T>
+        where T.Builder.Context == Void
+    {
+        return chained(with: chainedRoute, context: ())
+    }
 }
