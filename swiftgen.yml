@@ -1,0 +1,9 @@
+input_dir: "iOS Example"
+ib:
+  - inputs: ""
+    filter: .+\.storyboard$
+    outputs:
+        - templateName: scenes-swift4
+          output: iOS Example/Generated/Storyboards.swift
+          params:
+            enumName: Storyboards

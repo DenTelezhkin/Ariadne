@@ -19,6 +19,12 @@ public protocol ViewBuilder {
     func build(with context: Context) throws -> ViewType
 }
 
+extension ViewBuilder where Context == Void {
+    public func build() throws -> ViewType {
+        return try build(with: ())
+    }
+}
+
 public class NonBuildableView : View {}
 
 open class NonBuilder : ViewBuilder {

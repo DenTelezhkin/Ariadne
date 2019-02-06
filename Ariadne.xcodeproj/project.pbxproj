@@ -20,13 +20,15 @@
 		3E601DD22200BE990062E095 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E601DD12200BE990062E095 /* Route.swift */; };
 		3E8448CD216F6C73003A10BE /* Ariadne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8448CC216F6C73003A10BE /* Ariadne.swift */; };
 		3E8448CF216F94AB003A10BE /* NavigationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8448CE216F94AB003A10BE /* NavigationTransition.swift */; };
+		9A585449220AE846005469C8 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A585448220AE846005469C8 /* Storyboards.swift */; };
+		9A58544C220B1C5D005469C8 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A58544B220B1C5D005469C8 /* Buildable.swift */; };
+		9A58544D220B1DA1005469C8 /* Example.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A58544F220B1DA1005469C8 /* Example.storyboard */; };
 		9A5A7009217DF23000DA5152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A7008217DF23000DA5152 /* AppDelegate.swift */; };
 		9A5A700E217DF23000DA5152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A700C217DF23000DA5152 /* Main.storyboard */; };
 		9A5A7010217DF23100DA5152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A700F217DF23100DA5152 /* Assets.xcassets */; };
 		9A5A7013217DF23100DA5152 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A7011217DF23100DA5152 /* LaunchScreen.storyboard */; };
 		9A5A7019217DF33B00DA5152 /* ExamplesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A7018217DF33B00DA5152 /* ExamplesTableViewController.swift */; };
 		9A5A701B217E181700DA5152 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5A701A217E181700DA5152 /* ExampleViewController.swift */; };
-		9A5A701D217E184300DA5152 /* ExampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5A701C217E184300DA5152 /* ExampleViewController.storyboard */; };
 		9A5A701E217E1A1100DA5152 /* Ariadne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3E0FA021623CD90055258B /* Ariadne.framework */; };
 		9A5A701F217E1A1100DA5152 /* Ariadne.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3E3E0FA021623CD90055258B /* Ariadne.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -79,6 +81,9 @@
 		3E601DD12200BE990062E095 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3E8448CC216F6C73003A10BE /* Ariadne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ariadne.swift; sourceTree = "<group>"; };
 		3E8448CE216F94AB003A10BE /* NavigationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTransition.swift; sourceTree = "<group>"; };
+		9A585448220AE846005469C8 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
+		9A58544B220B1C5D005469C8 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
+		9A58544E220B1DA1005469C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Example.storyboard; sourceTree = "<group>"; };
 		9A5A7006217DF23000DA5152 /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5A7008217DF23000DA5152 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A5A700D217DF23000DA5152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,7 +92,6 @@
 		9A5A7014217DF23100DA5152 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A5A7018217DF33B00DA5152 /* ExamplesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesTableViewController.swift; sourceTree = "<group>"; };
 		9A5A701A217E181700DA5152 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
-		9A5A701C217E184300DA5152 /* ExampleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExampleViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,13 +185,23 @@
 			path = Transitions;
 			sourceTree = "<group>";
 		};
+		9A585447220AE837005469C8 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				9A585448220AE846005469C8 /* Storyboards.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		9A5A7007217DF23000DA5152 /* iOS Example */ = {
 			isa = PBXGroup;
 			children = (
+				9A585447220AE837005469C8 /* Generated */,
 				9A5A7008217DF23000DA5152 /* AppDelegate.swift */,
+				9A58544B220B1C5D005469C8 /* Buildable.swift */,
 				9A5A7018217DF33B00DA5152 /* ExamplesTableViewController.swift */,
 				9A5A701A217E181700DA5152 /* ExampleViewController.swift */,
-				9A5A701C217E184300DA5152 /* ExampleViewController.storyboard */,
+				9A58544F220B1DA1005469C8 /* Example.storyboard */,
 				9A5A700C217DF23000DA5152 /* Main.storyboard */,
 				9A5A700F217DF23100DA5152 /* Assets.xcassets */,
 				9A5A7011217DF23100DA5152 /* LaunchScreen.storyboard */,
@@ -249,6 +263,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9A5A7017217DF23100DA5152 /* Build configuration list for PBXNativeTarget "iOS Example" */;
 			buildPhases = (
+				9A58544A220AE852005469C8 /* SwiftGen */,
 				9A5A7002217DF23000DA5152 /* Sources */,
 				9A5A7003217DF23000DA5152 /* Frameworks */,
 				9A5A7004217DF23000DA5152 /* Resources */,
@@ -325,7 +340,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A5A701D217E184300DA5152 /* ExampleViewController.storyboard in Resources */,
+				9A58544D220B1DA1005469C8 /* Example.storyboard in Resources */,
 				9A5A7013217DF23100DA5152 /* LaunchScreen.storyboard in Resources */,
 				9A5A7010217DF23100DA5152 /* Assets.xcassets in Resources */,
 				9A5A700E217DF23000DA5152 /* Main.storyboard in Resources */,
@@ -333,6 +348,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9A58544A220AE852005469C8 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n  swiftgen config run --config \"$PROJECT_DIR/swiftgen.yml\"\nelse\n  echo \"SwiftGen is not installed, please install it using your preferred installation method https://github.com/SwiftGen/SwiftGen#installation\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3E3E0F9C21623CD90055258B /* Sources */ = {
@@ -365,8 +401,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A585449220AE846005469C8 /* Storyboards.swift in Sources */,
 				9A5A7009217DF23000DA5152 /* AppDelegate.swift in Sources */,
 				9A5A7019217DF33B00DA5152 /* ExamplesTableViewController.swift in Sources */,
+				9A58544C220B1C5D005469C8 /* Buildable.swift in Sources */,
 				9A5A701B217E181700DA5152 /* ExampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +425,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9A58544F220B1DA1005469C8 /* Example.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A58544E220B1DA1005469C8 /* Base */,
+			);
+			name = Example.storyboard;
+			sourceTree = "<group>";
+		};
 		9A5A700C217DF23000DA5152 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

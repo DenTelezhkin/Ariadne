@@ -15,23 +15,7 @@ struct ExampleData {
     let buttonAction: () -> ()
 }
 
-struct ExampleViewBuilder : ViewBuilder, UpdatableViewFinder {
-    struct BuildError: Error {}
-    func build(with context: ExampleData) throws -> ExampleViewController {
-        guard let controller = UIStoryboard(name: String(describing: ExampleViewController.self),
-                                            bundle: nil).instantiateInitialViewController() as? ExampleViewController else {
-            throw BuildError()
-        }
-        controller.exampleData = context
-        return controller
-    }
-    
-    func findUpdatableView(for context: ExampleData) -> ExampleViewController? {
-        return (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController)?.viewControllers.last as? ExampleViewController
-    }
-}
-
-class ExampleViewController: UIViewController, ContextUpdatable {
+class ExampleViewController: UIViewController, ContextUpdatable, Buildable {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     
