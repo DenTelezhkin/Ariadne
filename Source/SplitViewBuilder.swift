@@ -41,7 +41,7 @@ open class SplitViewBuilder<MasterBuilder:ViewBuilder,DetailBuilder:ViewBuilder>
         self.detailBuilder = detailBuilder
     }
     
-    public func build(with context: (MasterBuilder.Context, DetailBuilder.Context)) throws -> UISplitViewController {
+    open func build(with context: (MasterBuilder.Context, DetailBuilder.Context)) throws -> UISplitViewController {
         let splitView = splitViewControllerBuilder()
         let master = try masterBuilder.build(with: (context.0))
         let detail = try detailBuilder.build(with: (context.1))

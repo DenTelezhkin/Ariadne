@@ -29,8 +29,8 @@ import Foundation
 import UIKit
 
 open class RootViewTransition: ViewTransition {
-    public var transitionType: TransitionType = .show
-    public var viewFinder: ViewFinder? = nil
+    open var transitionType: TransitionType = .show
+    open var viewFinder: ViewFinder? = nil
 
     public let window: UIWindow
     

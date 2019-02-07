@@ -43,8 +43,8 @@ public protocol Routable {
 
 open class Router {
     
-    public var viewFinder: ViewFinder
-    public let rootViewProvider: RootViewProvider
+    open var viewFinder: ViewFinder
+    open var rootViewProvider: RootViewProvider
     
     #if os(iOS) || os(tvOS)
     
@@ -64,27 +64,27 @@ open class Router {
     
     #if os(iOS) || os(tvOS)
     
-    public static func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+    open class func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Route<NonBuilder, PopNavigationTransition>(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
     }
     
-    public func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+    open func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Router.popRoute(isAnimated: isAnimated)
     }
     
-    public static func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
+    open class func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
         return Route<NonBuilder, PopToRootNavigationTransition>(builder: NonBuilder(), transition: PopToRootNavigationTransition(isAnimated: isAnimated))
     }
     
-    public func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
+    open func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
         return Router.popToRootRoute(isAnimated: isAnimated)
     }
     
-    public static func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
+    open class func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
         return Route<NonBuilder, DismissTransition>(builder: NonBuilder(), transition: DismissTransition(isAnimated: isAnimated))
     }
     
-    public func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
+    open func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
         return Router.dismissRoute(isAnimated: isAnimated)
     }
     

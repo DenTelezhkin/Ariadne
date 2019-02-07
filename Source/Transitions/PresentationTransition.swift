@@ -26,7 +26,7 @@
 import Foundation
 
 open class BaseAnimatedTransition {
-    public var isAnimated: Bool
+    open var isAnimated: Bool
     public let viewFinder : ViewFinder?
     public init(finder: ViewFinder? = nil, isAnimated: Bool = true) {
         viewFinder = finder
@@ -51,7 +51,7 @@ open class PresentationTransition : BaseAnimatedTransition, ViewTransition {
 }
 
 open class DismissTransition: BaseAnimatedTransition, ViewTransition {
-    public var transitionType: TransitionType = .hide
+    public let transitionType: TransitionType = .hide
     
     public func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
         view.dismiss(animated: isAnimated) {

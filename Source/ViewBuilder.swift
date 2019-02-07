@@ -26,7 +26,6 @@
 import Foundation
 #if os(watchOS)
 import WatchKit
-
 public typealias View = WKInterfaceController
 #endif
 
@@ -53,11 +52,11 @@ extension ViewBuilder where Context == Void {
     }
 }
 
-public class NonBuildableView : View {}
+open class NonBuildableView : View {}
 
 open class NonBuilder : ViewBuilder {
     public init() {}
-    public func build(with context: ()) throws -> NonBuildableView {
+    open func build(with context: ()) throws -> NonBuildableView {
         assertionFailure("NonBuilder should not be asked to build a view")
         return NonBuildableView()
     }
@@ -71,7 +70,7 @@ open class InstanceViewBuilder<T: View> : ViewBuilder {
         self.closure = closure
     }
     
-    public func build(with context: ()) -> T {
+    open func build(with context: ()) -> T {
         return closure()
     }
 }

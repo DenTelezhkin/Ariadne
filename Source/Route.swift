@@ -83,7 +83,7 @@ open class UpdatingRoute<Finder: UpdatableViewFinder, Builder: ViewBuilder, Tran
 {
     public let updatableViewFinder : Finder
     
-    init(updatableViewFinder: Finder, builder: Builder, transition: Transition) {
+    public init(updatableViewFinder: Finder, builder: Builder, transition: Transition) {
         self.updatableViewFinder = updatableViewFinder
         super.init(builder: builder, transition: transition)
     }
@@ -104,7 +104,7 @@ open class UpdatingRoute<Finder: UpdatableViewFinder, Builder: ViewBuilder, Tran
 
 extension Route where Builder.ViewType : ContextUpdatable, Builder.ViewType.Context == Builder.Context
 {
-    public func asUpdatingRoute(withRootProvider rootProvider: RootViewProvider) -> UpdatingRoute<CurrentlyVisibleUpdatableViewFinder<Builder.ViewType>,Builder, Transition> {
+    open func asUpdatingRoute(withRootProvider rootProvider: RootViewProvider) -> UpdatingRoute<CurrentlyVisibleUpdatableViewFinder<Builder.ViewType>,Builder, Transition> {
         return UpdatingRoute(updatableViewFinder: CurrentlyVisibleUpdatableViewFinder(rootProvider: rootProvider),
                              builder: builder,
                              transition: transition)
