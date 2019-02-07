@@ -30,21 +30,21 @@ import UIKit
 #if os(iOS) || os(tvOS)
 extension UIWindow: RootViewProvider {}
 
-open class CurrentlyVisibleViewFinder : ViewFinder {
-    
+open class CurrentlyVisibleViewFinder: ViewFinder {
+
     public let rootViewProvider: RootViewProvider?
-    
+
     public init(rootViewProvider: RootViewProvider?) {
         self.rootViewProvider = rootViewProvider
     }
-    
+
     open func currentlyVisibleView(startingFrom view: View? = nil) -> View? {
         return _currentlyVisibleView(startingFrom: view ?? rootViewProvider?.rootViewController)
     }
-    
+
     func _currentlyVisibleView(startingFrom view: View?) -> View? {
         guard let view = view else { return nil }
-        
+
         var visibleView: View?
         switch view {
         case let tabBar as UITabBarController:
@@ -62,14 +62,14 @@ open class CurrentlyVisibleViewFinder : ViewFinder {
 
 #endif
 
-open class InstanceViewRootProvider : RootViewProvider {
-    
-    public let rootView : View
-    
+open class InstanceViewRootProvider: RootViewProvider {
+
+    public let rootView: View
+
     public init(view: View) {
         rootView = view
     }
-    
+
     public var rootViewController: View? {
         return rootView
     }

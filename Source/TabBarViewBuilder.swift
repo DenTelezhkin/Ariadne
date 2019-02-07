@@ -32,7 +32,7 @@ import UIKit
 
 open class TabBarEmbeddingBuilder: ViewBuilder {
     open var tabBarControllerBuilder: () -> UITabBarController = { .init() }
-    
+
     open func build(with context: [View]) throws -> UITabBarController {
         let tabBar = tabBarControllerBuilder()
         tabBar.viewControllers = context

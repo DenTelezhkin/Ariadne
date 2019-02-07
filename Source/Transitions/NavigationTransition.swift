@@ -32,8 +32,8 @@ import UIKit
 
 open class PushNavigationTransition: BaseAnimatedTransition, ViewTransition {
     public let transitionType: TransitionType = .show
-    
-    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
+
+    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> Void)?) {
         guard let navigation = (visibleView as? UINavigationController) ?? visibleView?.navigationController else {
             completion?(false); return
         }
@@ -44,17 +44,17 @@ open class PushNavigationTransition: BaseAnimatedTransition, ViewTransition {
 
 open class PopNavigationTransition: BaseAnimatedTransition, ViewTransition {
     public let transitionType: TransitionType = .hide
-    
-    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
+
+    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> Void)?) {
         view.navigationController?.popViewController(animated: isAnimated)
         completion?(true)
     }
 }
 
-open class PopToRootNavigationTransition : BaseAnimatedTransition, ViewTransition {
+open class PopToRootNavigationTransition: BaseAnimatedTransition, ViewTransition {
     public let transitionType: TransitionType = .hide
-    
-    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
+
+    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> Void)?) {
         view.navigationController?.popToRootViewController(animated: isAnimated)
         completion?(true)
     }

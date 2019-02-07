@@ -27,14 +27,14 @@ import Foundation
 
 public protocol ContextUpdatable {
     associatedtype Context
-    
+
     func update(with context: Context)
 }
 
 public protocol UpdatableViewFinder {
-    associatedtype ViewType : View
+    associatedtype ViewType: View
     associatedtype Context
-    
+
     func findUpdatableView(for context: Context) -> ViewType?
 }
 
@@ -43,13 +43,13 @@ public protocol UpdatableViewFinder {
 #if os(iOS) || os(tvOS)
 
 open class CurrentlyVisibleUpdatableViewFinder<T: View & ContextUpdatable> : UpdatableViewFinder {
-    
-    public let rootProvider : RootViewProvider
-    
+
+    public let rootProvider: RootViewProvider
+
     public init(rootProvider: RootViewProvider) {
         self.rootProvider = rootProvider
     }
-    
+
     open func findUpdatableView(for context: T.Context) -> T? {
         return CurrentlyVisibleViewFinder(rootViewProvider: rootProvider).currentlyVisibleView() as? T
     }

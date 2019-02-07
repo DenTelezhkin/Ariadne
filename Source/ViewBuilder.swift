@@ -40,9 +40,9 @@ public typealias View = NSViewController
 #endif
 
 public protocol ViewBuilder {
-    associatedtype ViewType : View
+    associatedtype ViewType: View
     associatedtype Context
-    
+
     func build(with context: Context) throws -> ViewType
 }
 
@@ -52,9 +52,9 @@ extension ViewBuilder where Context == Void {
     }
 }
 
-open class NonBuildableView : View {}
+open class NonBuildableView: View {}
 
-open class NonBuilder : ViewBuilder {
+open class NonBuilder: ViewBuilder {
     public init() {}
     open func build(with context: ()) throws -> NonBuildableView {
         assertionFailure("NonBuilder should not be asked to build a view")
@@ -63,13 +63,13 @@ open class NonBuilder : ViewBuilder {
 }
 
 open class InstanceViewBuilder<T: View> : ViewBuilder {
-    
+
     public let closure: () -> T
-    
+
     public init(_ closure: @escaping () -> T) {
         self.closure = closure
     }
-    
+
     open func build(with context: ()) -> T {
         return closure()
     }
@@ -83,12 +83,12 @@ extension ViewBuilder {
     public func pushRoute(isAnimated: Bool = true) -> Route<Self, PushNavigationTransition> {
         return Route(builder: self, transition: PushNavigationTransition(isAnimated: isAnimated))
     }
-    
+
     public func presentRoute(isAnimated: Bool = true) -> Route<Self, PresentationTransition> {
         return Route(builder: self, transition: PresentationTransition(isAnimated: isAnimated))
     }
-    
-    public func with<T:ViewTransition>(_ transition: T) -> Route<Self, T> {
+
+    public func with<T: ViewTransition>(_ transition: T) -> Route<Self, T> {
         return Route(builder: self, transition: transition)
     }
 }

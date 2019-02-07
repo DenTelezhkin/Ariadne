@@ -30,20 +30,20 @@ import UIKit
 
 open class RootViewTransition: ViewTransition {
     open var transitionType: TransitionType = .show
-    open var viewFinder: ViewFinder? = nil
+    open var viewFinder: ViewFinder?
 
     public let window: UIWindow
-    
+
     open var duration: TimeInterval = 0.3
     open var animationOptions = UIView.AnimationOptions.transitionCrossDissolve
-    open var isAnimated : Bool
-    
+    open var isAnimated: Bool
+
     public init(window: UIWindow, isAnimated: Bool = true) {
         self.window = window
         self.isAnimated = isAnimated
     }
-    
-    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> ())?) {
+
+    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> Void)?) {
         if isAnimated {
             let oldState = UIView.areAnimationsEnabled
             UIView.setAnimationsEnabled(false)
@@ -55,8 +55,7 @@ open class RootViewTransition: ViewTransition {
                 UIView.setAnimationsEnabled(oldState)
                 completion?(state)
             })
-        }
-        else {
+        } else {
             window.rootViewController = view
             completion?(true)
         }

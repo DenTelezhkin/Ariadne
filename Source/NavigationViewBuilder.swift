@@ -31,9 +31,9 @@ import UIKit
 #if os(iOS) || os(tvOS)
 
 open class NavigationEmbeddingBuilder: ViewBuilder {
-    
+
     open var navigationControllerBuilder : () -> UINavigationController = { .init() }
-    
+
     open func build(with context: [View]) throws -> UINavigationController {
         let navigation = navigationControllerBuilder()
         navigation.viewControllers = context
@@ -41,16 +41,16 @@ open class NavigationEmbeddingBuilder: ViewBuilder {
     }
 }
 
-open class NavigationSingleViewEmbeddingBuilder<T:ViewBuilder> : ViewBuilder {
+open class NavigationSingleViewEmbeddingBuilder<T: ViewBuilder> : ViewBuilder {
     public typealias Context = T.Context
-    
-    public let builder : T
+
+    public let builder: T
     open var navigationControllerBuilder : () -> UINavigationController = { .init() }
-    
+
     public init(builder: T) {
         self.builder = builder
     }
-    
+
     open func build(with context: Context) throws -> UINavigationController {
         let view = try builder.build(with: context)
         let navigation = navigationControllerBuilder()

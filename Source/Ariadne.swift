@@ -35,71 +35,70 @@ public protocol RootViewProvider {
 
 public protocol Routable {
     associatedtype Builder: ViewBuilder
-    
+
     func perform(withViewFinder: ViewFinder,
                 context: Builder.Context,
-                completion: ((Bool) -> ())?)
+                completion: ((Bool) -> Void)?)
 }
 
 open class Router {
-    
+
     open var viewFinder: ViewFinder
     open var rootViewProvider: RootViewProvider
-    
+
     #if os(iOS) || os(tvOS)
-    
+
     public init(rootViewProvider: RootViewProvider) {
         self.viewFinder = CurrentlyVisibleViewFinder(rootViewProvider: rootViewProvider)
         self.rootViewProvider = rootViewProvider
     }
-    
+
     #else
-    
+
     public init(rootViewProvider: RootViewProvider, viewFinder: ViewFinder) {
         self.viewFinder = viewFinder
         self.rootViewProvider = rootViewProvider
     }
-    
+
     #endif
-    
+
     #if os(iOS) || os(tvOS)
-    
+
     open class func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Route<NonBuilder, PopNavigationTransition>(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
     }
-    
+
     open func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Router.popRoute(isAnimated: isAnimated)
     }
-    
+
     open class func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
         return Route<NonBuilder, PopToRootNavigationTransition>(builder: NonBuilder(), transition: PopToRootNavigationTransition(isAnimated: isAnimated))
     }
-    
+
     open func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
         return Router.popToRootRoute(isAnimated: isAnimated)
     }
-    
+
     open class func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
         return Route<NonBuilder, DismissTransition>(builder: NonBuilder(), transition: DismissTransition(isAnimated: isAnimated))
     }
-    
+
     open func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
         return Router.dismissRoute(isAnimated: isAnimated)
     }
-    
+
     #endif
-    
+
     open func navigate<T: Routable>(to route: T,
                                 with context: T.Builder.Context,
-                                completion: ((Bool) -> ())? = nil)
+                                completion: ((Bool) -> Void)? = nil)
     {
         route.perform(withViewFinder: viewFinder, context: context, completion: completion)
     }
-    
-    open func navigate<T:Routable>(to route: T, completion: ((Bool) -> ())? = nil)
-        where T.Builder.Context == Void
-    {
+
+    open func navigate<T: Routable>(to route: T, completion: ((Bool) -> Void)? = nil)
+        where T.Builder.Context == Void {
         navigate(to: route, with: (), completion: completion)
     }
 }

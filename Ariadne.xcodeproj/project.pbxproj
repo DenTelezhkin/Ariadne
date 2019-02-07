@@ -215,22 +215,12 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		3E3E0F9B21623CD90055258B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		3E3E0F9F21623CD90055258B /* Ariadne */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E3E0FB421623CD90055258B /* Build configuration list for PBXNativeTarget "Ariadne" */;
 			buildPhases = (
-				3E3E0F9B21623CD90055258B /* Headers */,
+				3E352683220C67250017BE92 /* SwiftLint */,
 				3E3E0F9C21623CD90055258B /* Sources */,
 				3E3E0F9D21623CD90055258B /* Frameworks */,
 				3E3E0F9E21623CD90055258B /* Resources */,
@@ -353,6 +343,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3E352683220C67250017BE92 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect --config \"${SRCROOT}/.swiftlint.yml\"\n  swiftlint --config \"${SRCROOT}/.swiftlint.yml\"\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
 		9A58544A220AE852005469C8 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
