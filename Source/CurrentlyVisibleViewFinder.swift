@@ -27,6 +27,7 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
+#if os(iOS) || os(tvOS)
 extension UIWindow: RootViewProvider {}
 
 open class CurrentlyVisibleViewFinder : ViewFinder {
@@ -56,6 +57,8 @@ open class CurrentlyVisibleViewFinder : ViewFinder {
         return visibleView ?? view
     }
 }
+
+#endif
 
 #endif
 

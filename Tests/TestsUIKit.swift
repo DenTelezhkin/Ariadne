@@ -23,9 +23,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 import XCTest
 @testable import Ariadne
+
+#if canImport(UIKit)
 import UIKit
 
 class XibBuildingFactory<T:View> : ViewBuilder {
@@ -87,7 +88,7 @@ class IntFactory : ViewBuilder {
     }
 }
 
-class AriadneTests: XCTestCase {
+class Tests_UIKit: XCTestCase {
     
     var root: View? {
         return testableWindow?.rootViewController
@@ -321,3 +322,6 @@ class AriadneTests: XCTestCase {
         XCTAssert(rootNavigation?.viewControllers.last is BarViewController)
     }
 }
+
+#endif
+

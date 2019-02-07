@@ -24,9 +24,20 @@
 // THE SOFTWARE.
 
 import Foundation
-#if canImport(UIKit)
+#if os(watchOS)
+import WatchKit
+
+public typealias View = WKInterfaceController
+#endif
+
+#if os(iOS) || os(tvOS)
 import UIKit
 public typealias View = UIViewController
+#endif
+
+#if canImport(AppKit)
+import AppKit
+public typealias View = NSViewController
 #endif
 
 public protocol ViewBuilder {
@@ -67,6 +78,8 @@ open class InstanceViewBuilder<T: View> : ViewBuilder {
 
 #if canImport(UIKit)
 
+#if os(iOS) || os(tvOS)
+
 extension ViewBuilder {
     public func pushRoute(isAnimated: Bool = true) -> Route<Self, PushNavigationTransition> {
         return Route(builder: self, transition: PushNavigationTransition(isAnimated: isAnimated))
@@ -80,5 +93,7 @@ extension ViewBuilder {
         return Route(builder: self, transition: transition)
     }
 }
+
+#endif
 
 #endif

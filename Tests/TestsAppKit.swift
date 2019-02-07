@@ -1,8 +1,8 @@
 //
-//  ViewUpdater.swift
-//  Ariadne
+//  AriadneTests-macOS.swift
+//  Tests
 //
-//  Created by Denys Telezhkin on 1/29/19.
+//  Created by Denys Telezhkin on 2/7/19.
 //  Copyright © 2019 Denys Telezhkin. All rights reserved.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,38 +23,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
+import XCTest
+@testable import Ariadne
+#if canImport(AppKit)
+import AppKit
 
-public protocol ContextUpdatable {
-    associatedtype Context
-    
-    func update(with context: Context)
-}
+class Tests_AppKit: XCTestCase {
 
-public protocol UpdatableViewFinder {
-    associatedtype ViewType : View
-    associatedtype Context
-    
-    func findUpdatableView(for context: Context) -> ViewType?
-}
-
-#if canImport(UIKit)
-
-#if os(iOS) || os(tvOS)
-
-open class CurrentlyVisibleUpdatableViewFinder<T: View & ContextUpdatable> : UpdatableViewFinder {
-    
-    public let rootProvider : RootViewProvider
-    
-    public init(rootProvider: RootViewProvider) {
-        self.rootProvider = rootProvider
+    override func setUp() {
+        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
-    open func findUpdatableView(for context: T.Context) -> T? {
-        return CurrentlyVisibleViewFinder(rootViewProvider: rootProvider).currentlyVisibleView() as? T
-    }
-}
 
-#endif
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testExample() {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measure {
+            // Put the code you want to measure the time of here.
+        }
+    }
+
+}
 
 #endif

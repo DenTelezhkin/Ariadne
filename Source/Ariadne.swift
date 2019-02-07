@@ -46,12 +46,23 @@ open class Router {
     public var viewFinder: ViewFinder
     public let rootViewProvider: RootViewProvider
     
+    #if os(iOS) || os(tvOS)
+    
     public init(rootViewProvider: RootViewProvider) {
         self.viewFinder = CurrentlyVisibleViewFinder(rootViewProvider: rootViewProvider)
         self.rootViewProvider = rootViewProvider
     }
     
-    #if canImport(UIKit)
+    #else
+    
+    public init(rootViewProvider: RootViewProvider, viewFinder: ViewFinder) {
+        self.viewFinder = viewFinder
+        self.rootViewProvider = rootViewProvider
+    }
+    
+    #endif
+    
+    #if os(iOS) || os(tvOS)
     
     public static func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Route<NonBuilder, PopNavigationTransition>(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))

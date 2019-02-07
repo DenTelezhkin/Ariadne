@@ -28,6 +28,8 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
+#if os(iOS) || os(tvOS)
+
 open class TabBarEmbeddingBuilder: ViewBuilder {
     open var tabBarControllerBuilder: () -> UITabBarController = { .init() }
     
@@ -37,4 +39,7 @@ open class TabBarEmbeddingBuilder: ViewBuilder {
         return tabBar
     }
 }
+
+#endif
+
 #endif

@@ -28,6 +28,8 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
+#if os(iOS) || os(tvOS)
+
 open class SplitViewBuilder<MasterBuilder:ViewBuilder,DetailBuilder:ViewBuilder>: ViewBuilder {
     open var splitViewControllerBuilder: () -> UISplitViewController = { .init() }
     
@@ -47,4 +49,7 @@ open class SplitViewBuilder<MasterBuilder:ViewBuilder,DetailBuilder:ViewBuilder>
         return splitView
     }
 }
+
+#endif
+
 #endif

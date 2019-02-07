@@ -28,6 +28,8 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 
+#if os(iOS) || os(tvOS)
+
 open class NavigationEmbeddingBuilder: ViewBuilder {
     
     open var navigationControllerBuilder : () -> UINavigationController = { .init() }
@@ -64,5 +66,7 @@ extension ViewBuilder {
         return builder
     }
 }
+
+#endif
 
 #endif

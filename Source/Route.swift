@@ -100,6 +100,8 @@ open class UpdatingRoute<Finder: UpdatableViewFinder, Builder: ViewBuilder, Tran
     }
 }
 
+#if os(iOS) || os(tvOS)
+
 extension Route where Builder.ViewType : ContextUpdatable, Builder.ViewType.Context == Builder.Context
 {
     public func asUpdatingRoute(withRootProvider rootProvider: RootViewProvider) -> UpdatingRoute<CurrentlyVisibleUpdatableViewFinder<Builder.ViewType>,Builder, Transition> {
@@ -108,6 +110,8 @@ extension Route where Builder.ViewType : ContextUpdatable, Builder.ViewType.Cont
                              transition: transition)
     }
 }
+
+#endif
 
 open class ChainableRoute<T: Routable, U: Routable>: Routable {
     public typealias Builder = T.Builder
