@@ -147,15 +147,15 @@
 		3E3E0FBA21623D560055258B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				3E3FDEB52178B43500E9A087 /* Transitions */,
-				3E3E0FC821623DB30055258B /* NavigationViewBuilder.swift */,
-				3E3FDEBA2188812B00E9A087 /* TabBarViewBuilder.swift */,
-				3E3FDEBE2188836700E9A087 /* SplitViewBuilder.swift */,
-				3E3FDEB12177836700E9A087 /* CurrentlyVisibleViewFinder.swift */,
 				3E8448CC216F6C73003A10BE /* Ariadne.swift */,
+				3E3FDEB12177836700E9A087 /* CurrentlyVisibleViewFinder.swift */,
+				3E3E0FC821623DB30055258B /* NavigationViewBuilder.swift */,
 				3E601DD12200BE990062E095 /* Route.swift */,
-				3E601DCD220054F60062E095 /* ViewBuilder.swift */,
+				3E3FDEBE2188836700E9A087 /* SplitViewBuilder.swift */,
+				3E3FDEBA2188812B00E9A087 /* TabBarViewBuilder.swift */,
+				3E3FDEB52178B43500E9A087 /* Transitions */,
 				3E601DCF2200552A0062E095 /* UpdatableViewFinder.swift */,
+				3E601DCD220054F60062E095 /* ViewBuilder.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";

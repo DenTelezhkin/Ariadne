@@ -25,16 +25,31 @@
 
 import Foundation
 
+/// Type, that can be updated with newly received `Context`
 public protocol ContextUpdatable {
+
+    /// Argument type, that can be used to update a `View`.
     associatedtype Context
 
+    /// Updates current type with newly received `context`.
+    ///
+    /// - Parameter context: argument used for updating current object.
     func update(with context: Context)
 }
 
+/// Object, that searches view hierarchy to find `View`, that can be updated with provided `Context`.
 public protocol UpdatableViewFinder {
+
+    /// Type of `View` to search for
     associatedtype ViewType: View
+
+    /// Argument type, that can be used to update a `View`.
     associatedtype Context
 
+    /// Searches view hierarchy to find `View`, that can be updated using provided `Context`.
+    ///
+    /// - Parameter context: argument used for updating current `View`.
+    /// - Returns: Found `View` to update, or nil.
     func findUpdatableView(for context: Context) -> ViewType?
 }
 
@@ -42,14 +57,23 @@ public protocol UpdatableViewFinder {
 
 #if os(iOS) || os(tvOS)
 
+/// `UpdatableViewFinder` type that searches current view hierarchy to find view, that can be updated using `Context`. Uses `CurrentlyVisibleViewFinder` to search view hierarchy for currently visible view.
 open class CurrentlyVisibleUpdatableViewFinder<T: View & ContextUpdatable> : UpdatableViewFinder {
 
+    /// Object responsible for providing root view of interface hierarchy.
     public let rootProvider: RootViewProvider
 
+    /// Creates `CurrentlyVisibleUpdatableViewFinder`.
+    ///
+    /// - Parameter rootProvider: Object responsible for providing root view of interface hierarchy.
     public init(rootProvider: RootViewProvider) {
         self.rootProvider = rootProvider
     }
 
+    /// Searches view hierarchy to find `View`, that can be updated using provided `Context`. Uses `CurrentlyVisibleViewFinder` object to find currently visible view.
+    ///
+    /// - Parameter context: Argument, that can be used to update a `View`.
+    /// - Returns: Found `View` to update, or nil.
     open func findUpdatableView(for context: T.Context) -> T? {
         return CurrentlyVisibleViewFinder(rootViewProvider: rootProvider).currentlyVisibleView() as? T
     }
