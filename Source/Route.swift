@@ -25,16 +25,34 @@
 
 import Foundation
 
+/// Value type, that represents action, that `ViewTransition` object is performing.
+/// For example, `PushNavigationTransition` is a .show transition type, where `PopNavigationTransition` is a .hide type.
+///
+/// - hide: Transition is hiding already shown view
+/// - show: Transition is showing a new, or previously hidden view.
 public enum TransitionType {
     case hide
     case show
 }
 
+/// Type, that is responsible for making a transition between views.
 public protocol ViewTransition {
+
+    /// Flag, that shows whether transition should be animated.
     var isAnimated: Bool { get }
+
+    /// Type of transition this object is capable of performing.
     var transitionType: TransitionType { get }
+
+    /// Object, responsible for finding currently visible view in existing view hierarchy.
     var viewFinder: ViewFinder? { get }
 
+    /// Performs transition with provided `view`, using currently `visibleView`, and calls `completion` once transition has been completed.
+    ///
+    /// - Parameters:
+    ///   - view: view object that will be used for transition. In case of .show transition this is a newly created view. In case of .hide transition it's currently visible view.
+    ///   - visibleView: Currently visible view. In case of .hide transition type this parameter is always nil.
+    ///   - completion: closure to be called, once transition is completed.
     func perform(with view: View,
                  on visibleView: View?,
                  completion: ((Bool) -> Void)?)

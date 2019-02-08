@@ -25,17 +25,38 @@
 
 import Foundation
 
+/// Type, responsible for finding currently visible view in existing view hierarchy.
 public protocol ViewFinder {
+
+    /// Returns currently visible view in view hierarchy.
+    ///
+    /// - Parameter startingFrom: root view to start searching from.
+    /// - Returns: currently visible view or nil, if it was not found.
     func currentlyVisibleView(startingFrom: View?) -> View?
 }
 
+/// Type that is responsible for providing root view in current view hierarchy.
+/// - Note: on iOS and tvOS, commonly, the root provider is UIWindow via UIApplication.shared.keyWindow, however there are scenarios where keyWindow might not be accessible, for example in iMesssage apps and application extensions. In those cases you can use root view controller that is accessible in those context, for example in iMessage extensions this could be `MSMessagesAppViewController`, or view controller presented on top of it.
+/// Also, your app might have several UIWindow objects working in the same time, for example when app is using AirPlay, or if `UIWindow`s are used to present different interfaces modally. In those cases it's recommended to have multiple `Router` objects with different `RootViewProvider`s.
 public protocol RootViewProvider {
+
+    /// Root view in current view hierarchy.
     var rootViewController: View? { get }
 }
 
+/// Type, that is capable of performing route from current screen to another one.
+/// One example of such type is Route<ViewBuilder,ViewTransition> type, that includes necessary builder to build next visible view, and transition object, that will perform a transition.
 public protocol Routable {
+
+    /// Object, responsible for building a view, that is needed for routing.
     associatedtype Builder: ViewBuilder
 
+    /// Performs route using provided context.
+    ///
+    /// - Parameters:
+    ///   - withViewFinder: object, that can be used to find currently visible view in view hierarchy
+    ///   - context: object, that can be used for building a new route destination view.
+    ///   - completion: closure to be called, once routing is completed.
     func perform(withViewFinder: ViewFinder,
                  context: Builder.Context,
                  completion: ((Bool) -> Void)?)
@@ -44,19 +65,17 @@ public protocol Routable {
 /// Object responsible for performing navigation to concrete routes, as well as keeping references to root view provider and view finder.
 open class Router {
 
-    /// Object responsible for finding view on which route should be performed
+    /// Object responsible for finding view on which route should be performed.
     open var viewFinder: ViewFinder
-    
+
     /// Object responsible for providing root view of interface hierarchy.
-    /// - Note: on iOS and tvOS, commonly, the root provider is UIWindow via UIApplication.shared.keyWindow, however there are scenarios where keyWindow might not be accessible, for example in iMesssage apps and application extensions. In those cases you can use root view controller that is accessible in those context, for example in iMessage extensions this could be `MSMessagesAppViewController`, or view controller presented on top of it.
-    /// Also, your app might have several UIWindow objects working in the same time, for example when app is using AirPlay, or if `UIWindow`s are used to present different interfaces modally. In those cases it's recommended to have multiple `Router` objects with different `RootViewProvider`s.
     open var rootViewProvider: RootViewProvider
 
     #if os(iOS) || os(tvOS)
 
     /// Creates `Router` with `CurrentlyVisibleViewFinder` object set as a `ViewFinder` instance.
     ///
-    /// - Parameter rootViewProvider: provider of the root view of interface
+    /// - Parameter rootViewProvider: provider of the root view of interface.
     public init(rootViewProvider: RootViewProvider) {
         self.viewFinder = CurrentlyVisibleViewFinder(rootViewProvider: rootViewProvider)
         self.rootViewProvider = rootViewProvider
@@ -67,8 +86,8 @@ open class Router {
     /// Creates `Router` with specified root view provider and view finder.
     ///
     /// - Parameters:
-    ///   - rootViewProvider: provider of the root view of interface
-    ///   - viewFinder: object responsible for finding view on which route should be performed
+    ///   - rootViewProvider: provider of the root view of interface.
+    ///   - viewFinder: object responsible for finding view on which route should be performed.
     public init(rootViewProvider: RootViewProvider, viewFinder: ViewFinder) {
         self.viewFinder = viewFinder
         self.rootViewProvider = rootViewProvider
@@ -78,39 +97,74 @@ open class Router {
 
     #if os(iOS) || os(tvOS)
 
+    /// Returns route, that calls `popViewController` method on currently visible navigation controller. No view is getting built in the process of routing.
+    ///
+    /// - Parameter isAnimated: should the transition be animated.
+    /// - Returns: performable route.
     open class func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Route<NonBuilder, PopNavigationTransition>(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
     }
 
+    /// Returns route, that calls `popViewController` method on currently visible navigation controller. No view is getting built in the process of routing.
+    ///
+    /// - Parameter isAnimated: should the transition be animated.
+    /// - Returns: performable route.
     open func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Router.popRoute(isAnimated: isAnimated)
     }
 
+    /// Returns route, that calls `popToRootViewController` method on currently visible navigation controller. No view is getting built in the process of routing.
+    ///
+    /// - Parameter isAnimated: should the transition be animated.
+    /// - Returns: performable route.
     open class func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
         return Route<NonBuilder, PopToRootNavigationTransition>(builder: NonBuilder(), transition: PopToRootNavigationTransition(isAnimated: isAnimated))
     }
 
+    /// Returns route, that calls `popToRootViewController` method on currently visible navigation controller. No view is getting built in the process of routing.
+    ///
+    /// - Parameter isAnimated: should the transition be animated.
+    /// - Returns: performable route.
     open func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
         return Router.popToRootRoute(isAnimated: isAnimated)
     }
 
+    /// Returns route, that calls `dismiss` method on currently visible view controller. No view is getting built in the process of routing.
+    ///
+    /// - Parameter isAnimated: should the transition be animated.
+    /// - Returns: performable route.
     open class func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
         return Route<NonBuilder, DismissTransition>(builder: NonBuilder(), transition: DismissTransition(isAnimated: isAnimated))
     }
 
+    /// Returns route, that calls `dismiss` method on currently visible view controller. No view is getting built in the process of routing.
+    ///
+    /// - Parameter isAnimated: should the transition be animated.
+    /// - Returns: performable route.
     open func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
         return Router.dismissRoute(isAnimated: isAnimated)
     }
 
     #endif
 
+    /// Performs navigation to `route` using provided `context` and calling `completion` once routing process is completed.
+    ///
+    /// - Parameters:
+    ///   - route: route to navigate to.
+    ///   - context: object that will be used to build view to navigate to, if needed.
+    ///   - completion: will be called once routing is completed.
     open func navigate<T: Routable>(to route: T,
-                                with context: T.Builder.Context,
-                                completion: ((Bool) -> Void)? = nil)
+                                    with context: T.Builder.Context,
+                                    completion: ((Bool) -> Void)? = nil)
     {
         route.perform(withViewFinder: viewFinder, context: context, completion: completion)
     }
 
+    /// Performs navigation to `route` and calls `completion` once routing process is completed.
+    ///
+    /// - Parameters:
+    ///   - route: route to navigate to.
+    ///   - completion: will be called once routing is completed.
     open func navigate<T: Routable>(to route: T, completion: ((Bool) -> Void)? = nil)
         where T.Builder.Context == Void {
         navigate(to: route, with: (), completion: completion)
