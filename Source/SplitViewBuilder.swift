@@ -30,17 +30,33 @@ import UIKit
 
 #if os(iOS) || os(tvOS)
 
+/// Builder for `UISplitViewController` instance.
 open class SplitViewBuilder<MasterBuilder: ViewBuilder, DetailBuilder: ViewBuilder>: ViewBuilder {
+
+    /// Defines how `UISplitViewController` should be created.
     open var splitViewControllerBuilder: () -> UISplitViewController = { .init() }
 
+    /// Builder for master view
     public let masterBuilder: MasterBuilder
+
+    /// Builder for detail view
     public let detailBuilder: DetailBuilder
 
+    /// Creates `SplitViewBuilder` from provided master view and detail view builders.
+    ///
+    /// - Parameters:
+    ///   - masterBuilder: Builder to create master view.
+    ///   - detailBuilder: Bulder to create detail view.
     public init(masterBuilder: MasterBuilder, detailBuilder: DetailBuilder) {
         self.masterBuilder = masterBuilder
         self.detailBuilder = detailBuilder
     }
 
+    /// Builds `UISplitViewController` from provided contexts for master view and detail view.
+    ///
+    /// - Parameter context: tuple of master view context and detail view context.
+    /// - Returns: creates UISplitViewController instance.
+    /// - Throws: Master view builder error or detail view builder error.
     open func build(with context: (MasterBuilder.Context, DetailBuilder.Context)) throws -> UISplitViewController {
         let splitView = splitViewControllerBuilder()
         let master = try masterBuilder.build(with: (context.0))

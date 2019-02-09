@@ -30,9 +30,18 @@ import UIKit
 
 #if os(iOS) || os(tvOS)
 
+/// Class, that encapsulates UIViewController.present(_:animated:) method call as a transition.
 open class PresentationTransition: BaseTransition, ViewTransition {
+
+    /// Transition type .show
     public let transitionType: TransitionType = .show
 
+    /// Performs transition by calling `present(_:animated:)` on `visibleView` with `view` argument.
+    ///
+    /// - Parameters:
+    ///   - view: view that is being presented.
+    ///   - visibleView: visible view, on which presentation will being performed.
+    ///   - completion: called once presentation has been completed.
     public func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
         guard let view = view else { completion?(false); return }
         guard let visibleView = visibleView else { completion?(false); return }
@@ -42,9 +51,18 @@ open class PresentationTransition: BaseTransition, ViewTransition {
     }
 }
 
+/// Class, that encapsulates `UIViewController.dismiss(animated:)` method call as transition
 open class DismissTransition: BaseTransition, ViewTransition {
+
+    /// Transition type .hide
     public let transitionType: TransitionType = .hide
 
+    /// Performs transition by calling `dismiss(animated:)` on `visibleView`.
+    ///
+    /// - Parameters:
+    ///   - view: unused in dismiss transition
+    ///   - visibleView: view that will be dismissed
+    ///   - completion: called once dismissal is complete
     public func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
         guard let visibleView = visibleView else { completion?(false); return }
         visibleView.dismiss(animated: isAnimated) {

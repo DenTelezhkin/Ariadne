@@ -30,10 +30,17 @@ import UIKit
 
 #if os(iOS) || os(tvOS)
 
+/// Builder for `UITabBarController` instance.
 open class TabBarEmbeddingBuilder: ViewBuilder {
+
+    /// Defines how `UITabBarController` should be created.
     open var tabBarControllerBuilder: () -> UITabBarController = { .init() }
 
-    open func build(with context: [View]) throws -> UITabBarController {
+    /// Builds `UITabBarController` from provided array of views, setting them in `viewControllers` property of `UITabBarController`.
+    ///
+    /// - Parameter context: array of views to set in `viewControllers` property.
+    /// - Returns: created `UITabBarController`.
+    open func build(with context: [View]) -> UITabBarController {
         let tabBar = tabBarControllerBuilder()
         tabBar.viewControllers = context
         return tabBar
