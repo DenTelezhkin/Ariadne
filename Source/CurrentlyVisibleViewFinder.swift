@@ -30,29 +30,42 @@ import UIKit
 #if os(iOS) || os(tvOS)
 extension UIWindow: RootViewProvider {}
 
+/// Class, capable of finding currently visible view, using recursive search through UIViewController, UINavigationController and UITabBarController APIs.
 open class CurrentlyVisibleViewFinder: ViewFinder {
 
+    /// Provider of root view in hierarchy
     public let rootViewProvider: RootViewProvider?
 
+    /// Creates `CurrentlyVisibleViewFinder`.
+    ///
+    /// - Parameter rootViewProvider: provider of root view in hierarchy
     public init(rootViewProvider: RootViewProvider?) {
         self.rootViewProvider = rootViewProvider
     }
 
+    /// Searches view hierarhcy for currently visible view. If no visible view was found, root view controller from `rootViewProvider` is returned.
+    ///
+    /// - Parameter view: view to start search from. When nil is passed as an argument, search starts from rootViewController. Defaults to nil.
+    /// - Returns: currently visible view or rootViewController if none was found.
     open func currentlyVisibleView(startingFrom view: View? = nil) -> View? {
-        return _currentlyVisibleView(startingFrom: view ?? rootViewProvider?.rootViewController)
+        return findCurrentlyVisibleView(startingFrom: view ?? rootViewProvider?.rootViewController)
     }
 
-    func _currentlyVisibleView(startingFrom view: View?) -> View? {
+    /// Recursively searches view hierarchy for currently visible view.
+    ///
+    /// - Parameter view: view to start search from
+    /// - Returns: currently visible view.
+    open func findCurrentlyVisibleView(startingFrom view: View?) -> View? {
         guard let view = view else { return nil }
 
         var visibleView: View?
         switch view {
         case let tabBar as UITabBarController:
-            visibleView = _currentlyVisibleView(startingFrom: tabBar.selectedViewController ?? tabBar.presentedViewController) ?? tabBar
+            visibleView = findCurrentlyVisibleView(startingFrom: tabBar.selectedViewController ?? tabBar.presentedViewController) ?? tabBar
         case let navigation as UINavigationController:
-            visibleView = _currentlyVisibleView(startingFrom: navigation.visibleViewController) ?? navigation
+            visibleView = findCurrentlyVisibleView(startingFrom: navigation.visibleViewController) ?? navigation
         default:
-            visibleView = _currentlyVisibleView(startingFrom: view.presentedViewController) ?? view
+            visibleView = findCurrentlyVisibleView(startingFrom: view.presentedViewController) ?? view
         }
         return visibleView ?? view
     }
@@ -61,16 +74,3 @@ open class CurrentlyVisibleViewFinder: ViewFinder {
 #endif
 
 #endif
-
-open class InstanceViewRootProvider: RootViewProvider {
-
-    public let rootView: View
-
-    public init(view: View) {
-        rootView = view
-    }
-
-    public var rootViewController: View? {
-        return rootView
-    }
-}

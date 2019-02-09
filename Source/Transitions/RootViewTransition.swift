@@ -43,7 +43,7 @@ open class RootViewTransition: ViewTransition {
         self.isAnimated = isAnimated
     }
 
-    open func perform(with view: View, on visibleView: View?, completion: ((Bool) -> Void)?) {
+    open func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
         if isAnimated {
             let oldState = UIView.areAnimationsEnabled
             UIView.setAnimationsEnabled(false)

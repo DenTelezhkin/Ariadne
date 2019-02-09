@@ -50,10 +50,10 @@ public protocol ViewTransition {
     /// Performs transition with provided `view`, using currently `visibleView`, and calls `completion` once transition has been completed.
     ///
     /// - Parameters:
-    ///   - view: view object that will be used for transition. In case of .show transition this is a newly created view. In case of .hide transition it's currently visible view.
-    ///   - visibleView: Currently visible view. In case of .hide transition type this parameter is always nil.
+    ///   - view: view object that will be used for transition. In case of .hide transition type this parameter is nil.
+    ///   - visibleView: Currently visible view.
     ///   - completion: closure to be called, once transition is completed.
-    func perform(with view: View,
+    func perform(with view: View?,
                  on visibleView: View?,
                  completion: ((Bool) -> Void)?)
 }
@@ -100,7 +100,7 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
         switch transition.transitionType {
         case .hide:
             prepareForHideTransition?(visibleView, transition)
-            transition.perform(with: visibleView, on: nil, completion: completion)
+            transition.perform(with: nil, on: visibleView, completion: completion)
         case .show:
             guard let viewToShow = try? builder.build(with: context) else {
                 completion?(false); return
