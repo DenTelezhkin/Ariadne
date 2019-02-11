@@ -28,21 +28,43 @@ import Foundation
 #if os(iOS) || os(tvOS)
 import UIKit
 
+/// Class, that implements transition for `UIWindow.rootViewController`.
 open class RootViewTransition: ViewTransition {
+
+    /// Transition type, defaults to .show.
     open var transitionType: TransitionType = .show
+
+    /// CUrrently visible view finder. Defaults to nil and is not used in current transition.
     open var viewFinder: ViewFinder?
 
+    /// `UIWindow` instance on which transition will be performed.
     public let window: UIWindow
 
+    /// Duration of animated transition. Defaults to 0.3 seconds.
     open var duration: TimeInterval = 0.3
+
+    /// Animation options for transition. Defaults to UIView.AnimationOptions.transitionCrossDissolve.
     open var animationOptions = UIView.AnimationOptions.transitionCrossDissolve
+
+    /// Should the transition be animated.
     open var isAnimated: Bool
 
+    /// Creates `RootViewTransition` from specified `UIWindow` instance.
+    ///
+    /// - Parameters:
+    ///   - window: `UIWindow`, on which transition will be happening.
+    ///   - isAnimated: Should the transition be animated.
     public init(window: UIWindow, isAnimated: Bool = true) {
         self.window = window
         self.isAnimated = isAnimated
     }
 
+    /// Performs UIWindow.rootViewController switch using `UIView.transition(with:duration:options:animations:completion:)` method.
+    ///
+    /// - Parameters:
+    ///   - view: View that will be set as a `rootViewController`.
+    ///   - visibleView: Currently visibleView. Unused in this method.
+    ///   - completion: Called once transition has been completed.
     open func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
         if isAnimated {
             let oldState = UIView.areAnimationsEnabled

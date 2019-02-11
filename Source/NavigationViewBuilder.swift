@@ -30,27 +30,47 @@ import UIKit
 
 #if os(iOS) || os(tvOS)
 
+/// Builder for `UINavigationController` instance with array of views.
 open class NavigationEmbeddingBuilder: ViewBuilder {
 
+    /// Defines how `UINavigationController` should be created.
     open var navigationControllerBuilder : () -> UINavigationController = { .init() }
 
-    open func build(with context: [View]) throws -> UINavigationController {
+    /// Builds `UINavigationController` from provided array of views, setting them in `viewControllers` property of `UINavigationController`.
+    ///
+    /// - Parameter context: Array of views to set in `viewControllers` property.
+    /// - Returns: Created `UINavigationController`.
+    open func build(with context: [View]) -> UINavigationController {
         let navigation = navigationControllerBuilder()
         navigation.viewControllers = context
         return navigation
     }
 }
 
+/// Builder for `UINavigationController` instance with a single embedded view. This builder keeps `Context` the same as `Context` of embedded view builder, thus allowing building a combination of those by passing embedded view Context.
 open class NavigationSingleViewEmbeddingBuilder<T: ViewBuilder> : ViewBuilder {
+
+    /// `NavigationSingleViewEmbeddingBuilder`.Context is identical to embedded view Context.
     public typealias Context = T.Context
 
+    /// Embedded view builder.
     public let builder: T
+
+    /// Defines how `UINavigationController` should be created
     open var navigationControllerBuilder : () -> UINavigationController = { .init() }
 
+    /// Creates `NavigationSingleViewEmbeddingBuilder` from provided embedded view builder.
+    ///
+    /// - Parameter builder: Embedded view builder.
     public init(builder: T) {
         self.builder = builder
     }
 
+    /// Builds `UINavigationController` instance with embedded view, which is set in its `viewControllers` property.
+    ///
+    /// - Parameter context: Argument to build embedded view.
+    /// - Returns: Created `UINavigationController`.
+    /// - Throws: Embedded view build errors.
     open func build(with context: Context) throws -> UINavigationController {
         let view = try builder.build(with: context)
         let navigation = navigationControllerBuilder()
@@ -60,6 +80,10 @@ open class NavigationSingleViewEmbeddingBuilder<T: ViewBuilder> : ViewBuilder {
 }
 
 extension ViewBuilder {
+
+    /// Creates a `NavigationSingleViewEmbeddingBuilder`, embedding current view builder in it.
+    ///
+    /// - Returns: `NavigationSingleViewEmbeddingBuilder` with current builder embedded.
     public func embeddedInNavigation(navigationBuilder: @escaping () -> UINavigationController = { .init() }) -> NavigationSingleViewEmbeddingBuilder<Self> {
         let builder = NavigationSingleViewEmbeddingBuilder(builder: self)
         builder.navigationControllerBuilder = navigationBuilder
