@@ -19,16 +19,17 @@ Ariadne is an extensible routing framework, built with composition and dependenc
 
 ## Motivation
 
-UIKit has a routing problem. All view controller presentation and dismissal methods happen in view controller, which a lot of times leads to bloated view controller, because all view controller building, passing of dependencies and transitions also happen there. This makes view controller aware of next view controller dependencies, as well as put him responsible for transition. This leads to lot other kinds of problems, like for example, what if user tapped on a push notification, and content screen needs to be opened with contents of that push notification, and your logic is now duplicated in several places. Or what if you wrote a fancy transition, but now a second screen needs it as well, and you are forced to either copy-paste code, or make a separate transition classes/helper methods.
+UIKit has a routing problem. All view controller presentation and dismissal methods happen in view controller, which a lot of times leads to bloated view controller, because all view controller building, passing of dependencies and transitions also happen there. This makes view controller aware of next view controller dependencies, as well as put him responsible for transition.
 
-To solve those problems, some architectures like VIPER promote Router to separate entity, but even MVC/MVP/MVVM app cannot normally operate without some form of Router object.
+This leads to lot other kinds of problems, like for example, what if user tapped on a push notification, and content screen needs to be opened with contents of that push notification, and your logic is now duplicated in several places. Or what if you wrote a fancy transition, but now a second screen needs it as well, and you are forced to either copy-paste code, or make a separate transition classes/helper methods.
+
+To solve those problems, some architectures like [VIPER][viper] promote Router to separate entity, but even MVC/MVP/MVVM app cannot normally operate without some form of Router object.
 
 # Example
 
 Let's say, for example, that you need to present user profile inside `UINavigationController`. Usually, in MVC app without any libraries, you would do something like this:
 
 ```swift
-let user = // user data model
 let storyboard = UIStoryboard(named: "User", bundle: nil)
 let userController = storyboard.instantiateViewController(withIdentifier: "User")
 userController.user = user
@@ -39,10 +40,10 @@ present(navigation, animated: true)
 With Ariadne, this code no is no longer tied to current view controller and can look like this:
 
 ```swift
-let user = // user data model
 let route = Storyboards.User.userViewController.builder.embeddedInNavigation().presentRoute()
 router.navigate(to: route, with: user)
 ```
 
 
 [wiki]: https://en.wikipedia.org/wiki/Ariadne%27s_thread_(logic)
+[viper]: https://www.objc.io/issues/13-architecture/viper/
