@@ -13,7 +13,10 @@
 
 > Ariadne's thread, named for the legend of Ariadne, is the solving of a problem with multiple apparent means of proceeding - such as a physical maze, a logic puzzle, or an ethical dilemma - through an exhaustive application of logic to all available routes.
 
-[Wikipedia][wiki]
+<p align="right">
+  <a href="https://en.wikipedia.org/wiki/Ariadne%27s_thread_(logic)">Wikipedia</a>
+</p>
+
 
 Ariadne is an extensible routing framework, built with composition and dependency injection principles in mind. It helps to create transitions and routes, that abstract away view controller building and presentation logic to make it reusable and compact.
 
@@ -37,7 +40,7 @@ let navigation = UINavigationController(rootViewController: userController)
 present(navigation, animated: true)
 ```
 
-With Ariadne, this code no is no longer tied to current view controller and can look like this:
+With Ariadne, this code is no longer tied to current view controller and can look like this:
 
 ```swift
 let route = Storyboards.User.userViewController.builder.embeddedInNavigation().presentRoute()
@@ -118,11 +121,11 @@ Router uses `RootViewProvider` to find which view controller is a root one in a 
 let route = Storyboards.User.userViewController.builder.embeddedInNavigation().presentRoute()
 ```
 
-To find out, how this can be achieved, refer to [SwiftGen integration](Guides/SwiftGen-integration.md)
+To find out, how this can be achieved, refer to [SwiftGen integration](Guides/SwiftGen-integration.md).
 
 ## Dependency injection
 
-Different applications can have completely different architectures and requirements. To see examples for simple dependency injection and more advanced dependency injection with service locators and [Dip][dip], head to [Dependency injection examples](Guides/Dependency-injection.md) guide.
+Different applications can have completely different architectures and requirements. To see examples of simple dependency injection and more advanced dependency injection with dependency containers like [Dip][dip], head to [Dependency injection examples](Guides/Dependency-injection.md) guide.
 
 ## Example project
 
@@ -138,7 +141,6 @@ iOS Example project can be found in Ariadne.xcodeproj and contains:
 
 Ariadne is released under an MIT license. See [LICENSE](LICENSE) for more information.
 
-[wiki]: https://en.wikipedia.org/wiki/Ariadne%27s_thread_(logic)
 [viper]: https://www.objc.io/issues/13-architecture/viper/
 [swiftgen]: https://github.com/SwiftGen/SwiftGen
 [dip]: https://github.com/AliSoftware/Dip
