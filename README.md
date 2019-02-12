@@ -21,7 +21,7 @@ Ariadne is an extensible routing framework, built with composition and dependenc
 
 UIKit has a routing problem. All view controller presentation and dismissal methods happen in view controller, which a lot of times leads to bloated view controller, because all view controller building, passing of dependencies and transitions also happen there. This makes view controller aware of next view controller dependencies, as well as put him responsible for transition.
 
-This leads to lot other kinds of problems, like for example, what if user tapped on a push notification, and content screen needs to be opened with contents of that push notification, and your logic is now duplicated in several places. Or what if you wrote a fancy transition, but now a second screen needs it as well, and you are forced to either copy-paste code, or make a separate transition classes/helper methods.
+This leads to a lot of other kinds of problems, like for example, what if user tapped on a push notification, and content screen needs to be opened with contents of that push notification, and your logic is now duplicated in several places. Or what if you wrote a fancy transition, but now a second screen needs it as well, and you are forced to either copy-paste code, or make a separate transition classes/helper methods.
 
 To solve those problems, some architectures like [VIPER][viper] promote Router to separate entity, but even MVC/MVP/MVVM app cannot normally operate without some form of Router object.
 
@@ -44,6 +44,101 @@ let route = Storyboards.User.userViewController.builder.embeddedInNavigation().p
 router.navigate(to: route, with: user)
 ```
 
+## Requirements
+
+* iOS 10+
+* macOS 10.12+
+* tvOS 10+
+* watchOS 3+
+* Xcode 10 / Swift 4.2 and higher
+
+## Installation
+
+### CocoaPods
+
+```ruby
+pod 'Ariadne', '~> 0.1.0'
+```
+
+### Carthage
+
+```ruby
+github "DenTelezhkin/Ariadne", ~> 0.1
+```
+
+## Overview
+
+`Ariadne` architecture fundamentally starts with `ViewBuilder`. Because view controllers are so tightly coupled with their views on iOS, `UIViewController` is considered to be a `View`. Definition of `ViewBuilder` is simple - it builds a `View` out of provided `Context`:
+
+```swift
+protocol ViewBuilder {
+    associatedtype ViewType: View
+    associatedtype Context
+    func build(with context: Context) throws -> ViewType
+}
+```
+
+Out of the box, `Ariadne` provides builders for:
+
+* UINavigationController
+* UITabBarController
+* UISplitViewController
+
+Second building block of the framework are `ViewTransition` objects, that are needed to perform transition between views. Out of the box, following transitions are supported:
+
+* UINavigationController transitions - push, pop, pop to root
+* UIViewController presentations - present, dismiss
+* UIWindow root view controller transition to perform switch of the root view controller with animation.
+
+`ViewBuilder` and `ViewTransition` object can be combined together to form a performable `Route`. For example, given `AlertViewControllerBuilder`, here's how presenting an alert might look like with `Ariadne`:
+
+```swift
+let alertRoute = AlertViewControllerBuilder().presentRoute()
+```
+
+Notice how `presentRoute` method is called identically for `AlertViewControllerBuilder` and any `UIViewController` builders. By leveraging protocol extensions on `ViewBuilder` any transitions and routes can be reused on `ViewBuilder` instance. To see examples of different `ViewBuilder`s and how they can be extended, please refer to [Implementing view builders](Guides/Implementing-view-builders.md) guide.
+
+Last, but not least, `Router` object ties everything together and allows you to actually perform routes:
+
+```swift
+router.navigate(to: alertRoute, with: alertModel, completion: { _ in
+    // Route has completed
+})
+```
+
+Router uses `RootViewProvider` to find which view controller is a root one in a view hierarchy. On iOS and tvOS `RootViewProvider` is an interface for `UIWindow` and allows `Router` to get root view controller of view hierarchy. But on other platforms as well as application extensions UIApplication shared window is not accessible, and in that cases `RootViewProvider` may be different, for example in iMessage apps `MSMessagesAppViewController` may play similar role.
+
+`ViewFinder` object traverses view hierarchy starting from root view to find view controller that is currently visible on screen. On iOS and tvOS `Ariadne` provides implementation of `CurrentlyVisibleViewFinder` class, that recursively searches `UIViewController`, `UINavigationController` and `UITabBarController` to find which view controller is currently visible, but on other platforms and in other scenarios you might want to roll with your implementation or subclass of `CurrentlyVisibleViewFinder`, if your view hierarchy contains other view controller containers.
+
+## SwiftGen integration
+
+[SwiftGen][swiftgen] is a powerful code generator, that is particularly useful for storyboards, because it can generate code required to instantiate view controllers and make this code to guarantee on compile-time that storyboard exists. `Ariadne` can build on top of that to produce a neat syntax to produce routes, like so:
+
+```swift
+let route = Storyboards.User.userViewController.builder.embeddedInNavigation().presentRoute()
+```
+
+To find out, how this can be achieved, refer to [SwiftGen integration](Guides/SwiftGen-integration.md)
+
+## Dependency injection
+
+Different applications can have completely different architectures and requirements. To see examples for simple dependency injection and more advanced dependency injection with service locators and [Dip][dip], head to [Dependency injection examples](Guides/Dependency-injection.md) guide.
+
+## Example project
+
+iOS Example project can be found in Ariadne.xcodeproj and contains:
+
+* Root view controller animated change
+* push/pop, present/dismiss
+* Peek & Pop
+* Custom transition and presentation
+* Update currently visible view.
+
+## License
+
+Ariadne is released under an MIT license. See [LICENSE](LICENSE) for more information.
 
 [wiki]: https://en.wikipedia.org/wiki/Ariadne%27s_thread_(logic)
 [viper]: https://www.objc.io/issues/13-architecture/viper/
+[swiftgen]: https://github.com/SwiftGen/SwiftGen
+[dip]: https://github.com/AliSoftware/Dip
