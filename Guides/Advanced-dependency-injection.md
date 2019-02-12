@@ -1,6 +1,11 @@
+## Advanced dependency injection
+
 If your architecture uses [flow controllers](http://merowing.info/2016/01/improve-your-ios-architecture-with-flowcontrollers/) or is more or less standard MVC app, you can use simple dependency injection, examples of which can be found in [SwiftGen integration guide](SwiftGen-integration.md).
 
 On the other hand, if your app is based on MVVM architecture, or any architecture that relies on injecting services and models, here's more advanced example, that does it. This example is based on usage of dependency injection container [Dip][dip], MVVM setup from [ViewModelOwners][view-model-owners], as well as [RxSwift][rxswift] library to handle bindings.
+
+
+### Setting up dependency container
 
 Lets say you have a dependency injection container setup, in which you register your ViewModel objects, like so:
 
@@ -25,6 +30,8 @@ public class ApplicationRouter: Ariadne.Router, ReactiveCompatible {
     }
 }
 ```
+
+### Configuring `StoryboardBuilder`
 
 Lets slightly change `StoryboardBuilder` from SwiftGen integration example to support `ViewModelOwners` as well as custom configuration:
 
@@ -61,6 +68,8 @@ extension SceneType where T : NonReusableViewProtocol {
 }
 ```
 
+### Pouring syntax sugar
+
 Now, the last thing to do is to create a `Binder` object, that allows us to emit routing events with RxSwift:
 
 ```swift
@@ -81,6 +90,8 @@ extension Reactive where Base: ApplicationRouter {
     }
 }
 ```
+
+### Example usage
 
 Lets put this all into action, shall we?
 

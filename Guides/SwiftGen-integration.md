@@ -1,3 +1,5 @@
+# SwiftGen integration
+
 Integrating with SwiftGen requires two steps - defining how you build views, and implementing a `ViewBuilder` that accepts SwiftGen output.
 
 ## Buildable protocol
@@ -20,6 +22,8 @@ class UserViewController: UIViewController, Buildable {
   }
 }
 ```
+
+## StoryboardBuilder
 
 If this simple dependency injection is used, then following `ViewBuilder` can be used for SwiftGen:
 
@@ -54,4 +58,4 @@ let switchRootRoute = Storyboards.Main.examplesTableViewController.builder
             .with(transition)
 ```
 
-If your application architecture requires more complicated dependency injection, for example for injecting services into your viewModel, please read [Advanced dependency injection guide](Advanced-dependency-injection.md) that contains more complicated example for dependency injection.
+If your application architecture requires more complicated dependency injection, for example injecting services into your viewModel, please read [Advanced dependency injection guide](Advanced-dependency-injection.md) that contains more complicated example for dependency injection.
