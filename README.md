@@ -125,7 +125,7 @@ To find out, how this can be achieved, refer to [SwiftGen integration](Guides/Sw
 
 ## Dependency injection
 
-Different applications can have completely different architectures and requirements. To see examples of simple dependency injection and more advanced dependency injection with dependency containers like [Dip][dip], head to [Dependency injection examples](Guides/Dependency-injection.md) guide.
+Different applications can have completely different architectures and requirements. To see examples of simple dependency injection see [SwiftGen integration](Guides/SwiftGen-integration.md) and for more advanced dependency injection with dependency containers like [Dip][dip], head to [Advanced dependency injection examples](Guides/Advanced-dependency-injection.md) guide.
 
 ## Example project
 
