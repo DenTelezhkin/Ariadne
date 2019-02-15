@@ -34,7 +34,7 @@ Let's say, for example, that you need to present user profile inside `UINavigati
 
 ```swift
 let storyboard = UIStoryboard(named: "User", bundle: nil)
-let userController = storyboard.instantiateViewController(withIdentifier: "User")
+let userController = storyboard.instantiateViewController(withIdentifier: "UserViewController")
 userController.user = user
 let navigation = UINavigationController(rootViewController: userController)
 present(navigation, animated: true)
@@ -93,13 +93,13 @@ Second building block of the framework are `ViewTransition` objects, that are ne
 * UIViewController presentations - present, dismiss
 * UIWindow root view controller transition to perform switch of the root view controller with animation.
 
-`ViewBuilder` and `ViewTransition` object can be combined together to form a performable `Route`. For example, given `AlertViewControllerBuilder`, here's how presenting an alert might look like with `Ariadne`:
+`ViewBuilder` and `ViewTransition` object can be combined together to form a performable `Route`. For example, given `AlertBuilder`, here's how presenting an alert might look like with `Ariadne`:
 
 ```swift
-let alertRoute = AlertViewControllerBuilder().presentRoute()
+let alertRoute = AlertBuilder().presentRoute()
 ```
 
-Notice how `presentRoute` method is called identically for `AlertViewControllerBuilder` and any `UIViewController` builders. By leveraging protocol extensions on `ViewBuilder` any transitions and routes can be reused on `ViewBuilder` instance. To see examples of different `ViewBuilder`s and how they can be extended, please refer to [Implementing view builders](Guides/Implementing-view-builders.md) guide.
+Notice how `presentRoute` method is called identically for `AlertBuilder` and any `UIViewController` builders. By leveraging protocol extensions on `ViewBuilder` any transitions and routes can be reused on `ViewBuilder` instance. To see examples of how `ViewBuilder` protocol can be implemented and extended, please refer to [Implementing view builders](Guides/Implementing-view-builders.md) guide.
 
 Last, but not least, `Router` object ties everything together and allows you to actually perform routes:
 
@@ -115,7 +115,7 @@ Router uses `RootViewProvider` to find which view controller is a root one in a 
 
 ## SwiftGen integration
 
-[SwiftGen][swiftgen] is a powerful code generator, that is particularly useful for storyboards, because it can generate code required to instantiate view controllers and make this code to guarantee on compile-time that storyboard exists. `Ariadne` can build on top of that to produce a neat syntax to produce routes, like so:
+[SwiftGen][swiftgen] is a powerful code generator, that can be used to set you free from using String-based API, that is cumbersome and error-prone. For example with storyboards, SwiftGen is able to generate code required for instantiating view controllers and makes this code to guarantee on compile-time that storyboard and view controller exist. `Ariadne` can build on top of that, producing a neat syntax for route building, like so:
 
 ```swift
 let route = Storyboards.User.userViewController.builder.embeddedInNavigation().presentRoute()
