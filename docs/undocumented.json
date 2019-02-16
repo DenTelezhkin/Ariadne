@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Route.swift",
+      "line": 34,
+      "symbol": "TransitionType.hide",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Route.swift",
+      "line": 35,
+      "symbol": "TransitionType.show",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/denystelezkin/Developer/Ariadne"
+}

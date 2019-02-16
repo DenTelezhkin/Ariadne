@@ -1,0 +1,7 @@
+author: Denys Telezhkin
+author_url: https://github.com/DenTelezhkin
+github_url: https://github.com/DenTelezhkin/Ariadne
+root_url: https://dentelezhkin.github.io/Ariadne/
+module: Ariadne
+output: docs
+theme: fullwidth

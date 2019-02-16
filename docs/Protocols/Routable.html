@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Routable Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Protocol/Routable" class="dashAnchor"></a>
+
+    <a title="Routable Protocol Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          Ariadne Docs
+        </a>
+         (97% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/DenTelezhkin/Ariadne">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fdentelezhkin%2Egithub%2Eio%2FAriadne%2Fdocsets%2FAriadne%2Exml">
+            <img class="header-icon" src="../img/dash.png"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">Ariadne Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      Routable Protocol Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/BaseTransition.html">BaseTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ChainableRoute.html">ChainableRoute</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CurrentlyVisibleUpdatableViewFinder.html">CurrentlyVisibleUpdatableViewFinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/CurrentlyVisibleViewFinder.html">CurrentlyVisibleViewFinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/DismissTransition.html">DismissTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/InstanceViewBuilder.html">InstanceViewBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NavigationEmbeddingBuilder.html">NavigationEmbeddingBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NavigationSingleViewEmbeddingBuilder.html">NavigationSingleViewEmbeddingBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes.html#/c:@M@Ariadne@objc(cs)NonBuildableView">NonBuildableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/NonBuilder.html">NonBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PopNavigationTransition.html">PopNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PopToRootNavigationTransition.html">PopToRootNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PresentationTransition.html">PresentationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PushNavigationTransition.html">PushNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/RootViewTransition.html">RootViewTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Route.html">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/Router.html">Router</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SplitViewBuilder.html">SplitViewBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TabBarEmbeddingBuilder.html">TabBarEmbeddingBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/UpdatingRoute.html">UpdatingRoute</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TransitionType.html">TransitionType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Route.html">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/ViewBuilder.html">ViewBuilder</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ContextUpdatable.html">ContextUpdatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RootViewProvider.html">RootViewProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/Routable.html">Routable</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/UpdatableViewFinder.html">UpdatableViewFinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ViewBuilder.html">ViewBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ViewFinder.html">ViewFinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/ViewTransition.html">ViewTransition</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/View">View</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:7Ariadne4Viewa">View</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>Routable</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Routable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Type, that is capable of performing route from current screen to another one.
+One example of such type is Route<ViewBuilder,ViewTransition> type, that includes necessary builder to build next visible view, and transition object, that will perform a transition.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne8RoutableP7BuilderQa"></a>
+                    <a name="//apple_ref/swift/Alias/Builder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne8RoutableP7BuilderQa">Builder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Object, responsible for building a view, that is needed for routing.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Builder</span> <span class="p">:</span> <span class="kt">ViewBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne8RoutableP7perform14withViewFinder7context10completionyAA0eF0_p_7Builder_7ContextQZySbcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/perform(withViewFinder:context:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne8RoutableP7perform14withViewFinder7context10completionyAA0eF0_p_7Builder_7ContextQZySbcSgtF">perform(withViewFinder:context:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Performs route using provided context.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">perform</span><span class="p">(</span><span class="nv">withViewFinder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ViewFinder.html">ViewFinder</a></span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Routable.html#/s:7Ariadne8RoutableP7BuilderQa">Builder</a></span><span class="o">.</span><span class="kt">Context</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>withViewFinder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>object, that can be used to find currently visible view in view hierarchy</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>object, that can be used for building a new route destination view.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>closure to be called, once routing is completed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne8RoutablePAAE7chained4with7contextAA14ChainableRouteCyxqd__Gqd___7Builder_7ContextQYd__tAaBRd__lF"></a>
+                    <a name="//apple_ref/swift/Method/chained(with:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne8RoutablePAAE7chained4with7contextAA14ChainableRouteCyxqd__Gqd___7Builder_7ContextQYd__tAaBRd__lF">chained(with:context:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Chains current route with the next one.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">chained</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">with</span> <span class="nv">chainedRoute</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="kt"><a href="../Protocols/Routable.html#/s:7Ariadne8RoutableP7BuilderQa">Builder</a></span><span class="o">.</span><span class="kt">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ChainableRoute.html">ChainableRoute</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Routable</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>chainedRoute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Route to be performed after current one.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Argument, used to build view for next route.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>ChainedRoute with current Route set as <code>HeadRoute</code>, and <code>chainedRoute</code> set as <code>tailRoute</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne8RoutablePAAE7chained4withAA14ChainableRouteCyxqd__Gqd___tAaBRd__yt7Builder_7ContextRTd__lF"></a>
+                    <a name="//apple_ref/swift/Method/chained(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne8RoutablePAAE7chained4withAA14ChainableRouteCyxqd__Gqd___tAaBRd__yt7Builder_7ContextRTd__lF">chained(with:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Chains current route with the next one.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">chained</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Routable</span><span class="o">&gt;</span><span class="p">(</span><span class="n">with</span> <span class="nv">chainedRoute</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ChainableRoute.html">ChainableRoute</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt">T</span><span class="o">&gt;</span>
+    <span class="k">where</span> <span class="kt">T</span><span class="o">.</span><span class="kt"><a href="../Protocols/Routable.html#/s:7Ariadne8RoutableP7BuilderQa">Builder</a></span><span class="o">.</span><span class="kt">Context</span> <span class="o">==</span> <span class="kt">Void</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>chainedRoute</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Route to be performed after current one.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>ChainedRoute with current Route set as <code>HeadRoute</code>, and <code>chainedRoute</code> set as <code>tailRoute</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2019-02-16)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
