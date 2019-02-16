@@ -61,7 +61,7 @@ public class StoryboardBuilder<T: UIViewController & NonReusableViewModelOwner>:
     }
 }
 
-extension SceneType where T : NonReusableViewProtocol {
+extension SceneType where T : NonReusableViewModelOwner {
     var builder: StoryboardBuilder<T> {
         return .init(scene: self)
     }
@@ -78,7 +78,7 @@ import ViewModelOwners
 
 extension Reactive where Base: ApplicationRouter {
     public func navigate<T:Routable>() -> Binder<T>
-        where T.Builder.ViewType: NonReusableViewOwner, T.Builder.Context == T.Builder.ViewType.ViewModelProtocol
+        where T.Builder.ViewType: NonReusableViewModelOwner, T.Builder.Context == T.Builder.ViewType.ViewModelProtocol
     {
         return Binder(base) { router, route in
             guard let viewModel = try? router.container.resolve() as T.Builder.ViewType.ViewModelProtocol else {
