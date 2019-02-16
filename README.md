@@ -22,11 +22,11 @@ Ariadne is an extensible routing framework, built with composition and dependenc
 
 ## Motivation
 
-UIKit has a routing problem. All view controller presentation and dismissal methods happen in view controller, which a lot of times leads to bloated view controller, because all view controller building, passing of dependencies and transitions also happen there. This makes view controller aware of next view controller dependencies, as well as put him responsible for transition.
+UIKit has a routing problem. All view controller presentation and dismissal methods happen in view controller, which a lot of times leads to bloated view controller, because all view controller building, dependency injection and transitions that also happen there.
 
-This leads to a lot of other kinds of problems, like for example, what if user tapped on a push notification, and content screen needs to be opened with contents of that push notification, and your logic is now duplicated in several places. Or what if you wrote a fancy transition, but now a second screen needs it as well, and you are forced to either copy-paste code, or make a separate transition classes/helper methods.
+This leads to massive view controllers, that cannot be easily tested, and code, that is hard to reuse across different view controller instances. One solution to those problems is to separate view controller building, and transition code in separate object, commonly called `Router`. And even though only some architectures like VIPER promote `Router` as required component, I would argue that app with any other architecture can be drastically improved by having at least some form of routing.
 
-To solve those problems, some architectures like [VIPER][viper] promote Router to separate entity, but even MVC/MVP/MVVM app cannot normally operate without some form of Router object.
+This is where `Ariadne` comes in. It is a framework, that provides view controller building mechanisms, transition and routing classes to abstract all this logic from view controller in architecture-agnostic way.
 
 # Example
 
@@ -46,6 +46,9 @@ With Ariadne, this code is no longer tied to current view controller and can loo
 let route = Storyboards.User.userViewController.builder.embeddedInNavigation().presentRoute()
 router.navigate(to: route, with: user)
 ```
+
+> Note: this specific example requires SwiftGen integration, described in [SwiftGen integration](Guides/SwiftGen-integration.md) guide.
+> Without SwiftGen `Storyboards.User.userViewController.builder` could be replaced by any custom view controller builder.
 
 ## Requirements
 
@@ -71,7 +74,11 @@ github "DenTelezhkin/Ariadne", ~> 0.1
 
 ## Overview
 
-`Ariadne` architecture fundamentally starts with `ViewBuilder`. Because view controllers are so tightly coupled with their views on iOS, `UIViewController` is considered to be a `View`. Definition of `ViewBuilder` is simple - it builds a `View` out of provided `Context`:
+`Ariadne` architecture fundamentally starts with `ViewBuilder`. Because view controllers are so tightly coupled with their views on iOS, `UIViewController` is considered to be a `View`.
+
+> Note: on watchOS `View` is a typealias for `WKInterfaceController`, and on macOS for `NSViewController` for similar reasons.
+
+Definition of `ViewBuilder` is simple - it builds a `View` out of provided `Context`:
 
 ```swift
 protocol ViewBuilder {
@@ -93,7 +100,7 @@ Second building block of the framework are `ViewTransition` objects, that are ne
 * UIViewController presentations - present, dismiss
 * UIWindow root view controller transition to perform switch of the root view controller with animation.
 
-`ViewBuilder` and `ViewTransition` object can be combined together to form a performable `Route`. For example, given `AlertBuilder`, here's how presenting an alert might look like with `Ariadne`:
+`ViewBuilder` and `ViewTransition` object can be combined together to form a performable `Route`. For example, given `AlertBuilder`, here's how creating a route for an alert might look like with `Ariadne`:
 
 ```swift
 let alertRoute = AlertBuilder().presentRoute()
@@ -121,11 +128,15 @@ Router uses `RootViewProvider` to find which view controller is a root one in a 
 let route = Storyboards.User.userViewController.builder.embeddedInNavigation().presentRoute()
 ```
 
-To find out, how this can be achieved, refer to [SwiftGen integration](Guides/SwiftGen-integration.md).
+To find out, how this can be achieved, refer to [SwiftGen integration](Guides/SwiftGen-integration.md) guide.
 
 ## Dependency injection
 
 Different applications can have completely different architectures and requirements. To see examples of simple dependency injection see [SwiftGen integration](Guides/SwiftGen-integration.md) and for more advanced dependency injection with dependency containers like [Dip][dip], head to [Advanced dependency injection examples](Guides/Advanced-dependency-injection.md) guide.
+
+## Vision
+
+To find out more about project future goals and vision, please read the [Vision](VISION.md) document.
 
 ## Example project
 
@@ -139,7 +150,7 @@ iOS Example project can be found in Ariadne.xcodeproj and contains:
 
 ## License
 
-Ariadne is released under an MIT license. See [LICENSE](LICENSE) for more information.
+Ariadne is released under a MIT license. See [LICENSE](LICENSE) for more information.
 
 [viper]: https://www.objc.io/issues/13-architecture/viper/
 [swiftgen]: https://github.com/SwiftGen/SwiftGen
