@@ -13,9 +13,12 @@ matrix:
     - env: ACTION=build_watchos PLATFORM=watchOS
     - env: ACTION=pod_lint PLATFORM=iOS
     - env: ACTION=carthage_build PLATFORM=iOS
+before_install:
+  - gem update --system
+  - gem install bundler
 before_script:
-- brew update
-- brew outdated carthage || brew upgrade carthage
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
 script:
-- instruments -s devices # List all available simulators
-- bundle exec fastlane $ACTION
+  - instruments -s devices # List all available simulators
+  - bundle exec fastlane $ACTION
