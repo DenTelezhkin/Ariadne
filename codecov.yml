@@ -1,0 +1,8 @@
+comment:
+  layout: header, changes, diff
+coverage:
+  ignore:
+  - Tests
+  - iOS Example
+  status:
+    patch: false

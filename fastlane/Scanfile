@@ -1,0 +1,5 @@
+clean true
+output_types ""
+scheme "Ariadne"
+skip_slack true
+xcargs "IDEBuildOperationMaxNumberOfConcurrentCompileTasks=`sysctl -n hw.ncpu`"
