@@ -147,7 +147,7 @@ You can find complete project documentation [here](https://dentelezhkin.github.i
 iOS Example project can be found in Ariadne.xcodeproj and contains:
 
 * Root view controller animated change
-* push/pop, present/dismiss
+* Push/pop, present/dismiss
 * Peek & Pop
 * Custom transition and presentation
 * Update currently visible view.
