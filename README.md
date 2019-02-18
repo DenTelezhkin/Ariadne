@@ -6,7 +6,7 @@
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
 
 <p align="left">
-  <img height="160" src="https://raw.githubusercontent.com/DenTelezhkin/Ariadne/master/logo.jpg" />
+  <img height="160" src="https://github.com/DenTelezhkin/Ariadne/raw/master/logo.jpg" />
 </p>
 
 # Ariadne
@@ -137,6 +137,10 @@ Different applications can have completely different architectures and requireme
 ## Vision
 
 To find out more about project future goals and vision, please read the [Vision](VISION.md) document.
+
+## Documentation
+
+You can find complete project documentation [here](https://dentelezhkin.github.io/Ariadne/).
 
 ## Example project
 
