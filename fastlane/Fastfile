@@ -96,6 +96,6 @@ lane :release do |params|
     puts "Attaching Carthage prebuilt binary to release."
     releases = client.releases('DenTelezhkin/Ariadne')
     client.upload_asset(releases[0].url, 'Ariadne.framework.zip')
-    sh "rm -rf ../Ariadne.framework.zip"
+    sh "rm -rf Ariadne.framework.zip"
   end
 end
