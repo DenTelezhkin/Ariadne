@@ -85,6 +85,9 @@
 		3E601DD12200BE990062E095 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3E8448CC216F6C73003A10BE /* Ariadne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ariadne.swift; sourceTree = "<group>"; };
 		3E8448CE216F94AB003A10BE /* NavigationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTransition.swift; sourceTree = "<group>"; };
+		3EFDAA1B225A8CB100A7647B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3EFDAA1C225A8CB100A7647B /* VISION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = VISION.md; sourceTree = "<group>"; };
+		3EFDAA1D225A8CB100A7647B /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		9A585448220AE846005469C8 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		9A58544B220B1C5D005469C8 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
 		9A58544E220B1DA1005469C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Example.storyboard; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		3E3E0F9621623CD90055258B = {
 			isa = PBXGroup;
 			children = (
+				3EFDAA1A225A8CA000A7647B /* Documentation */,
 				3E3E0FBE21623D560055258B /* Plist */,
 				3E3E0FBA21623D560055258B /* Source */,
 				3E3E0FBC21623D560055258B /* Tests */,
@@ -189,6 +193,16 @@
 				3E352684220F06870017BE92 /* BaseTransition.swift */,
 			);
 			path = Transitions;
+			sourceTree = "<group>";
+		};
+		3EFDAA1A225A8CA000A7647B /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				3EFDAA1D225A8CB100A7647B /* CHANGELOG.md */,
+				3EFDAA1B225A8CB100A7647B /* README.md */,
+				3EFDAA1C225A8CB100A7647B /* VISION.md */,
+			);
+			name = Documentation;
 			sourceTree = "<group>";
 		};
 		9A585447220AE837005469C8 /* Generated */ = {
@@ -287,10 +301,11 @@
 				TargetAttributes = {
 					3E3E0F9F21623CD90055258B = {
 						CreatedOnToolsVersion = 10.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 					3E3E0FA821623CD90055258B = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1020;
 					};
 					9A5A7005217DF23000DA5152 = {
 						CreatedOnToolsVersion = 10.0;
@@ -527,7 +542,7 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx watchos watchsimulator appletvos appletvsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -587,7 +602,7 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx watchos watchsimulator appletvos appletvsimulator";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -707,7 +722,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "MLSDev.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -725,7 +739,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "MLSDev.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
