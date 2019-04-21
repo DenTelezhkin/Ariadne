@@ -25,39 +25,6 @@
 
 import Foundation
 
-/// Value type, that represents action, that `ViewTransition` object is performing.
-/// For example, `PushNavigationTransition` is a .show transition type, where `PopNavigationTransition` is a .hide type.
-///
-/// - hide: Transition is hiding already shown view
-/// - show: Transition is showing a new, or previously hidden view.
-public enum TransitionType {
-    case hide
-    case show
-}
-
-/// Type, that is responsible for making a transition between views.
-public protocol ViewTransition {
-
-    /// Flag, that shows whether transition should be animated.
-    var isAnimated: Bool { get }
-
-    /// Type of transition this object is capable of performing.
-    var transitionType: TransitionType { get }
-
-    /// Object, responsible for finding currently visible view in existing view hierarchy.
-    var viewFinder: ViewFinder? { get }
-
-    /// Performs transition with provided `view`, using currently `visibleView`, and calls `completion` once transition has been completed.
-    ///
-    /// - Parameters:
-    ///   - view: view object that will be used for transition. In case of .hide transition type this parameter is nil.
-    ///   - visibleView: Currently visible view.
-    ///   - completion: closure to be called, once transition is completed.
-    func perform(with view: View?,
-                 on visibleView: View?,
-                 completion: ((Bool) -> Void)?)
-}
-
 /// Type, that is responsible for performing routing between views.
 open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
 
@@ -72,6 +39,9 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
 
     /// Closure, that is called prior to executing .show transition
     open var prepareForShowTransition: ((_ view: Builder.ViewType, _ transition: Transition, _ toView: View?) -> Void)?
+
+    /// Closure, that is called prior to executing a .custom transition
+    open var prepareForCustomTransition: ((_ visibleView: View, _ transition: Transition) -> Void)?
 
     /// Creates Route with specified builder and transition.
     ///
@@ -107,6 +77,9 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
             }
             prepareForShowTransition?(viewToShow, transition, visibleView)
             transition.perform(with: viewToShow, on: visibleView, completion: completion)
+        case .custom:
+            prepareForCustomTransition?(visibleView, transition)
+            transition.perform(with: nil, on: visibleView, completion: completion)
         }
     }
 }
@@ -181,6 +154,16 @@ open class ChainableRoute<T: Routable, U: Routable>: Routable {
 
     /// Context, that will be used to build next View in the chain
     public let tailContext: U.Builder.Context
+
+    /// Returns headRoute builder
+    public var builder: T.Builder {
+        return headRoute.builder
+    }
+
+    /// Returns NonTransition instance.
+    public var transition: NonTransition {
+        return NonTransition()
+    }
 
     /// Creates chain from two routes, by placing them in a `headRoute` and `tailRoute`.
     ///

@@ -17,6 +17,7 @@
 		3E3FDEB72178CC6700E9A087 /* PresentationTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FDEB62178CC6700E9A087 /* PresentationTransition.swift */; };
 		3E3FDEBB2188812B00E9A087 /* TabBarViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FDEBA2188812B00E9A087 /* TabBarViewBuilder.swift */; };
 		3E3FDEBF2188836700E9A087 /* SplitViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3FDEBE2188836700E9A087 /* SplitViewBuilder.swift */; };
+		3E597CA3226D213E00780BAC /* ViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E597CA2226D213E00780BAC /* ViewTransition.swift */; };
 		3E601DCE220054F60062E095 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E601DCD220054F60062E095 /* ViewBuilder.swift */; };
 		3E601DD02200552A0062E095 /* UpdatableViewFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E601DCF2200552A0062E095 /* UpdatableViewFinder.swift */; };
 		3E601DD22200BE990062E095 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E601DD12200BE990062E095 /* Route.swift */; };
@@ -80,6 +81,7 @@
 		3E3FDEB62178CC6700E9A087 /* PresentationTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationTransition.swift; sourceTree = "<group>"; };
 		3E3FDEBA2188812B00E9A087 /* TabBarViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewBuilder.swift; sourceTree = "<group>"; };
 		3E3FDEBE2188836700E9A087 /* SplitViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewBuilder.swift; sourceTree = "<group>"; };
+		3E597CA2226D213E00780BAC /* ViewTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransition.swift; sourceTree = "<group>"; };
 		3E601DCD220054F60062E095 /* ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
 		3E601DCF2200552A0062E095 /* UpdatableViewFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableViewFinder.swift; sourceTree = "<group>"; };
 		3E601DD12200BE990062E095 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				3E3FDEB52178B43500E9A087 /* Transitions */,
 				3E601DCF2200552A0062E095 /* UpdatableViewFinder.swift */,
 				3E601DCD220054F60062E095 /* ViewBuilder.swift */,
+				3E597CA2226D213E00780BAC /* ViewTransition.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 			files = (
 				3E3FDEB22177836700E9A087 /* CurrentlyVisibleViewFinder.swift in Sources */,
 				3E352685220F06870017BE92 /* BaseTransition.swift in Sources */,
+				3E597CA3226D213E00780BAC /* ViewTransition.swift in Sources */,
 				3E3FDEBB2188812B00E9A087 /* TabBarViewBuilder.swift in Sources */,
 				3E601DD22200BE990062E095 /* Route.swift in Sources */,
 				3E8448CF216F94AB003A10BE /* NavigationTransition.swift in Sources */,

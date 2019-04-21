@@ -48,8 +48,17 @@ public protocol RootViewProvider {
 /// One example of such type is Route<ViewBuilder,ViewTransition> type, that includes necessary builder to build next visible view, and transition object, that will perform a transition.
 public protocol Routable {
 
-    /// Object, responsible for building a view, that is needed for routing.
+    /// Type, responsible for building a view, that is needed for routing.
     associatedtype Builder: ViewBuilder
+
+    /// Type, responsible for performing a transition.
+    associatedtype Transition: ViewTransition
+
+    /// Instance of `ViewBuilder`.
+    var builder: Builder { get }
+
+    /// Instance of `ViewTransition`.
+    var transition: Transition { get }
 
     /// Performs route using provided context.
     ///
