@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PushNavigationTransition Class Reference</title>
+    <title>NonTransition Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Class/PushNavigationTransition" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Struct/NonTransition" class="dashAnchor"></a>
 
-    <a title="PushNavigationTransition Class Reference"></a>
+    <a title="NonTransition Structure Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -50,7 +50,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">Ariadne Reference</a>
       <img class="carat" src="../img/carat.png" />
-      PushNavigationTransition Class Reference
+      NonTransition Structure Reference
     </p>
 
     <div class="content-wrapper">
@@ -191,8 +191,14 @@
 
         <section class="section">
           <div class="section-content">
-            <h1>PushNavigationTransition</h1>
-            <p>Class, that encapsulates UINavigationController.pushViewController(_:animated:) method call as a transition.</p>
+            <h1>NonTransition</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NonTransition</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ViewTransition.html">ViewTransition</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Transition, that should not be performed and asserts if asked to do so. Can be used for routes that do not clearly define a transition, for example instances of <code><a href="../Classes/ChainableRoute.html">ChainableRoute</a></code>, which may have multiple chainable transitions embedded.</p>
 
           </div>
         </section>
@@ -204,9 +210,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Property/transitionType" class="dashAnchor"></a>
-                    <a class="token" href="#/">transitionType</a>
+                    <a name="/s:7Ariadne13NonTransitionV10isAnimatedSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isAnimated" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne13NonTransitionV10isAnimatedSbvp">isAnimated</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -214,8 +220,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Transition type .show.</p>
+                        <p>Returns false</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -223,9 +237,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/perform(with:on:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">perform(with:on:completion:)</a>
+                    <a name="/s:7Ariadne13NonTransitionV14transitionTypeAA0cE0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/transitionType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne13NonTransitionV14transitionTypeAA0cE0Ovp">transitionType</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -233,8 +247,97 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Performs transition by calling <code>pushViewController(_:animated:)</code> on <code>visibleView</code> navigation controller with <code>view</code> argument.</p>
+                        <p>Returns .custom.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">transitionType</span><span class="p">:</span> <span class="kt"><a href="../Enums/TransitionType.html">TransitionType</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne13NonTransitionV10viewFinderAA04ViewE0_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/viewFinder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne13NonTransitionV10viewFinderAA04ViewE0_pSgvp">viewFinder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns nil</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">viewFinder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ViewFinder.html">ViewFinder</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne13NonTransitionVACycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne13NonTransitionVACycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates NonTransition object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne13NonTransitionV7perform4with2on10completionySo16NSViewControllerCSg_AJySbcSgtF"></a>
+                    <a name="//apple_ref/swift/Method/perform(with:on:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne13NonTransitionV7perform4with2on10completionySo16NSViewControllerCSg_AJySbcSgtF">perform(with:on:completion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method is not expected to be called and asserts when it is.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">perform</span><span class="p">(</span><span class="n">with</span> <span class="nv">view</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/View">View</a></span><span class="p">?,</span> <span class="n">on</span> <span class="nv">visibleView</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/View">View</a></span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?)</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>

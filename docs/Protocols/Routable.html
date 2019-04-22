@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           Ariadne Docs
         </a>
-         (97% documented)
+         (96% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -167,6 +167,14 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/NonTransition.html">NonTransition</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -213,7 +221,7 @@ One example of such type is Route<ViewBuilder,ViewTransition> type, that include
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Object, responsible for building a view, that is needed for routing.</p>
+                        <p>Type, responsible for building a view, that is needed for routing.</p>
 
                       </div>
                       <div class="declaration">
@@ -221,6 +229,87 @@ One example of such type is Route<ViewBuilder,ViewTransition> type, that include
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Builder</span> <span class="p">:</span> <span class="kt">ViewBuilder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne8RoutableP10TransitionQa"></a>
+                    <a name="//apple_ref/swift/Alias/Transition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne8RoutableP10TransitionQa">Transition</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Type, responsible for performing a transition.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Transition</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ViewTransition.html">ViewTransition</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne8RoutableP7builder7BuilderQzvp"></a>
+                    <a name="//apple_ref/swift/Property/builder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne8RoutableP7builder7BuilderQzvp">builder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Instance of <code>ViewBuilder</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">builder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Routable.html#/s:7Ariadne8RoutableP7BuilderQa">Builder</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne8RoutableP10transition10TransitionQzvp"></a>
+                    <a name="//apple_ref/swift/Property/transition" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne8RoutableP10transition10TransitionQzvp">transition</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Instance of <code><a href="../Protocols/ViewTransition.html">ViewTransition</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">transition</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Routable.html#/s:7Ariadne8RoutableP10TransitionQa">Transition</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -428,8 +517,8 @@ One example of such type is Route<ViewBuilder,ViewTransition> type, that include
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2019-02-16)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2019-04-22)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

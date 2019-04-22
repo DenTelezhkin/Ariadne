@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [0.3.0](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.3.0)
+
 ### Added 
 
 * `NonTransition` struct, that represents a transition that should not be performed. This is useful for cases when transition cannot be clearly defined, for example for chainable routes.
