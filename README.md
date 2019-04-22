@@ -63,13 +63,13 @@ router.navigate(to: route, with: user)
 ### CocoaPods
 
 ```ruby
-pod 'Ariadne', '~> 0.1.0'
+pod 'Ariadne', '~> 0.3.0'
 ```
 
 ### Carthage
 
 ```ruby
-github "DenTelezhkin/Ariadne", ~> 0.1
+github "DenTelezhkin/Ariadne", ~> 0.3
 ```
 
 ## Overview
