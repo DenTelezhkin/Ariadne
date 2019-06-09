@@ -40,7 +40,7 @@ open class NavigationEmbeddingBuilder: ViewBuilder {
     ///
     /// - Parameter context: Array of views to set in `viewControllers` property.
     /// - Returns: Created `UINavigationController`.
-    open func build(with context: [View]) -> UINavigationController {
+    open func build(with context: [ViewController]) -> UINavigationController {
         let navigation = navigationControllerBuilder()
         navigation.viewControllers = context
         return navigation

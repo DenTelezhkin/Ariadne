@@ -35,13 +35,13 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
     public let transition: Transition
 
     /// Closure, that is called prior to executing .hide transition
-    open var prepareForHideTransition: ((_ visibleView: View, _ transition: Transition) -> Void)?
+    open var prepareForHideTransition: ((_ visibleView: ViewController, _ transition: Transition) -> Void)?
 
     /// Closure, that is called prior to executing .show transition
-    open var prepareForShowTransition: ((_ view: Builder.ViewType, _ transition: Transition, _ toView: View?) -> Void)?
+    open var prepareForShowTransition: ((_ view: Builder.ViewType, _ transition: Transition, _ toView: ViewController?) -> Void)?
 
     /// Closure, that is called prior to executing a .custom transition
-    open var prepareForCustomTransition: ((_ visibleView: View, _ transition: Transition) -> Void)?
+    open var prepareForCustomTransition: ((_ visibleView: ViewController, _ transition: Transition) -> Void)?
 
     /// Creates Route with specified builder and transition.
     ///

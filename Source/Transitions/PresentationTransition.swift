@@ -42,7 +42,7 @@ open class PresentationTransition: BaseTransition, ViewTransition {
     ///   - view: view that is being presented.
     ///   - visibleView: visible view, on which presentation will being performed.
     ///   - completion: called once presentation has been completed.
-    public func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
+    public func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
         guard let view = view else { completion?(false); return }
         guard let visibleView = visibleView else { completion?(false); return }
         visibleView.present(view, animated: isAnimated) {
@@ -63,7 +63,7 @@ open class DismissTransition: BaseTransition, ViewTransition {
     ///   - view: unused in dismiss transition
     ///   - visibleView: view that will be dismissed
     ///   - completion: called once dismissal is complete
-    public func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
+    public func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
         guard let visibleView = visibleView else { completion?(false); return }
         visibleView.dismiss(animated: isAnimated) {
             completion?(true)

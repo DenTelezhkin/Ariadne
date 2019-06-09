@@ -65,7 +65,7 @@ open class RootViewTransition: ViewTransition {
     ///   - view: View that will be set as a `rootViewController`.
     ///   - visibleView: Currently visibleView. Unused in this method.
     ///   - completion: Called once transition has been completed.
-    open func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
+    open func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
         if isAnimated {
             let oldState = UIView.areAnimationsEnabled
             UIView.setAnimationsEnabled(false)

@@ -46,7 +46,7 @@ open class BaseTransition {
 
     #if os(iOS) || os(tvOS)
 
-    func callCompletionBlockForTransitionFrom(_ visibleView: View?, isAnimated: Bool, completion: ((Bool) -> Void)?) {
+    func callCompletionBlockForTransitionFrom(_ visibleView: ViewController?, isAnimated: Bool, completion: ((Bool) -> Void)?) {
         if let coordinator = visibleView?.transitionCoordinator, isAnimated {
             coordinator.animate(alongsideTransition: nil) { _ in
                 completion?(true)

@@ -27,26 +27,26 @@ import Foundation
 #if os(watchOS)
 import WatchKit
 /// On watchOS, `WKInterfaceController` is considered to be a View, that can participate in navigation and routing.
-public typealias View = WKInterfaceController
+public typealias ViewController = WKInterfaceController
 #endif
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 /// On iOS and tvOS, `UIViewController` is considered to be a View, that can participate in navigation and routing.
-public typealias View = UIViewController
+public typealias ViewController = UIViewController
 #endif
 
 #if canImport(AppKit)
 import AppKit
 /// On macOS, `NSViewController` is considered to be a View, that can participate in navigation and routing.
-public typealias View = NSViewController
+public typealias ViewController = NSViewController
 #endif
 
 /// Type, that is capable of building a `View`, given `Context`.
 public protocol ViewBuilder {
 
     /// Type of `View`, that this `ViewBuilder` can build.
-    associatedtype ViewType: View
+    associatedtype ViewType: ViewController
 
     /// Argument type, that `ViewBuilder` needs to build a `View`.
     associatedtype Context
@@ -71,7 +71,7 @@ extension ViewBuilder where Context == Void {
 }
 
 /// View, that should not be built. Can be used for transitions, that hide currently visible view and do not require a new view to be built. For example - `PopNavigationTransition`, or `DismissTransition`.
-open class NonBuildableView: View {}
+open class NonBuildableView: ViewController {}
 
 /// Builder, that is incapable of building a view and asserts when asked to do so. Can be used for transitions, that hide currently visible view and do not require a new view to be built. For example - `PopNavigationTransition`, or `DismissTransition`.
 open class NonBuilder: ViewBuilder {
@@ -90,7 +90,7 @@ open class NonBuilder: ViewBuilder {
 }
 
 /// Class, that can be used to build a `View` using provided closure.
-open class InstanceViewBuilder<T: View> : ViewBuilder {
+open class InstanceViewBuilder<T: ViewController> : ViewBuilder {
 
     /// Builds a `View`.
     public let closure: () -> T

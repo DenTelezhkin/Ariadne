@@ -55,8 +55,8 @@ public protocol ViewTransition {
     ///   - view: view object that will be used for transition. In case of .hide transition type this parameter is nil.
     ///   - visibleView: Currently visible view.
     ///   - completion: closure to be called, once transition is completed.
-    func perform(with view: View?,
-                 on visibleView: View?,
+    func perform(with view: ViewController?,
+                 on visibleView: ViewController?,
                  completion: ((Bool) -> Void)?)
 }
 
@@ -76,7 +76,7 @@ public struct NonTransition: ViewTransition {
     public init() {}
 
     /// This method is not expected to be called and asserts when it is.
-    public func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
+    public func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
         assertionFailure("NonTransition should not be asked to perform transition")
         completion?(false)
     }

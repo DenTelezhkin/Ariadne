@@ -29,7 +29,7 @@ import XCTest
 #if canImport(UIKit)
 import UIKit
 
-class XibBuildingFactory<T:View> : ViewBuilder {
+class XibBuildingFactory<T:ViewController> : ViewBuilder {
     func build(with context: ()) throws -> T {
         return T(nibName: nil, bundle: nil)
     }
@@ -90,7 +90,7 @@ class IntFactory : ViewBuilder {
 
 class Tests_UIKit: XCTestCase {
     
-    var root: View? {
+    var root: ViewController? {
         return testableWindow?.rootViewController
     }
     

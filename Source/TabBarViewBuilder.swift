@@ -40,7 +40,7 @@ open class TabBarEmbeddingBuilder: ViewBuilder {
     ///
     /// - Parameter context: array of views to set in `viewControllers` property.
     /// - Returns: created `UITabBarController`.
-    open func build(with context: [View]) -> UITabBarController {
+    open func build(with context: [ViewController]) -> UITabBarController {
         let tabBar = tabBarControllerBuilder()
         tabBar.viewControllers = context
         return tabBar

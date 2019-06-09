@@ -42,7 +42,7 @@ open class PushNavigationTransition: BaseTransition, ViewTransition {
     ///   - view: view that is being pushed.
     ///   - visibleView: visible view in navigation controller stack.
     ///   - completion: called once transition has been completed
-    open func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
+    open func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
         guard let view = view else { completion?(false); return }
         guard let navigation = (visibleView as? UINavigationController) ?? visibleView?.navigationController else {
             completion?(false); return
@@ -64,7 +64,7 @@ open class PopNavigationTransition: BaseTransition, ViewTransition {
     ///   - view: currently visible view
     ///   - visibleView: currently visible view in view hierarchy
     ///   - completion: called once transition has been completed
-    open func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
+    open func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
         guard let visibleView = visibleView else { completion?(false); return }
         guard let navigation = (visibleView as? UINavigationController) ?? visibleView.navigationController else {
             completion?(false); return
@@ -86,7 +86,7 @@ open class PopToRootNavigationTransition: BaseTransition, ViewTransition {
     ///   - view: currently visible view
     ///   - visibleView: currently visible view in view hierarchy
     ///   - completion: called once transition has been completed
-    open func perform(with view: View?, on visibleView: View?, completion: ((Bool) -> Void)?) {
+    open func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
         guard let visibleView = visibleView else { completion?(false); return }
         guard let navigation = (visibleView as? UINavigationController) ?? visibleView.navigationController else {
             completion?(false); return

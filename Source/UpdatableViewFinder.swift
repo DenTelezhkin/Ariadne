@@ -41,7 +41,7 @@ public protocol ContextUpdatable {
 public protocol UpdatableViewFinder {
 
     /// Type of `View` to search for
-    associatedtype ViewType: View
+    associatedtype ViewType: ViewController
 
     /// Argument type, that can be used to update a `View`.
     associatedtype Context
@@ -58,7 +58,7 @@ public protocol UpdatableViewFinder {
 #if os(iOS) || os(tvOS)
 
 /// `UpdatableViewFinder` type that searches current view hierarchy to find view, that can be updated using `Context`. Uses `CurrentlyVisibleViewFinder` to search view hierarchy for currently visible view.
-open class CurrentlyVisibleUpdatableViewFinder<T: View & ContextUpdatable> : UpdatableViewFinder {
+open class CurrentlyVisibleUpdatableViewFinder<T: ViewController & ContextUpdatable> : UpdatableViewFinder {
 
     /// Object responsible for providing root view of interface hierarchy.
     public let rootProvider: RootViewProvider

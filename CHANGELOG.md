@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+* Added preliminary support for UIKit on Mac(Catalyst)
+* `View` renamed to `ViewController` to avoid ambiguity with `SwiftUI.View`
+
 ## [0.3.0](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.3.0)
 
 ### Added 

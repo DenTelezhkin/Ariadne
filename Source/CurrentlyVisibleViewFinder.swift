@@ -47,7 +47,7 @@ open class CurrentlyVisibleViewFinder: ViewFinder {
     ///
     /// - Parameter view: view to start search from. When nil is passed as an argument, search starts from rootViewController. Defaults to nil.
     /// - Returns: currently visible view or rootViewController if none was found.
-    open func currentlyVisibleView(startingFrom view: View? = nil) -> View? {
+    open func currentlyVisibleView(startingFrom view: ViewController? = nil) -> ViewController? {
         return findCurrentlyVisibleView(startingFrom: view ?? rootViewProvider?.rootViewController)
     }
 
@@ -55,10 +55,10 @@ open class CurrentlyVisibleViewFinder: ViewFinder {
     ///
     /// - Parameter view: view to start search from
     /// - Returns: currently visible view.
-    open func findCurrentlyVisibleView(startingFrom view: View?) -> View? {
+    open func findCurrentlyVisibleView(startingFrom view: ViewController?) -> ViewController? {
         guard let view = view else { return nil }
 
-        var visibleView: View?
+        var visibleView: ViewController?
         switch view {
         case let tabBar as UITabBarController:
             visibleView = findCurrentlyVisibleView(startingFrom: tabBar.selectedViewController ?? tabBar.presentedViewController) ?? tabBar

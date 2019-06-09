@@ -32,7 +32,7 @@ public protocol ViewFinder {
     ///
     /// - Parameter startingFrom: root view to start searching from.
     /// - Returns: currently visible view or nil, if it was not found.
-    func currentlyVisibleView(startingFrom: View?) -> View?
+    func currentlyVisibleView(startingFrom: ViewController?) -> ViewController?
 }
 
 /// Type that is responsible for providing root view in current view hierarchy.
@@ -41,7 +41,7 @@ public protocol ViewFinder {
 public protocol RootViewProvider {
 
     /// Root view in current view hierarchy.
-    var rootViewController: View? { get }
+    var rootViewController: ViewController? { get }
 }
 
 /// Type, that is capable of performing route from current screen to another one.
