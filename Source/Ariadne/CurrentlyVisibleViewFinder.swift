@@ -45,7 +45,7 @@ open class CurrentlyVisibleViewFinder: ViewFinder {
 
     /// Searches view hierarhcy for currently visible view. If no visible view was found, root view controller from `rootViewProvider` is returned.
     ///
-    /// - Parameter view: view to start search from. When nil is passed as an argument, search starts from rootViewController. Defaults to nil.
+    /// - Parameter view: view controller to start search from. When nil is passed as an argument, search starts from rootViewController. Defaults to nil.
     /// - Returns: currently visible view or rootViewController if none was found.
     open func currentlyVisibleView(startingFrom view: ViewController? = nil) -> ViewController? {
         return findCurrentlyVisibleView(startingFrom: view ?? rootViewProvider?.rootViewController)

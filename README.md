@@ -60,6 +60,10 @@ router.navigate(to: route, with: user)
 
 ## Installation
 
+### Swift Package Manager(requires Xcode 11)
+
+* Add package into Project settings -> Swift Packages
+
 ### CocoaPods
 
 ```ruby
@@ -74,15 +78,15 @@ github "DenTelezhkin/Ariadne", ~> 0.3
 
 ## Overview
 
-`Ariadne` architecture fundamentally starts with `ViewBuilder`. Because view controllers are so tightly coupled with their views on iOS, `UIViewController` is considered to be a `View`.
+`Ariadne` architecture fundamentally starts with `ViewBuilder`. Because view controllers are so tightly coupled with their views on iOS, `UIViewController` is considered to be a view and is typealiased to `ViewController`.
 
-> Note: on watchOS `View` is a typealias for `WKInterfaceController`, and on macOS for `NSViewController` for similar reasons.
+> Note: on watchOS `ViewController` is a typealias for `WKInterfaceController`, and on macOS for `NSViewController` for similar reasons.
 
-Definition of `ViewBuilder` is simple - it builds a `View` out of provided `Context`:
+Definition of `ViewBuilder` is simple - it builds a `ViewController` out of provided `Context`:
 
 ```swift
 protocol ViewBuilder {
-    associatedtype ViewType: View
+    associatedtype ViewType: ViewController
     associatedtype Context
     func build(with context: Context) throws -> ViewType
 }

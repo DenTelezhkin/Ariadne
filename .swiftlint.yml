@@ -20,6 +20,8 @@ disabled_rules:
 - superfluous_disable_command
 - large_tuple
 - identifier_name
+- type_name
+- vertical_whitespace_closing_braces
 
 included:
 - Source

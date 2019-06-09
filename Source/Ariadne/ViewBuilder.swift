@@ -26,34 +26,34 @@
 import Foundation
 #if os(watchOS)
 import WatchKit
-/// On watchOS, `WKInterfaceController` is considered to be a View, that can participate in navigation and routing.
+/// On watchOS, `WKInterfaceController` is considered to be a ViewController, that can participate in navigation and routing.
 public typealias ViewController = WKInterfaceController
 #endif
 
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
-/// On iOS and tvOS, `UIViewController` is considered to be a View, that can participate in navigation and routing.
+/// On iOS and tvOS, `UIViewController` is considered to be a ViewController, that can participate in navigation and routing.
 public typealias ViewController = UIViewController
 #endif
 
 #if canImport(AppKit)
 import AppKit
-/// On macOS, `NSViewController` is considered to be a View, that can participate in navigation and routing.
+/// On macOS, `NSViewController` is considered to be a ViewController, that can participate in navigation and routing.
 public typealias ViewController = NSViewController
 #endif
 
-/// Type, that is capable of building a `View`, given `Context`.
+/// Type, that is capable of building a `ViewController`, given `Context`.
 public protocol ViewBuilder {
 
     /// Type of `View`, that this `ViewBuilder` can build.
     associatedtype ViewType: ViewController
 
-    /// Argument type, that `ViewBuilder` needs to build a `View`.
+    /// Argument type, that `ViewBuilder` needs to build a `ViewController`.
     associatedtype Context
 
     /// Builds a `View` using provided `Context` or throws an error, if building process was not successful
     ///
-    /// - Parameter context: Argument, required to build `View`.
+    /// - Parameter context: Argument, required to build `ViewController`.
     /// - Returns: `View`, that was built using provided `Context` object.
     /// - Throws: Build error, if building process was not successful.
     func build(with context: Context) throws -> ViewType
