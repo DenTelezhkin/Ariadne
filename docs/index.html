@@ -177,10 +177,10 @@
             <a class="nav-group-name-link" href="Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Typealiases.html#/View">View</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/ViewController">ViewController</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Typealiases.html#/s:7Ariadne4Viewa">View</a>
+                <a class="nav-group-task-link" href="Typealiases.html#/s:7Ariadne14ViewControllera">ViewController</a>
               </li>
             </ul>
           </li>
@@ -193,9 +193,9 @@
             
             <p><img src="https://travis-ci.com/DenTelezhkin/Ariadne.svg?branch=master" alt="Build Status"> &nbsp;
 <a href="http://codecov.io/github/DenTelezhkin/Ariadne?branch=master"><img src="http://codecov.io/github/DenTelezhkin/Ariadne/coverage.svg?branch=master" alt="codecov.io"></a>
-<img src="https://cocoapod-badges.herokuapp.com/p/Ariadne/badge.svg" alt="CocoaPod platform"> &nbsp;
-<img src="https://cocoapod-badges.herokuapp.com/v/Ariadne/badge.svg" alt="CocoaPod version"> &nbsp;
-<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
+<a href="https://dentelezhkin.github.io/Ariadne"><img src="https://img.shields.io/cocoapods/p/Ariadne.svg?style=flat" alt="Platform"></a>
+<a href="https://img.shields.io/cocoapods/v/Ariadne.svg"><img src="https://img.shields.io/cocoapods/v/Ariadne.svg" alt="CocoaPods Compatible"></a>
+<a href="https://github.com/apple/swift-package-manager"><img src="https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg" alt="Swift Package Manager compatible"></a>
 <a href=""><img src="https://img.shields.io/packagist/l/doctrine/orm.svg" alt="Packagist"></a></p>
 
 <p align="left">
@@ -248,23 +248,28 @@ Without SwiftGen <code>Storyboards.User.userViewController.builder</code> could 
 <li>Xcode 10 / Swift 4.2 and higher</li>
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
+<h3 id='swift-package-manager-requires-xcode-11' class='heading'>Swift Package Manager(requires Xcode 11)</h3>
+
+<ul>
+<li>Add package into Project settings -&gt; Swift Packages</li>
+</ul>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Ariadne'</span><span class="p">,</span> <span class="s1">'~&gt; 0.1.0'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'Ariadne'</span>
 </code></pre>
 <h3 id='carthage' class='heading'>Carthage</h3>
-<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"DenTelezhkin/Ariadne"</span><span class="p">,</span> <span class="o">~&gt;</span> <span class="mi">0</span><span class="o">.</span><span class="mi">1</span>
+<pre class="highlight ruby"><code><span class="n">github</span> <span class="s2">"DenTelezhkin/Ariadne"</span>
 </code></pre>
 <h2 id='overview' class='heading'>Overview</h2>
 
-<p><code>Ariadne</code> architecture fundamentally starts with <code>ViewBuilder</code>. Because view controllers are so tightly coupled with their views on iOS, <code>UIViewController</code> is considered to be a <code><a href="Typealiases.html#/View">View</a></code>.</p>
+<p><code>Ariadne</code> architecture fundamentally starts with <code>ViewBuilder</code>. Because view controllers are so tightly coupled with their views on iOS, <code>UIViewController</code> is considered to be a view and is typealiased to <code><a href="Typealiases.html#/ViewController">ViewController</a></code>.</p>
 
 <blockquote>
-<p>Note: on watchOS <code><a href="Typealiases.html#/View">View</a></code> is a typealias for <code>WKInterfaceController</code>, and on macOS for <code>NSViewController</code> for similar reasons.</p>
+<p>Note: on watchOS <code><a href="Typealiases.html#/ViewController">ViewController</a></code> is a typealias for <code>WKInterfaceController</code>, and on macOS for <code>NSViewController</code> for similar reasons.</p>
 </blockquote>
 
-<p>Definition of <code>ViewBuilder</code> is simple - it builds a <code><a href="Typealiases.html#/View">View</a></code> out of provided <code>Context</code>:</p>
+<p>Definition of <code>ViewBuilder</code> is simple - it builds a <code><a href="Typealiases.html#/ViewController">ViewController</a></code> out of provided <code>Context</code>:</p>
 <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">ViewBuilder</span> <span class="p">{</span>
-    <span class="kd">associatedtype</span> <span class="kt">ViewType</span><span class="p">:</span> <span class="kt">View</span>
+    <span class="kd">associatedtype</span> <span class="kt">ViewType</span><span class="p">:</span> <span class="kt">ViewController</span>
     <span class="kd">associatedtype</span> <span class="kt">Context</span>
     <span class="kd">func</span> <span class="nf">build</span><span class="p">(</span><span class="n">with</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">Context</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">ViewType</span>
 <span class="p">}</span>
@@ -339,7 +344,7 @@ Without SwiftGen <code>Storyboards.User.userViewController.builder</code> could 
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2019-04-22)</p>
+      <p>&copy; 2019 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2019-06-15)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

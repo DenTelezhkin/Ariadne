@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [0.4.0](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.4.0)
+
 * Support for Swift Package Manager in Xcode 11.
 * Added preliminary support for UIKit on Mac(Catalyst)
 * `View` renamed to `ViewController` to avoid ambiguity with `SwiftUI.View`
