@@ -1,8 +1,8 @@
 ![Build Status](https://travis-ci.com/DenTelezhkin/Ariadne.svg?branch=master) &nbsp;
 [![codecov.io](http://codecov.io/github/DenTelezhkin/Ariadne/coverage.svg?branch=master)](http://codecov.io/github/DenTelezhkin/Ariadne?branch=master)
-![CocoaPod platform](https://cocoapod-badges.herokuapp.com/p/Ariadne/badge.svg) &nbsp;
-![CocoaPod version](https://cocoapod-badges.herokuapp.com/v/Ariadne/badge.svg) &nbsp;
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Platform](https://img.shields.io/cocoapods/p/Ariadne.svg?style=flat)](https://dentelezhkin.github.io/Ariadne)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Ariadne.svg)](https://img.shields.io/cocoapods/v/Ariadne.svg)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
 
 <p align="left">
@@ -67,13 +67,13 @@ router.navigate(to: route, with: user)
 ### CocoaPods
 
 ```ruby
-pod 'Ariadne', '~> 0.3.0'
+pod 'Ariadne'
 ```
 
 ### Carthage
 
 ```ruby
-github "DenTelezhkin/Ariadne", ~> 0.3
+github "DenTelezhkin/Ariadne"
 ```
 
 ## Overview
