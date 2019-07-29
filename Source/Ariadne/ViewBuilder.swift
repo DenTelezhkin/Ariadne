@@ -90,7 +90,7 @@ open class NonBuilder: ViewBuilder {
 }
 
 /// Class, that can be used to build a `View` using provided closure.
-open class InstanceViewBuilder<T: ViewController> : ViewBuilder {
+open class InstanceViewBuilder<T: ViewController>: ViewBuilder {
 
     /// Builds a `View`.
     public let closure: () -> T

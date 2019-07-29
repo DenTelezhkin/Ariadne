@@ -48,7 +48,7 @@ open class NavigationEmbeddingBuilder: ViewBuilder {
 }
 
 /// Builder for `UINavigationController` instance with a single embedded view. This builder keeps `Context` the same as `Context` of embedded view builder, thus allowing building a combination of those by passing embedded view Context.
-open class NavigationSingleViewEmbeddingBuilder<T: ViewBuilder> : ViewBuilder {
+open class NavigationSingleViewEmbeddingBuilder<T: ViewBuilder>: ViewBuilder {
 
     /// `NavigationSingleViewEmbeddingBuilder`.Context is identical to embedded view Context.
     public typealias Context = T.Context

@@ -1,26 +1,26 @@
 {
   "warnings": [
     {
-      "file": "/Users/Denys/Projects/Ariadne/Source/ViewTransition.swift",
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/ViewTransition.swift",
       "line": 35,
       "symbol": "TransitionType.hide",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Denys/Projects/Ariadne/Source/ViewTransition.swift",
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/ViewTransition.swift",
       "line": 36,
       "symbol": "TransitionType.show",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/Denys/Projects/Ariadne/Source/ViewTransition.swift",
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/ViewTransition.swift",
       "line": 37,
       "symbol": "TransitionType.custom",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/Denys/Projects/Ariadne"
+  "source_directory": "/Users/denystelezkin/Developer/Ariadne"
 }

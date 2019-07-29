@@ -48,7 +48,7 @@ open class PushNavigationTransition: BaseTransition, ViewTransition {
             completion?(false); return
         }
         navigation.pushViewController(view, animated: isAnimated)
-        callCompletionBlockForTransitionFrom(visibleView, isAnimated: isAnimated, completion: completion)
+        animateAlongsideTransition(with: visibleView, isAnimated: isAnimated, completion: completion)
     }
 }
 
@@ -70,7 +70,7 @@ open class PopNavigationTransition: BaseTransition, ViewTransition {
             completion?(false); return
         }
         navigation.popViewController(animated: isAnimated)
-        callCompletionBlockForTransitionFrom(visibleView, isAnimated: isAnimated, completion: completion)
+        animateAlongsideTransition(with: visibleView, isAnimated: isAnimated, completion: completion)
     }
 }
 
@@ -92,7 +92,7 @@ open class PopToRootNavigationTransition: BaseTransition, ViewTransition {
             completion?(false); return
         }
         navigation.popToRootViewController(animated: isAnimated)
-        callCompletionBlockForTransitionFrom(visibleView, isAnimated: isAnimated, completion: completion)
+        animateAlongsideTransition(with: visibleView, isAnimated: isAnimated, completion: completion)
     }
 }
 

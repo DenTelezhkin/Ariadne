@@ -85,7 +85,7 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
 }
 
 /// Subclass of `Route`, that allows view to be updated instead of creating a new one to transition to.
-open class UpdatingRoute<Finder: UpdatableViewFinder, Builder: ViewBuilder, Transition: ViewTransition> : Route<Builder, Transition>
+open class UpdatingRoute<Finder: UpdatableViewFinder, Builder: ViewBuilder, Transition: ViewTransition>: Route<Builder, Transition>
     where Builder.ViewType: ContextUpdatable,
         Builder.Context == Builder.ViewType.Context,
         Finder.Context == Builder.Context,

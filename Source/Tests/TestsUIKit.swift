@@ -29,7 +29,7 @@ import XCTest
 #if canImport(UIKit)
 import UIKit
 
-class XibBuildingFactory<T: ViewController> : ViewBuilder {
+class XibBuildingFactory<T: ViewController>: ViewBuilder {
     func build(with context: ()) throws -> T {
         return T(nibName: nil, bundle: nil)
     }

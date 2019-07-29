@@ -46,7 +46,11 @@ open class BaseTransition {
 
     #if os(iOS) || os(tvOS)
 
-    func callCompletionBlockForTransitionFrom(_ visibleView: ViewController?, isAnimated: Bool, completion: ((Bool) -> Void)?) {
+    /// If `isAnimated` flag is true, calls visibleView.transitionCoordinator `animate(alongsideTransition:)` method and calls completion block once transition has been completed. If `isAnimated` is false, just calls completion block and returns.
+    /// - Parameter visibleView: View to perform transition on
+    /// - Parameter isAnimated: whether transition should be animated
+    /// - Parameter completion: completion block to call once transition is completed
+    open func animateAlongsideTransition(with visibleView: ViewController?, isAnimated: Bool, completion: ((Bool) -> Void)?) {
         if let coordinator = visibleView?.transitionCoordinator, isAnimated {
             coordinator.animate(alongsideTransition: nil) { _ in
                 completion?(true)
