@@ -33,7 +33,7 @@ protocol Buildable {
     func update(with context: Context)
 }
 
-class StoryboardBuilder<T: UIViewController & Buildable>: ViewBuilder {
+class StoryboardBuilder<T: UIViewController & Buildable>: ViewControllerBuilder {
     
     let scene : SceneType<T>
     

@@ -22,7 +22,7 @@
 		3E5D6F3822ADA6BF00CF82C5 /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D6F2B22ADA6BF00CF82C5 /* BaseTransition.swift */; };
 		3E5D6F3922ADA6BF00CF82C5 /* UpdatableViewFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D6F2C22ADA6BF00CF82C5 /* UpdatableViewFinder.swift */; };
 		3E5D6F3A22ADA6BF00CF82C5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D6F2D22ADA6BF00CF82C5 /* Route.swift */; };
-		3E5D6F3B22ADA6BF00CF82C5 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D6F2E22ADA6BF00CF82C5 /* ViewBuilder.swift */; };
+		3E5D6F3B22ADA6BF00CF82C5 /* ViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D6F2E22ADA6BF00CF82C5 /* ViewControllerBuilder.swift */; };
 		9A585449220AE846005469C8 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A585448220AE846005469C8 /* Storyboards.swift */; };
 		9A58544C220B1C5D005469C8 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A58544B220B1C5D005469C8 /* Buildable.swift */; };
 		9A58544D220B1DA1005469C8 /* Example.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A58544F220B1DA1005469C8 /* Example.storyboard */; };
@@ -86,7 +86,7 @@
 		3E5D6F2B22ADA6BF00CF82C5 /* BaseTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		3E5D6F2C22ADA6BF00CF82C5 /* UpdatableViewFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatableViewFinder.swift; sourceTree = "<group>"; };
 		3E5D6F2D22ADA6BF00CF82C5 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		3E5D6F2E22ADA6BF00CF82C5 /* ViewBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
+		3E5D6F2E22ADA6BF00CF82C5 /* ViewControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerBuilder.swift; sourceTree = "<group>"; };
 		3EFDAA1B225A8CB100A7647B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3EFDAA1C225A8CB100A7647B /* VISION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = VISION.md; sourceTree = "<group>"; };
 		3EFDAA1D225A8CB100A7647B /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -182,18 +182,18 @@
 			isa = PBXGroup;
 			children = (
 				3E5D6F2222ADA6BF00CF82C5 /* Ariadne.swift */,
-				3E5D6F2322ADA6BF00CF82C5 /* NavigationTransition.swift */,
-				3E5D6F2422ADA6BF00CF82C5 /* TabBarViewBuilder.swift */,
-				3E5D6F2522ADA6BF00CF82C5 /* SplitViewBuilder.swift */,
-				3E5D6F2622ADA6BF00CF82C5 /* ViewTransition.swift */,
-				3E5D6F2722ADA6BF00CF82C5 /* PresentationTransition.swift */,
-				3E5D6F2822ADA6BF00CF82C5 /* CurrentlyVisibleViewFinder.swift */,
-				3E5D6F2922ADA6BF00CF82C5 /* NavigationViewBuilder.swift */,
-				3E5D6F2A22ADA6BF00CF82C5 /* RootViewTransition.swift */,
 				3E5D6F2B22ADA6BF00CF82C5 /* BaseTransition.swift */,
-				3E5D6F2C22ADA6BF00CF82C5 /* UpdatableViewFinder.swift */,
+				3E5D6F2822ADA6BF00CF82C5 /* CurrentlyVisibleViewFinder.swift */,
+				3E5D6F2322ADA6BF00CF82C5 /* NavigationTransition.swift */,
+				3E5D6F2922ADA6BF00CF82C5 /* NavigationViewBuilder.swift */,
+				3E5D6F2722ADA6BF00CF82C5 /* PresentationTransition.swift */,
+				3E5D6F2A22ADA6BF00CF82C5 /* RootViewTransition.swift */,
 				3E5D6F2D22ADA6BF00CF82C5 /* Route.swift */,
-				3E5D6F2E22ADA6BF00CF82C5 /* ViewBuilder.swift */,
+				3E5D6F2522ADA6BF00CF82C5 /* SplitViewBuilder.swift */,
+				3E5D6F2422ADA6BF00CF82C5 /* TabBarViewBuilder.swift */,
+				3E5D6F2C22ADA6BF00CF82C5 /* UpdatableViewFinder.swift */,
+				3E5D6F2E22ADA6BF00CF82C5 /* ViewControllerBuilder.swift */,
+				3E5D6F2622ADA6BF00CF82C5 /* ViewTransition.swift */,
 			);
 			path = Ariadne;
 			sourceTree = "<group>";
@@ -299,7 +299,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Denys Telezhkin";
 				TargetAttributes = {
 					3E3E0F9F21623CD90055258B = {
@@ -410,7 +410,7 @@
 				3E5D6F3622ADA6BF00CF82C5 /* NavigationViewBuilder.swift in Sources */,
 				3E5D6F3822ADA6BF00CF82C5 /* BaseTransition.swift in Sources */,
 				3E5D6F3922ADA6BF00CF82C5 /* UpdatableViewFinder.swift in Sources */,
-				3E5D6F3B22ADA6BF00CF82C5 /* ViewBuilder.swift in Sources */,
+				3E5D6F3B22ADA6BF00CF82C5 /* ViewControllerBuilder.swift in Sources */,
 				3E5D6F3022ADA6BF00CF82C5 /* NavigationTransition.swift in Sources */,
 				3E5D6F2F22ADA6BF00CF82C5 /* Ariadne.swift in Sources */,
 				3E5D6F3422ADA6BF00CF82C5 /* PresentationTransition.swift in Sources */,
@@ -707,6 +707,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -724,6 +725,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

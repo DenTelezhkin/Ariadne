@@ -26,7 +26,7 @@
 import Foundation
 
 /// Type, that is responsible for performing routing between views.
-open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
+open class Route<Builder: ViewControllerBuilder, Transition: ViewTransition>: Routable {
 
     /// Object, responsible for building a view, that is needed for routing.
     public let builder: Builder
@@ -85,7 +85,7 @@ open class Route<Builder: ViewBuilder, Transition: ViewTransition>: Routable {
 }
 
 /// Subclass of `Route`, that allows view to be updated instead of creating a new one to transition to.
-open class UpdatingRoute<Finder: UpdatableViewFinder, Builder: ViewBuilder, Transition: ViewTransition>: Route<Builder, Transition>
+open class UpdatingRoute<Finder: UpdatableViewFinder, Builder: ViewControllerBuilder, Transition: ViewTransition>: Route<Builder, Transition>
     where Builder.ViewType: ContextUpdatable,
         Builder.Context == Builder.ViewType.Context,
         Finder.Context == Builder.Context,

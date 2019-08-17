@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+### Deprecated
+
+* `ViewBuilder` protocol was deprecated to avoid clashes with SwiftUI `ViewBuilder`. Please use `ViewControllerBuilder` instead.
+
 ## [0.4.1](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.4.1)
 
 ### Changed

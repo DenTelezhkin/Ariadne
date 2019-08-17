@@ -29,7 +29,7 @@ import XCTest
 #if canImport(UIKit)
 import UIKit
 
-class XibBuildingFactory<T: ViewController>: ViewBuilder {
+class XibBuildingFactory<T: ViewController>: ViewControllerBuilder {
     func build(with context: ()) throws -> T {
         return T(nibName: nil, bundle: nil)
     }
@@ -75,7 +75,7 @@ class IntViewController: UIViewController, ContextUpdatable {
     }
 }
 
-class IntFactory: ViewBuilder {
+class IntFactory: ViewControllerBuilder {
 
     let window: UIWindow
 

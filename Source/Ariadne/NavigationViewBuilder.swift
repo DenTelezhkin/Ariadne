@@ -31,7 +31,7 @@ import UIKit
 #if os(iOS) || os(tvOS)
 
 /// Builder for `UINavigationController` instance with array of views.
-open class NavigationEmbeddingBuilder: ViewBuilder {
+open class NavigationEmbeddingBuilder: ViewControllerBuilder {
 
     /// Defines how `UINavigationController` should be created.
     open var navigationControllerBuilder : () -> UINavigationController = { .init() }
@@ -48,7 +48,7 @@ open class NavigationEmbeddingBuilder: ViewBuilder {
 }
 
 /// Builder for `UINavigationController` instance with a single embedded view. This builder keeps `Context` the same as `Context` of embedded view builder, thus allowing building a combination of those by passing embedded view Context.
-open class NavigationSingleViewEmbeddingBuilder<T: ViewBuilder>: ViewBuilder {
+open class NavigationSingleViewEmbeddingBuilder<T: ViewControllerBuilder>: ViewControllerBuilder {
 
     /// `NavigationSingleViewEmbeddingBuilder`.Context is identical to embedded view Context.
     public typealias Context = T.Context
@@ -79,7 +79,7 @@ open class NavigationSingleViewEmbeddingBuilder<T: ViewBuilder>: ViewBuilder {
     }
 }
 
-extension ViewBuilder {
+extension ViewControllerBuilder {
 
     /// Creates a `NavigationSingleViewEmbeddingBuilder`, embedding current view builder in it.
     ///

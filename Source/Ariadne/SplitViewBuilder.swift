@@ -31,7 +31,7 @@ import UIKit
 #if os(iOS) || os(tvOS)
 
 /// Builder for `UISplitViewController` instance.
-open class SplitViewBuilder<MasterBuilder: ViewBuilder, DetailBuilder: ViewBuilder>: ViewBuilder {
+open class SplitViewBuilder<MasterBuilder: ViewControllerBuilder, DetailBuilder: ViewControllerBuilder>: ViewControllerBuilder {
 
     /// Defines how `UISplitViewController` should be created.
     open var splitViewControllerBuilder: () -> UISplitViewController = { .init() }

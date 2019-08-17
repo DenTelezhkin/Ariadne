@@ -1,5 +1,5 @@
 //
-//  ViewBuilder.swift
+//  ViewControllerBuilder.swift
 //  Ariadne
 //
 //  Created by Denys Telezhkin on 1/29/19.
@@ -43,9 +43,9 @@ public typealias ViewController = NSViewController
 #endif
 
 /// Type, that is capable of building a `ViewController`, given `Context`.
-public protocol ViewBuilder {
+public protocol ViewControllerBuilder {
 
-    /// Type of `View`, that this `ViewBuilder` can build.
+    /// Type of `View`, that this `ViewControllerBuilder` can build.
     associatedtype ViewType: ViewController
 
     /// Argument type, that `ViewBuilder` needs to build a `ViewController`.
@@ -59,7 +59,11 @@ public protocol ViewBuilder {
     func build(with context: Context) throws -> ViewType
 }
 
-extension ViewBuilder where Context == Void {
+@available(*, deprecated, message: "Please use `ViewControllerBuilder` protocol instead.")
+/// `ViewBuiilder` protocol was renamed to `ViewControllerBuilder` protocol to avoid clashes with SwiftUI `ViewBuilder`.
+public typealias ViewBuilder = ViewControllerBuilder
+
+extension ViewControllerBuilder where Context == Void {
 
     /// Builds a `View`, that does not require `Context`, because it's Context is Void.
     ///
@@ -74,7 +78,7 @@ extension ViewBuilder where Context == Void {
 open class NonBuildableView: ViewController {}
 
 /// Builder, that is incapable of building a view and asserts when asked to do so. Can be used for transitions, that hide currently visible view and do not require a new view to be built. For example - `PopNavigationTransition`, or `DismissTransition`.
-open class NonBuilder: ViewBuilder {
+open class NonBuilder: ViewControllerBuilder {
 
     /// Creates `NonBuilder` instance
     public init() {}
@@ -90,7 +94,7 @@ open class NonBuilder: ViewBuilder {
 }
 
 /// Class, that can be used to build a `View` using provided closure.
-open class InstanceViewBuilder<T: ViewController>: ViewBuilder {
+open class InstanceViewBuilder<T: ViewController>: ViewControllerBuilder {
 
     /// Builds a `View`.
     public let closure: () -> T
@@ -115,7 +119,7 @@ open class InstanceViewBuilder<T: ViewController>: ViewBuilder {
 
 #if os(iOS) || os(tvOS)
 
-extension ViewBuilder {
+extension ViewControllerBuilder {
 
     /// Creates a route, that uses current builder, creates a view, and pushes it onto current navigation stack.
     ///

@@ -31,7 +31,7 @@ import UIKit
 #if os(iOS) || os(tvOS)
 
 /// Builder for `UITabBarController` instance.
-open class TabBarEmbeddingBuilder: ViewBuilder {
+open class TabBarEmbeddingBuilder: ViewControllerBuilder {
 
     /// Defines how `UITabBarController` should be created.
     open var tabBarControllerBuilder: () -> UITabBarController = { .init() }
