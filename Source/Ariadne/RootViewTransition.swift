@@ -67,16 +67,15 @@ open class RootViewTransition: ViewTransition {
     ///   - completion: Called once transition has been completed.
     open func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
         if isAnimated {
-            let oldState = UIView.areAnimationsEnabled
-            UIView.setAnimationsEnabled(false)
-            UIView.transition(with: window, duration: duration,
-                              options: animationOptions,
-                              animations: {
-                self.window.rootViewController = view
-            }, completion: { state in
-                UIView.setAnimationsEnabled(oldState)
-                completion?(state)
-            })
+            UIView.performWithoutAnimation {
+                UIView.transition(with: window, duration: duration,
+                                  options: animationOptions,
+                                  animations: {
+                    self.window.rootViewController = view
+                }, completion: { state in
+                    completion?(state)
+                })
+            }
         } else {
             window.rootViewController = view
             completion?(true)
