@@ -1,7 +1,7 @@
 fastlane_version "1.98.0"
 
 lane :test_ios13 do
-  scan(devices: ["iPhone Xs (13.1)"])
+  scan(devices: ["iPhone 11 Pro (13.1)"])
   sh "bash ../codecov.sh"
 end
 
