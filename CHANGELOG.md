@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+### Added
+
+* `AnyBuilder` struct, that can be used to erase any `ViewControllerBuilder` type to allow more convenient usage, as well as shorter notation.
+
 ### Deprecated
 
 * `ViewBuilder` protocol was deprecated to avoid clashes with SwiftUI `ViewBuilder`. Please use `ViewControllerBuilder` instead.

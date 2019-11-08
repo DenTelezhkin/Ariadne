@@ -23,6 +23,7 @@
 		3E5D6F3922ADA6BF00CF82C5 /* UpdatableViewFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D6F2C22ADA6BF00CF82C5 /* UpdatableViewFinder.swift */; };
 		3E5D6F3A22ADA6BF00CF82C5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D6F2D22ADA6BF00CF82C5 /* Route.swift */; };
 		3E5D6F3B22ADA6BF00CF82C5 /* ViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D6F2E22ADA6BF00CF82C5 /* ViewControllerBuilder.swift */; };
+		9A0E42D023759CE20027C995 /* AnyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0E42CF23759CE20027C995 /* AnyBuilder.swift */; };
 		9A585449220AE846005469C8 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A585448220AE846005469C8 /* Storyboards.swift */; };
 		9A58544C220B1C5D005469C8 /* Buildable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A58544B220B1C5D005469C8 /* Buildable.swift */; };
 		9A58544D220B1DA1005469C8 /* Example.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A58544F220B1DA1005469C8 /* Example.storyboard */; };
@@ -90,6 +91,7 @@
 		3EFDAA1B225A8CB100A7647B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3EFDAA1C225A8CB100A7647B /* VISION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = VISION.md; sourceTree = "<group>"; };
 		3EFDAA1D225A8CB100A7647B /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		9A0E42CF23759CE20027C995 /* AnyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyBuilder.swift; sourceTree = "<group>"; };
 		9A585448220AE846005469C8 /* Storyboards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		9A58544B220B1C5D005469C8 /* Buildable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buildable.swift; sourceTree = "<group>"; };
 		9A58544E220B1DA1005469C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Example.storyboard; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		3E5D6F2122ADA6BF00CF82C5 /* Ariadne */ = {
 			isa = PBXGroup;
 			children = (
+				9A0E42CF23759CE20027C995 /* AnyBuilder.swift */,
 				3E5D6F2222ADA6BF00CF82C5 /* Ariadne.swift */,
 				3E5D6F2B22ADA6BF00CF82C5 /* BaseTransition.swift */,
 				3E5D6F2822ADA6BF00CF82C5 /* CurrentlyVisibleViewFinder.swift */,
@@ -411,6 +414,7 @@
 				3E5D6F3822ADA6BF00CF82C5 /* BaseTransition.swift in Sources */,
 				3E5D6F3922ADA6BF00CF82C5 /* UpdatableViewFinder.swift in Sources */,
 				3E5D6F3B22ADA6BF00CF82C5 /* ViewControllerBuilder.swift in Sources */,
+				9A0E42D023759CE20027C995 /* AnyBuilder.swift in Sources */,
 				3E5D6F3022ADA6BF00CF82C5 /* NavigationTransition.swift in Sources */,
 				3E5D6F2F22ADA6BF00CF82C5 /* Ariadne.swift in Sources */,
 				3E5D6F3422ADA6BF00CF82C5 /* PresentationTransition.swift in Sources */,
