@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [0.5.0](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.5.0)
+
 ### Added
 
 * `AnyBuilder` struct, that can be used to erase any `ViewControllerBuilder` type to allow more convenient usage, as well as shorter notation.

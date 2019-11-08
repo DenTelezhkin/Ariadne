@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           Ariadne Docs
         </a>
-         (96% documented)
+         (95% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -136,7 +136,7 @@
                 <a class="nav-group-task-link" href="../Extensions/Route.html">Route</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/ViewBuilder.html">ViewBuilder</a>
+                <a class="nav-group-task-link" href="../Extensions/ViewControllerBuilder.html">ViewControllerBuilder</a>
               </li>
             </ul>
           </li>
@@ -156,7 +156,7 @@
                 <a class="nav-group-task-link" href="../Protocols/UpdatableViewFinder.html">UpdatableViewFinder</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Protocols/ViewBuilder.html">ViewBuilder</a>
+                <a class="nav-group-task-link" href="../Protocols/ViewControllerBuilder.html">ViewControllerBuilder</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Protocols/ViewFinder.html">ViewFinder</a>
@@ -170,6 +170,9 @@
             <a class="nav-group-name-link" href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Structs/AnyBuilder.html">AnyBuilder</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Structs/NonTransition.html">NonTransition</a>
               </li>
             </ul>
@@ -177,6 +180,9 @@
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Typealiases.html#/s:7Ariadne11ViewBuildera">ViewBuilder</a>
+              </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Typealiases.html#/ViewController">ViewController</a>
               </li>
@@ -194,7 +200,7 @@
             <h1>UpdatingRoute</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UpdatingRoute</span><span class="o">&lt;</span><span class="kt">Finder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/UpdatableViewFinder.html">UpdatableViewFinder</a></span><span class="p">,</span> <span class="kt">Builder</span><span class="p">:</span> <span class="kt">ViewBuilder</span><span class="p">,</span> <span class="kt">Transition</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ViewTransition.html">ViewTransition</a></span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt">Builder</span><span class="p">,</span> <span class="kt">Transition</span><span class="o">&gt;</span>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UpdatingRoute</span><span class="o">&lt;</span><span class="kt">Finder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/UpdatableViewFinder.html">UpdatableViewFinder</a></span><span class="p">,</span> <span class="kt">Builder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ViewControllerBuilder.html">ViewControllerBuilder</a></span><span class="p">,</span> <span class="kt">Transition</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ViewTransition.html">ViewTransition</a></span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt">Builder</span><span class="p">,</span> <span class="kt">Transition</span><span class="o">&gt;</span>
     <span class="k">where</span> <span class="kt">Builder</span><span class="o">.</span><span class="kt">ViewType</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ContextUpdatable.html">ContextUpdatable</a></span><span class="p">,</span>
         <span class="kt">Builder</span><span class="o">.</span><span class="kt">Context</span> <span class="o">==</span> <span class="kt">Builder</span><span class="o">.</span><span class="kt">ViewType</span><span class="o">.</span><span class="kt">Context</span><span class="p">,</span>
         <span class="kt">Finder</span><span class="o">.</span><span class="kt">Context</span> <span class="o">==</span> <span class="kt">Builder</span><span class="o">.</span><span class="kt">Context</span><span class="p">,</span>
@@ -386,8 +392,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2019-07-29)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2019 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2019-11-08)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

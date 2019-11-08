@@ -30,10 +30,10 @@
 /// `builder.asAnyBuilder`
 /// which wraps builder in the `AnyBuilder`, which can be now used as return type that is much shorter.
 public struct AnyBuilder: ViewControllerBuilder {
-    
+
     /// Closure, that constructs `ViewController`.
     let builder: () throws -> ViewController
-    
+
     /// Creates `AnyBuilder` instance.
     /// - Parameters:
     ///   - builder: builder, whose type is going to be erased.
@@ -41,19 +41,19 @@ public struct AnyBuilder: ViewControllerBuilder {
     public init<T: ViewControllerBuilder>(builder: T, context: T.Context) {
         self.builder = { try builder.build(with: context) }
     }
-    
+
     /// Creates `AnyBuilder` instance
     /// - Parameter builder: builder, whose type is going to be erased.
     public init<T: ViewControllerBuilder>(builder: T) where T.Context == Void {
         self.builder = { try builder.build(with: ()) }
     }
-    
+
     /// Creates `AnyBuilder` instance
     /// - Parameter buildingBy: closure to build `ViewController` when Route is executed.
     public init<T: ViewController>(buildingBy: @escaping () throws -> T) {
         self.builder = { try buildingBy() }
     }
-    
+
     /// Builds `ViewController` by running `builder` closure.
     /// - Parameter context: context is always Void, because Builder and Context types have been erased and are unknown at this point.
     public func build(with context: ()) throws -> ViewController {
