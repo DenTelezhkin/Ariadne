@@ -36,6 +36,13 @@ open class TabBarEmbeddingBuilder: ViewControllerBuilder {
     /// Defines how `UITabBarController` should be created.
     open var tabBarControllerBuilder: () -> UITabBarController = { .init() }
 
+    // swiftlint:disable multiple_closure_params
+
+    /// Creates `TabBarEmbeddingBuilder`.
+    public init(tabBarBuilder: @escaping () -> UITabBarController = { .init() }) {
+        self.tabBarControllerBuilder = tabBarBuilder
+    }
+
     /// Builds `UITabBarController` from provided array of views, setting them in `viewControllers` property of `UITabBarController`.
     ///
     /// - Parameter context: array of views to set in `viewControllers` property.

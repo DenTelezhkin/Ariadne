@@ -36,6 +36,13 @@ open class NavigationEmbeddingBuilder: ViewControllerBuilder {
     /// Defines how `UINavigationController` should be created.
     open var navigationControllerBuilder : () -> UINavigationController = { .init() }
 
+    // swiftlint:disable multiple_closure_params
+
+    /// Creates `NavigationEmbeddingBuilder`.
+    public init(navigationBuilder: @escaping () -> UINavigationController = { .init() }) {
+        self.navigationControllerBuilder = navigationBuilder
+    }
+
     /// Builds `UINavigationController` from provided array of views, setting them in `viewControllers` property of `UINavigationController`.
     ///
     /// - Parameter context: Array of views to set in `viewControllers` property.

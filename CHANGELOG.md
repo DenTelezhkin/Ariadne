@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+* `NavigationViewBuilder` and `TabBarViewBuilder` now have publicly available initializers.
+
 ## [0.5.0](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.5.0)
 
 ### Added
