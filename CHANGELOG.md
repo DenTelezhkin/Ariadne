@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+### Changed
+
+* `PopNavigationTransition` now supports both pop and pop to root transitions.
+
+### Deprecated
+
+* `PopToRootNavigationTransition`, it's functionality is moved to `PopNavigationTransition` with .popToRoot kind.
+
 ## [0.5.1](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.5.1)
 
 * `NavigationViewBuilder` and `TabBarViewBuilder` now have publicly available initializers.

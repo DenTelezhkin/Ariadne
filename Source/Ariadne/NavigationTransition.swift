@@ -55,8 +55,27 @@ open class PushNavigationTransition: BaseTransition, ViewTransition {
 /// Class, that encapsulates UINavigationController.popViewController(_:animated:) method call as a transition.
 open class PopNavigationTransition: BaseTransition, ViewTransition {
 
+    /// Kind of pop navigation transition to perform
+    public enum Kind {
+        case pop
+        case popToRoot
+    }
+
     /// Transition type .hide.
     public let transitionType: TransitionType = .hide
+
+    /// Kind of pop navigation transition to perform
+    public let kind: Kind
+
+    /// Creates `PopNavigationTransition` with specified `kind`.
+    /// - Parameters:
+    ///   - kind: kind of pop navigation transition
+    ///   - finder: Object responsible for finding currently visible view in view hierarchy. Defaults to nil.
+    ///   - isAnimated: Should the transition be animated. Defaults to true.
+    public init(kind: Kind = .pop, finder: ViewFinder? = nil, isAnimated: Bool = true) {
+        self.kind = kind
+        super.init(finder: finder, isAnimated: isAnimated)
+    }
 
     /// Performs transition by calling `popViewController(_:animated:)` on `visibleView` navigation controller.
     ///
@@ -69,11 +88,15 @@ open class PopNavigationTransition: BaseTransition, ViewTransition {
         guard let navigation = (visibleView as? UINavigationController) ?? visibleView.navigationController else {
             completion?(false); return
         }
-        navigation.popViewController(animated: isAnimated)
+        switch kind {
+            case .pop: navigation.popViewController(animated: isAnimated)
+            case .popToRoot: navigation.popToRootViewController(animated: isAnimated)
+        }
         animateAlongsideTransition(with: visibleView, isAnimated: isAnimated, completion: completion)
     }
 }
 
+@available(*, deprecated, message: "Please use PopNavigationTransition with .popToRoot Kind.")
 /// Class, that encapsulates UINavigationController.popToRootViewController(animated:) method call as a transition.
 open class PopToRootNavigationTransition: BaseTransition, ViewTransition {
 
@@ -87,12 +110,8 @@ open class PopToRootNavigationTransition: BaseTransition, ViewTransition {
     ///   - visibleView: currently visible view in view hierarchy
     ///   - completion: called once transition has been completed
     open func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
-        guard let visibleView = visibleView else { completion?(false); return }
-        guard let navigation = (visibleView as? UINavigationController) ?? visibleView.navigationController else {
-            completion?(false); return
-        }
-        navigation.popToRootViewController(animated: isAnimated)
-        animateAlongsideTransition(with: visibleView, isAnimated: isAnimated, completion: completion)
+        PopNavigationTransition(kind: .popToRoot, finder: viewFinder, isAnimated: isAnimated)
+            .perform(with: view, on: visibleView, completion: completion)
     }
 }
 

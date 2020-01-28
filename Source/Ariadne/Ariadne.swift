@@ -111,7 +111,7 @@ open class Router {
     /// - Parameter isAnimated: should the transition be animated.
     /// - Returns: performable route.
     open class func popRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
-        return Route<NonBuilder, PopNavigationTransition>(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
+        return .init(builder: NonBuilder(), transition: PopNavigationTransition(isAnimated: isAnimated))
     }
 
     /// Returns route, that calls `popViewController` method on currently visible navigation controller. No view is getting built in the process of routing.
@@ -126,15 +126,15 @@ open class Router {
     ///
     /// - Parameter isAnimated: should the transition be animated.
     /// - Returns: performable route.
-    open class func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
-        return Route<NonBuilder, PopToRootNavigationTransition>(builder: NonBuilder(), transition: PopToRootNavigationTransition(isAnimated: isAnimated))
+    open class func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+        return .init(builder: NonBuilder(), transition: PopNavigationTransition(kind: .popToRoot, isAnimated: isAnimated))
     }
 
     /// Returns route, that calls `popToRootViewController` method on currently visible navigation controller. No view is getting built in the process of routing.
     ///
     /// - Parameter isAnimated: should the transition be animated.
     /// - Returns: performable route.
-    open func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopToRootNavigationTransition> {
+    open func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
         return Router.popToRootRoute(isAnimated: isAnimated)
     }
 
@@ -143,7 +143,7 @@ open class Router {
     /// - Parameter isAnimated: should the transition be animated.
     /// - Returns: performable route.
     open class func dismissRoute(isAnimated: Bool = true) -> Route<NonBuilder, DismissTransition> {
-        return Route<NonBuilder, DismissTransition>(builder: NonBuilder(), transition: DismissTransition(isAnimated: isAnimated))
+        return .init(builder: NonBuilder(), transition: DismissTransition(isAnimated: isAnimated))
     }
 
     /// Returns route, that calls `dismiss` method on currently visible view controller. No view is getting built in the process of routing.
