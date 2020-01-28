@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+### Added 
+
+* `SplitViewCurrentlyVisibleViewFinder`, a subclass of `CurrentlyVisibleViewFinder`, that allows to prioritize either master or detail view controller when searching for currently visible view controller.
+
 ### Changed
 
 * `PopNavigationTransition` now supports both pop and pop to root transitions.

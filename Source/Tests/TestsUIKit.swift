@@ -322,6 +322,53 @@ class Tests_UIKit: XCTestCase {
         XCTAssert(rootNavigation?.viewControllers.first is FooViewController)
         XCTAssert(rootNavigation?.viewControllers.last is BarViewController)
     }
+
+    func testSplitViewMasterViewIsFindable() {
+        guard UIDevice.current.userInterfaceIdiom == .pad else {
+            return
+        }
+        let split = UISplitViewController()
+        split.viewControllers = [UINavigationController(rootViewController: .init()), UIViewController()]
+
+        let tabBarContainer = UITabBarController()
+        tabBarContainer.viewControllers = [split]
+
+        let transition = PushNavigationTransition(finder:
+            SplitViewCurrentlyVisibleViewFinder(kind: .master, rootViewProvider: router.rootViewProvider),
+                                                  isAnimated: false)
+        let pushRoute = XibBuildingFactory<FooViewController>().with(transition)
+
+        testableWindow.rootViewController = tabBarContainer
+        router.navigate(to: pushRoute)
+        let navigation = split.viewControllers.first as? UINavigationController
+        XCTAssertNotNil(navigation)
+        XCTAssertEqual(navigation?.viewControllers.count, 2)
+        XCTAssert(navigation?.viewControllers.last is FooViewController)
+    }
+
+    func testSplitViewDetailViewIsFindable() {
+        guard UIDevice.current.userInterfaceIdiom == .pad else {
+            // Note: UISplitViewController.viewControllers property returns one view controller on iPhone, and this unit test fails. It's guarded to run on iPad only.
+            return
+        }
+        let split = UISplitViewController()
+        split.viewControllers = [UIViewController(), UINavigationController()]
+
+        let tabBarContainer = UITabBarController()
+        tabBarContainer.viewControllers = [split]
+
+        let transition = PushNavigationTransition(finder:
+            SplitViewCurrentlyVisibleViewFinder(kind: .detail, rootViewProvider: router.rootViewProvider),
+                                                  isAnimated: false)
+        let pushRoute = XibBuildingFactory<FooViewController>().with(transition)
+
+        testableWindow.rootViewController = tabBarContainer
+        router.navigate(to: pushRoute)
+        let navigation = split.viewControllers.last as? UINavigationController
+        XCTAssertNotNil(navigation)
+        XCTAssertEqual(navigation?.viewControllers.count, 1)
+        XCTAssert(navigation?.viewControllers.last is FooViewController)
+    }
 }
 
 #endif
