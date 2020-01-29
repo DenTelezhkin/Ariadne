@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added 
 
+* `PopNavigationTransition` `popToFirstInstanceOf` and `popToLastInstanceOf` behaviors for calling `popToViewController(_:animated:)` method on found navigation controller
 * `SplitViewCurrentlyVisibleViewFinder`, a subclass of `CurrentlyVisibleViewFinder`, that allows to prioritize either master or detail view controller when searching for currently visible view controller.
 
 ### Changed

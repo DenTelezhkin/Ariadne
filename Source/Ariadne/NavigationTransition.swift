@@ -56,24 +56,26 @@ open class PushNavigationTransition: BaseTransition, ViewTransition {
 open class PopNavigationTransition: BaseTransition, ViewTransition {
 
     /// Kind of pop navigation transition to perform
-    public enum Kind {
+    public enum Behavior {
         case pop
         case popToRoot
+        case popToFirstInstanceOf(UIViewController.Type)
+        case popToLastInstanceOf(UIViewController.Type)
     }
 
     /// Transition type .hide.
     public let transitionType: TransitionType = .hide
 
     /// Kind of pop navigation transition to perform
-    public let kind: Kind
+    public let behavior: Behavior
 
     /// Creates `PopNavigationTransition` with specified `kind`.
     /// - Parameters:
     ///   - kind: kind of pop navigation transition
     ///   - finder: Object responsible for finding currently visible view in view hierarchy. Defaults to nil.
     ///   - isAnimated: Should the transition be animated. Defaults to true.
-    public init(kind: Kind = .pop, finder: ViewFinder? = nil, isAnimated: Bool = true) {
-        self.kind = kind
+    public init(_ behavior: Behavior = .pop, finder: ViewFinder? = nil, isAnimated: Bool = true) {
+        self.behavior = behavior
         super.init(finder: finder, isAnimated: isAnimated)
     }
 
@@ -88,9 +90,15 @@ open class PopNavigationTransition: BaseTransition, ViewTransition {
         guard let navigation = (visibleView as? UINavigationController) ?? visibleView.navigationController else {
             completion?(false); return
         }
-        switch kind {
+        switch behavior {
             case .pop: navigation.popViewController(animated: isAnimated)
             case .popToRoot: navigation.popToRootViewController(animated: isAnimated)
+            case .popToFirstInstanceOf(let type):
+                let first = navigation.viewControllers.first(where: { $0.isKind(of: type) })
+                _ = first.flatMap { navigation.popToViewController($0, animated: isAnimated) }
+        case .popToLastInstanceOf(let type):
+            let first = navigation.viewControllers.last(where: { $0.isKind(of: type) })
+            _ = first.flatMap { navigation.popToViewController($0, animated: isAnimated) }
         }
         animateAlongsideTransition(with: visibleView, isAnimated: isAnimated, completion: completion)
     }
@@ -110,7 +118,7 @@ open class PopToRootNavigationTransition: BaseTransition, ViewTransition {
     ///   - visibleView: currently visible view in view hierarchy
     ///   - completion: called once transition has been completed
     open func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
-        PopNavigationTransition(kind: .popToRoot, finder: viewFinder, isAnimated: isAnimated)
+        PopNavigationTransition(.popToRoot, finder: viewFinder, isAnimated: isAnimated)
             .perform(with: view, on: visibleView, completion: completion)
     }
 }

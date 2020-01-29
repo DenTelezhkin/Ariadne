@@ -24,7 +24,9 @@
 // THE SOFTWARE.
 
 import Foundation
-
+#if canImport(UIKit)
+import UIKit
+#endif
 /// Type, responsible for finding currently visible view in existing view hierarchy.
 public protocol ViewFinder {
 
@@ -127,7 +129,39 @@ open class Router {
     /// - Parameter isAnimated: should the transition be animated.
     /// - Returns: performable route.
     open class func popToRootRoute(isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
-        return .init(builder: NonBuilder(), transition: PopNavigationTransition(kind: .popToRoot, isAnimated: isAnimated))
+        return .init(builder: NonBuilder(), transition: PopNavigationTransition(.popToRoot, isAnimated: isAnimated))
+    }
+
+    /// Returns route, that calls `popToViewController(_:animated:)` method on currently visible navigation controller. No view is getting built in the process of routing. First instance of `type` view controllers available in navigation stack is selected
+    /// - Parameters:
+    ///   - type: type of view controller to search for in navigation stack
+    ///   - isAnimated: should the transition be animated.
+    open class func popToFirstInstanceOf(_ type: UIViewController.Type, isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+        return Route(builder: NonBuilder(), transition: PopNavigationTransition(.popToFirstInstanceOf(type), isAnimated: isAnimated))
+    }
+
+    /// Returns route, that calls `popToViewController(_:animated:)` method on currently visible navigation controller. No view is getting built in the process of routing. First instance of `type` view controllers available in navigation stack is selected
+    /// - Parameters:
+    ///   - type: type of view controller to search for in navigation stack
+    ///   - isAnimated: should the transition be animated.
+    open func popToFirstInstanceOf(_ type: UIViewController.Type, isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+        return Router.popToFirstInstanceOf(type, isAnimated: isAnimated)
+    }
+
+    /// Returns route, that calls `popToViewController(_:animated:)` method on currently visible navigation controller. No view is getting built in the process of routing. Last instance of `type` view controllers available in navigation stack is selected.
+    /// - Parameters:
+    ///   - type: type of view controller to search for in navigation stack
+    ///   - isAnimated: should the transition be animated.
+    open class func popToLastInstanceOf(_ type: UIViewController.Type, isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+        return Route(builder: NonBuilder(), transition: PopNavigationTransition(.popToLastInstanceOf(type), isAnimated: isAnimated))
+    }
+
+    /// Returns route, that calls `popToViewController(_:animated:)` method on currently visible navigation controller. No view is getting built in the process of routing. Last instance of `type` view controllers available in navigation stack is selected.
+    /// - Parameters:
+    ///   - type: type of view controller to search for in navigation stack
+    ///   - isAnimated: should the transition be animated.
+    open func popToLastInstanceOf(_ type: UIViewController.Type, isAnimated: Bool = true) -> Route<NonBuilder, PopNavigationTransition> {
+        return Router.popToLastInstanceOf(type, isAnimated: isAnimated)
     }
 
     /// Returns route, that calls `popToRootViewController` method on currently visible navigation controller. No view is getting built in the process of routing.

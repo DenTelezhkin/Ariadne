@@ -300,6 +300,32 @@ class Tests_UIKit: XCTestCase {
         XCTAssert(rootNavigation?.viewControllers.first is FooViewController)
     }
 
+    func testPopToFirstInstanceOfRoute() {
+        let navigation = UINavigationController(rootViewController: FooViewController())
+        navigation.pushViewController(BarViewController(), animated: false)
+        navigation.pushViewController(BarViewController(), animated: false)
+        testableWindow.rootViewController = navigation
+
+        router.navigate(to: Router.popToFirstInstanceOf(BarViewController.self, isAnimated: false))
+
+        XCTAssertEqual(rootNavigation?.viewControllers.count, 2)
+    }
+
+    func testPopToLastInstanceOfRoute() {
+        let navigation = UINavigationController(rootViewController: FooViewController())
+        navigation.pushViewController(BarViewController(), animated: false)
+        navigation.pushViewController(BarViewController(), animated: false)
+        testableWindow.rootViewController = navigation
+
+        router.navigate(to: Router.popToLastInstanceOf(BarViewController.self, isAnimated: false))
+
+        XCTAssertEqual(rootNavigation?.viewControllers.count, 3)
+
+        router.navigate(to: Router.popToLastInstanceOf(FooViewController.self, isAnimated: false))
+
+        XCTAssertEqual(rootNavigation?.viewControllers.count, 1)
+    }
+
     func testPrebuiltViewCanBePresented() {
         let presentExpectation = expectation(description: "Presentation expectation")
         let presentationRoute = InstanceViewBuilder { UINavigationController() }.presentRoute(isAnimated: false)
