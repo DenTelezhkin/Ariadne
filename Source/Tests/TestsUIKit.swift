@@ -26,6 +26,8 @@
 import XCTest
 @testable import Ariadne
 
+//swiftlint:disable type_body_length
+
 #if canImport(UIKit)
 import UIKit
 
@@ -324,6 +326,45 @@ class Tests_UIKit: XCTestCase {
         router.navigate(to: Router.popToLastInstanceOf(FooViewController.self, isAnimated: false))
 
         XCTAssertEqual(rootNavigation?.viewControllers.count, 1)
+    }
+
+    func testReplaceViewControllersAllBehavior() {
+        let navigation = UINavigationController(rootViewController: FooViewController())
+        navigation.pushViewController(BarViewController(), animated: false)
+        navigation.pushViewController(BarViewController(), animated: false)
+        testableWindow.rootViewController = navigation
+
+        router.navigate(to: XibBuildingFactory<BarViewController>().replace(.replaceAll, isAnimated: false))
+
+        XCTAssertEqual(rootNavigation?.viewControllers.count, 1)
+        XCTAssert(rootNavigation?.viewControllers.first is BarViewController)
+    }
+
+    func testReplaceViewControllersLastBehavior() {
+        let navigation = UINavigationController(rootViewController: FooViewController())
+        navigation.pushViewController(BarViewController(), animated: false)
+        navigation.pushViewController(FooViewController(), animated: false)
+        testableWindow.rootViewController = navigation
+
+        router.navigate(to: XibBuildingFactory<BarViewController>().replace(.replaceLast, isAnimated: false))
+
+        XCTAssertEqual(rootNavigation?.viewControllers.count, 3)
+        XCTAssert(rootNavigation?.viewControllers.last is BarViewController)
+        XCTAssert(rootNavigation?.viewControllers[1] is BarViewController)
+        XCTAssert(rootNavigation?.viewControllers.first is FooViewController)
+    }
+
+    func testReplaceViewControllersCustomBehavior() {
+        let navigation = UINavigationController(rootViewController: FooViewController())
+        navigation.pushViewController(BarViewController(), animated: false)
+        navigation.pushViewController(FooViewController(), animated: false)
+        testableWindow.rootViewController = navigation
+
+        router.navigate(to: XibBuildingFactory<BarViewController>().replace(.custom(keepControllers: { [$0.first].compactMap { $0 } }), isAnimated: false))
+
+        XCTAssertEqual(rootNavigation?.viewControllers.count, 2)
+        XCTAssert(rootNavigation?.viewControllers.last is BarViewController)
+        XCTAssert(rootNavigation?.viewControllers.first is FooViewController)
     }
 
     func testPrebuiltViewCanBePresented() {

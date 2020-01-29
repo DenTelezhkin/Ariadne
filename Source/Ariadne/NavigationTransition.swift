@@ -66,12 +66,12 @@ open class PopNavigationTransition: BaseTransition, ViewTransition {
     /// Transition type .hide.
     public let transitionType: TransitionType = .hide
 
-    /// Kind of pop navigation transition to perform
+    /// Behavior of pop navigation transition to perform
     public let behavior: Behavior
 
-    /// Creates `PopNavigationTransition` with specified `kind`.
+    /// Creates `PopNavigationTransition` with specified `behavior`.
     /// - Parameters:
-    ///   - kind: kind of pop navigation transition
+    ///   - behavior: Behavior of pop navigation transition
     ///   - finder: Object responsible for finding currently visible view in view hierarchy. Defaults to nil.
     ///   - isAnimated: Should the transition be animated. Defaults to true.
     public init(_ behavior: Behavior = .pop, finder: ViewFinder? = nil, isAnimated: Bool = true) {
@@ -99,6 +99,59 @@ open class PopNavigationTransition: BaseTransition, ViewTransition {
         case .popToLastInstanceOf(let type):
             let first = navigation.viewControllers.last(where: { $0.isKind(of: type) })
             _ = first.flatMap { navigation.popToViewController($0, animated: isAnimated) }
+        }
+        animateAlongsideTransition(with: visibleView, isAnimated: isAnimated, completion: completion)
+    }
+}
+
+/// Class, that encapsulates UINavigationController.setViewControllers(_:animated:) method call as a transition.
+open class ReplaceNavigationTransition: BaseTransition, ViewTransition {
+
+    /// Behavior of `ReplaceNavigationTransition`.
+    public enum Behavior {
+        case replaceLast
+        case replaceAll
+        // Choose what view controllers to keep. Navigation stack after replacement will contain view controllers returned from custom closure + replacing view controller as a last of them.
+        case custom(keepControllers: ([UIViewController]) -> [UIViewController])
+    }
+
+    /// Transition type .show
+    public let transitionType: TransitionType = .show
+
+    /// Behavior of replace navigation transition to perform
+    public let behavior: Behavior
+
+    /// Creates `ReplaceNavigationTransition` with specified `behavior`.
+    /// - Parameters:
+    ///   - behavior: Behavior of replace navigation transition
+    ///   - finder: Object responsible for finding currently visible view in view hierarchy. Defaults to nil.
+    ///   - isAnimated: Should the transition be animated. Defaults to true.
+    public init(_ behavior: Behavior = .replaceLast, finder: ViewFinder? = nil, isAnimated: Bool = true) {
+        self.behavior = behavior
+        super.init(finder: finder, isAnimated: isAnimated)
+    }
+
+    /// Performs transition by calling `setViewControllers(_:animated:)` on visible navigation controller
+    /// - Parameters:
+    ///   - view: currently visible view
+    ///   - visibleView: currently visible view in view hierarchy
+    ///   - completion: called once transition has been completed
+    open func perform(with view: ViewController?, on visibleView: ViewController?, completion: ((Bool) -> Void)?) {
+        guard let view = view else { completion?(false); return }
+        guard let navigation = (visibleView as? UINavigationController) ?? visibleView?.navigationController else {
+            completion?(false); return
+        }
+        switch behavior {
+        case .replaceAll:
+            navigation.setViewControllers([view], animated: isAnimated)
+        case .replaceLast:
+            var stack = navigation.viewControllers.dropLast()
+            stack.append(view)
+            navigation.setViewControllers(stack.map { $0 }, animated: isAnimated)
+        case .custom(keepControllers: let closure):
+            var newStack = closure(navigation.viewControllers)
+            newStack.append(view)
+            navigation.setViewControllers(newStack.map { $0 }, animated: isAnimated)
         }
         animateAlongsideTransition(with: visibleView, isAnimated: isAnimated, completion: completion)
     }

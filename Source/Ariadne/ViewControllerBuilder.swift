@@ -137,6 +137,14 @@ extension ViewControllerBuilder {
         return Route(builder: self, transition: PresentationTransition(isAnimated: isAnimated))
     }
 
+    /// Creates a route that uses a current builder, creates a view, and replaces current navigation stack with a newly created view. Remaining viewControllers depend on `behavior`.
+    /// - Parameters:
+    ///   - behavior: Behavior to use when replacing view controllers in navigation stack
+    ///   - isAnimated: should the presentation be animated.
+    public func replace(_ behavior: ReplaceNavigationTransition.Behavior = .replaceLast, isAnimated: Bool = true) -> Route<Self, ReplaceNavigationTransition> {
+        return Route(builder: self, transition: ReplaceNavigationTransition(behavior, isAnimated: isAnimated))
+    }
+
     /// Combines current builder with provided `transition` to create a Route, containing them both.
     ///
     /// - Parameter transition: transition to be performed when navigating to created route.
