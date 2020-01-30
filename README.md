@@ -100,7 +100,7 @@ Out of the box, `Ariadne` provides builders for:
 
 Second building block of the framework are `ViewTransition` objects, that are needed to perform transition between views. Out of the box, following transitions are supported:
 
-* UINavigationController transitions - push, pop, pop to root
+* UINavigationController transitions - push, pop, pop to root, pop to view controller, replace controllers in navigation stack
 * UIViewController presentations - present, dismiss
 * UIWindow root view controller transition to perform switch of the root view controller with animation.
 

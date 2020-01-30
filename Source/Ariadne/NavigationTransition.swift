@@ -97,8 +97,8 @@ open class PopNavigationTransition: BaseTransition, ViewTransition {
                 let first = navigation.viewControllers.first(where: { $0.isKind(of: type) })
                 _ = first.flatMap { navigation.popToViewController($0, animated: isAnimated) }
         case .popToLastInstanceOf(let type):
-            let first = navigation.viewControllers.last(where: { $0.isKind(of: type) })
-            _ = first.flatMap { navigation.popToViewController($0, animated: isAnimated) }
+            let last = navigation.viewControllers.last(where: { $0.isKind(of: type) })
+            _ = last.flatMap { navigation.popToViewController($0, animated: isAnimated) }
         }
         animateAlongsideTransition(with: visibleView, isAnimated: isAnimated, completion: completion)
     }
