@@ -93,13 +93,19 @@
                 <a class="nav-group-task-link" href="Classes/PopNavigationTransition.html">PopNavigationTransition</a>
               </li>
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Classes/PopToRootNavigationTransition.html">PopToRootNavigationTransition</a>
+                <a class="nav-group-task-link" href="Classes/PopNavigationTransition/Behavior.html">– Behavior</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/PresentationTransition.html">PresentationTransition</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/PushNavigationTransition.html">PushNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ReplaceNavigationTransition.html">ReplaceNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ReplaceNavigationTransition/Behavior.html">– Behavior</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/RootViewTransition.html">RootViewTransition</a>
@@ -112,6 +118,12 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/SplitViewBuilder.html">SplitViewBuilder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SplitViewCurrentlyVisibleViewFinder.html">SplitViewCurrentlyVisibleViewFinder</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/SplitViewCurrentlyVisibleViewFinder/Kind.html">– Kind</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Classes/TabBarEmbeddingBuilder.html">TabBarEmbeddingBuilder</a>
@@ -134,6 +146,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/Route.html">Route</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions.html#/UIWindow">UIWindow</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="Extensions/ViewControllerBuilder.html">ViewControllerBuilder</a>
@@ -196,7 +211,7 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>Classes</h1>
             <p>The following classes are available globally.</p>
 
@@ -235,10 +250,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -267,10 +278,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -291,10 +298,28 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Class/SplitViewCurrentlyVisibleViewFinder" class="dashAnchor"></a>
+                    <a class="token" href="#/">SplitViewCurrentlyVisibleViewFinder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p><code><a href="Classes/CurrentlyVisibleViewFinder.html">CurrentlyVisibleViewFinder</a></code> that proritizes either master or detail view controller in split view controllers.
+ Please note that this ViewFinder should only be used for iPad interfaces that do not have collapsed UISplitViewControllers.
+ If UISplitViewController is collapsed, it&rsquo;s <code>viewControllers</code> property only returns one of two(master,detail) view controllers and therefore it&rsquo;s impossible to know if one of those is a master or a detail.</p>
+
+                        <a href="Classes/SplitViewCurrentlyVisibleViewFinder.html" class="slightly-smaller">See more</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -339,8 +364,8 @@
                   <div>
                     <code>
                     <a name="/"></a>
-                    <a name="//apple_ref/swift/Class/PopToRootNavigationTransition" class="dashAnchor"></a>
-                    <a class="token" href="#/">PopToRootNavigationTransition</a>
+                    <a name="//apple_ref/swift/Class/ReplaceNavigationTransition" class="dashAnchor"></a>
+                    <a class="token" href="#/">ReplaceNavigationTransition</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -348,17 +373,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Class, that encapsulates UINavigationController.popToRootViewController(animated:) method call as a transition.</p>
+                        <p>Class, that encapsulates UINavigationController.setViewControllers(_:animated:) method call as a transition.</p>
 
-                        <a href="Classes/PopToRootNavigationTransition.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/ReplaceNavigationTransition.html" class="slightly-smaller">See more</a>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -399,10 +420,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -443,10 +460,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -467,10 +480,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -559,10 +568,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -583,10 +588,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -607,10 +608,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -631,10 +628,6 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -726,8 +719,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2019-12-09)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.11.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-01-30)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

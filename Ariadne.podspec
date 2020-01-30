@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Ariadne"
-  s.version      = "0.5.1"
+  s.version      = "0.6.0"
   s.summary      = "Elegant and extensible routing framework in Swift."
   s.homepage     = "https://github.com/DenTelezhkin/Ariadne"
   s.license  = 'MIT'
