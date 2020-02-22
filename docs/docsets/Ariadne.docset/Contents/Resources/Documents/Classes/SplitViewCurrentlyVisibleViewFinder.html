@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           Ariadne Docs
         </a>
-         (95% documented)
+         (92% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -96,6 +96,9 @@
                 <a class="nav-group-task-link" href="../Classes/PopNavigationTransition/Behavior.html">– Behavior</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PopToRootNavigationTransition.html">PopToRootNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/PresentationTransition.html">PresentationTransition</a>
               </li>
               <li class="nav-group-task">
@@ -145,13 +148,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/Route.html">Route</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/UIWindow">UIWindow</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/ViewControllerBuilder.html">ViewControllerBuilder</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/c:objc(cs)UIWindow">UIWindow</a>
               </li>
             </ul>
           </li>
@@ -213,6 +210,12 @@
         <section class="section">
           <div class="section-content top-matter">
             <h1>SplitViewCurrentlyVisibleViewFinder</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">SplitViewCurrentlyVisibleViewFinder</span> <span class="p">:</span> <span class="kt"><a href="../Classes/CurrentlyVisibleViewFinder.html">CurrentlyVisibleViewFinder</a></span></code></pre>
+
+                </div>
+              </div>
             <p><code><a href="../Classes/CurrentlyVisibleViewFinder.html">CurrentlyVisibleViewFinder</a></code> that proritizes either master or detail view controller in split view controllers.
  Please note that this ViewFinder should only be used for iPad interfaces that do not have collapsed UISplitViewControllers.
  If UISplitViewController is collapsed, it&rsquo;s <code>viewControllers</code> property only returns one of two(master,detail) view controllers and therefore it&rsquo;s impossible to know if one of those is a master or a detail.</p>
@@ -227,9 +230,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC4KindO"></a>
                     <a name="//apple_ref/swift/Enum/Kind" class="dashAnchor"></a>
-                    <a class="token" href="#/">Kind</a>
+                    <a class="token" href="#/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC4KindO">Kind</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -241,15 +244,23 @@
 
                         <a href="../Classes/SplitViewCurrentlyVisibleViewFinder/Kind.html" class="slightly-smaller">See more</a>
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Kind</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC4kindAC4KindOvp"></a>
                     <a name="//apple_ref/swift/Property/kind" class="dashAnchor"></a>
-                    <a class="token" href="#/">kind</a>
+                    <a class="token" href="#/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC4kindAC4KindOvp">kind</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -260,24 +271,13 @@
                         <p>Kind of view controller that should be prioritized when searching for currently visible view controller</p>
 
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/init(kind:rootViewProvider:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">init(kind:rootViewProvider:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates <code>SplitViewCurrentlyVisibleViewFinder</code> that prioritizes <code><a href="../Classes/SplitViewCurrentlyVisibleViewFinder.html#/kind">kind</a></code> view controller when searching for currently visible view controller.</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">kind</span><span class="p">:</span> <span class="kt"><a href="../Classes/SplitViewCurrentlyVisibleViewFinder/Kind.html">Kind</a></span></code></pre>
 
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -285,9 +285,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/findCurrentlyVisibleView(startingFrom:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">findCurrentlyVisibleView(startingFrom:)</a>
+                    <a name="/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC4kind04rootC8ProviderA2C4KindO_AA04RootcI0_pSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(kind:rootViewProvider:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC4kind04rootC8ProviderA2C4KindO_AA04RootcI0_pSgtcfc">init(kind:rootViewProvider:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -295,8 +295,97 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Recursively searches view hierarchy for currently visible view. When <code>UISplitViewController</code> is encountered, <code><a href="../Classes/SplitViewCurrentlyVisibleViewFinder.html#/kind">kind</a></code> is prioritized (.master: viewControllers.first, .detail: viewControllers.last)</p>
+                        <p>Creates <code>SplitViewCurrentlyVisibleViewFinder</code> that prioritizes <code><a href="../Classes/SplitViewCurrentlyVisibleViewFinder.html#/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC4kindAC4KindOvp">kind</a></code> view controller when searching for currently visible view controller.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">kind</span><span class="p">:</span> <span class="kt"><a href="../Classes/SplitViewCurrentlyVisibleViewFinder/Kind.html">Kind</a></span><span class="p">,</span> <span class="nv">rootViewProvider</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RootViewProvider.html">RootViewProvider</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>kind</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>master or detail view</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rootViewProvider</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>provider of root view in hierarchy</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC04finddeC012startingFromSo16UIViewControllerCSgAH_tF"></a>
+                    <a name="//apple_ref/swift/Method/findCurrentlyVisibleView(startingFrom:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC04finddeC012startingFromSo16UIViewControllerCSgAH_tF">findCurrentlyVisibleView(startingFrom:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Recursively searches view hierarchy for currently visible view. When <code>UISplitViewController</code> is encountered, <code><a href="../Classes/SplitViewCurrentlyVisibleViewFinder.html#/s:7Ariadne025SplitViewCurrentlyVisibleC6FinderC4kindAC4KindOvp">kind</a></code> is prioritized (.master: viewControllers.first, .detail: viewControllers.last)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">findCurrentlyVisibleView</span><span class="p">(</span><span class="n">startingFrom</span> <span class="nv">view</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/ViewController">ViewController</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/ViewController">ViewController</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>view to start search from</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>currently visible view.</p>
                       </div>
                     </section>
                   </div>
@@ -309,7 +398,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-01-30)</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-02-22)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           Ariadne Docs
         </a>
-         (95% documented)
+         (92% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -96,6 +96,9 @@
                 <a class="nav-group-task-link" href="../Classes/PopNavigationTransition/Behavior.html">– Behavior</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PopToRootNavigationTransition.html">PopToRootNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/PresentationTransition.html">PresentationTransition</a>
               </li>
               <li class="nav-group-task">
@@ -145,13 +148,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/Route.html">Route</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/UIWindow">UIWindow</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/ViewControllerBuilder.html">ViewControllerBuilder</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/c:objc(cs)UIWindow">UIWindow</a>
               </li>
             </ul>
           </li>
@@ -337,6 +334,260 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne21ViewControllerBuilderPAAE20embeddedInNavigation010navigationD0AA0g6Singleb9EmbeddingD0CyxGSo012UINavigationC0Cyc_tF"></a>
+                    <a name="//apple_ref/swift/Method/embeddedInNavigation(navigationBuilder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne21ViewControllerBuilderPAAE20embeddedInNavigation010navigationD0AA0g6Singleb9EmbeddingD0CyxGSo012UINavigationC0Cyc_tF">embeddedInNavigation(navigationBuilder:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code><a href="../Classes/NavigationSingleViewEmbeddingBuilder.html">NavigationSingleViewEmbeddingBuilder</a></code>, embedding current view builder in it.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">embeddedInNavigation</span><span class="p">(</span><span class="nv">navigationBuilder</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UINavigationController</span> <span class="o">=</span> <span class="p">{</span> <span class="o">.</span><span class="nf">init</span><span class="p">()</span> <span class="p">})</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/NavigationSingleViewEmbeddingBuilder.html">NavigationSingleViewEmbeddingBuilder</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p><code><a href="../Classes/NavigationSingleViewEmbeddingBuilder.html">NavigationSingleViewEmbeddingBuilder</a></code> with current builder embedded.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne21ViewControllerBuilderPAAE9pushRoute10isAnimatedAA0F0CyxAA24PushNavigationTransitionCGSb_tF"></a>
+                    <a name="//apple_ref/swift/Method/pushRoute(isAnimated:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne21ViewControllerBuilderPAAE9pushRoute10isAnimatedAA0F0CyxAA24PushNavigationTransitionCGSb_tF">pushRoute(isAnimated:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a route, that uses current builder, creates a view, and pushes it onto current navigation stack.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">pushRoute</span><span class="p">(</span><span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Classes/PushNavigationTransition.html">PushNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the navigation push be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Route to view built by current builder, that will be pushed onto current navigation stack.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne21ViewControllerBuilderPAAE12presentRoute10isAnimatedAA0F0CyxAA22PresentationTransitionCGSb_tF"></a>
+                    <a name="//apple_ref/swift/Method/presentRoute(isAnimated:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne21ViewControllerBuilderPAAE12presentRoute10isAnimatedAA0F0CyxAA22PresentationTransitionCGSb_tF">presentRoute(isAnimated:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a route, that uses current builder, creates a view, and presents it on top of currently visible view.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">presentRoute</span><span class="p">(</span><span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Classes/PresentationTransition.html">PresentationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the presentation be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Route to view built by current builder, that will be presented on top of currently visible view.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne21ViewControllerBuilderPAAE7replace_10isAnimatedAA5RouteCyxAA27ReplaceNavigationTransitionCGAI8BehaviorO_SbtF"></a>
+                    <a name="//apple_ref/swift/Method/replace(_:isAnimated:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne21ViewControllerBuilderPAAE7replace_10isAnimatedAA5RouteCyxAA27ReplaceNavigationTransitionCGAI8BehaviorO_SbtF">replace(_:isAnimated:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a route that uses a current builder, creates a view, and replaces current navigation stack with a newly created view. Remaining viewControllers depend on <code>behavior</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replace</span><span class="p">(</span><span class="n">_</span> <span class="nv">behavior</span><span class="p">:</span> <span class="kt"><a href="../Classes/ReplaceNavigationTransition.html">ReplaceNavigationTransition</a></span><span class="o">.</span><span class="kt">Behavior</span> <span class="o">=</span> <span class="o">.</span><span class="n">replaceLast</span><span class="p">,</span> <span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt"><a href="../Classes/ReplaceNavigationTransition.html">ReplaceNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>behavior</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Behavior to use when replacing view controllers in navigation stack</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the presentation be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne21ViewControllerBuilderPAAE4withyAA5RouteCyxqd__Gqd__AA0B10TransitionRd__lF"></a>
+                    <a name="//apple_ref/swift/Method/with(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne21ViewControllerBuilderPAAE4withyAA5RouteCyxqd__Gqd__AA0B10TransitionRd__lF">with(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Combines current builder with provided <code>transition</code> to create a Route, containing them both.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">with</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">transition</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="p">,</span> <span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ViewTransition.html">ViewTransition</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>transition</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>transition to be performed when navigating to created route.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Route, that combines current builder and <code>transition</code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
             <div class="task-group">
@@ -427,7 +678,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-01-30)</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-02-22)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

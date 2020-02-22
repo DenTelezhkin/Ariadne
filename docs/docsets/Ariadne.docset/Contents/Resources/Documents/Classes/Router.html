@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           Ariadne Docs
         </a>
-         (95% documented)
+         (92% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -96,6 +96,9 @@
                 <a class="nav-group-task-link" href="../Classes/PopNavigationTransition/Behavior.html">– Behavior</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PopToRootNavigationTransition.html">PopToRootNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/PresentationTransition.html">PresentationTransition</a>
               </li>
               <li class="nav-group-task">
@@ -145,13 +148,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/Route.html">Route</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/UIWindow">UIWindow</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/ViewControllerBuilder.html">ViewControllerBuilder</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/c:objc(cs)UIWindow">UIWindow</a>
               </li>
             </ul>
           </li>
@@ -285,9 +282,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne6RouterC16rootViewProviderAcA04RootdE0_p_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(rootViewProvider:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">init(rootViewProvider:)</a>
+                    <a class="token" href="#/s:7Ariadne6RouterC16rootViewProviderAcA04RootdE0_p_tcfc">init(rootViewProvider:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -298,30 +295,11 @@
                         <p>Creates <code>Router</code> with <code><a href="../Classes/CurrentlyVisibleViewFinder.html">CurrentlyVisibleViewFinder</a></code> object set as a <code><a href="../Protocols/ViewFinder.html">ViewFinder</a></code> instance.</p>
 
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:7Ariadne6RouterC16rootViewProvider10viewFinderAcA04RootdE0_p_AA0dG0_ptcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(rootViewProvider:viewFinder:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:7Ariadne6RouterC16rootViewProvider10viewFinderAcA04RootdE0_p_AA0dG0_ptcfc">init(rootViewProvider:viewFinder:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates <code>Router</code> with specified root view provider and view finder.</p>
-
-                      </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rootViewProvider</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RootViewProvider.html">RootViewProvider</a></span><span class="p">,</span> <span class="nv">viewFinder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ViewFinder.html">ViewFinder</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rootViewProvider</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RootViewProvider.html">RootViewProvider</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -341,15 +319,230 @@
                                 </div>
                               </td>
                             </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Method/init(rootViewProvider:viewFinder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/">init(rootViewProvider:viewFinder:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates <code>Router</code> with specified root view provider and view finder.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne6RouterC8popRoute10isAnimatedAA0D0CyAA10NonBuilderCAA23PopNavigationTransitionCGSb_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/popRoute(isAnimated:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne6RouterC8popRoute10isAnimatedAA0D0CyAA10NonBuilderCAA23PopNavigationTransitionCGSb_tFZ">popRoute(isAnimated:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns route, that calls <code>popViewController</code> method on currently visible navigation controller. No view is getting built in the process of routing.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">popRoute</span><span class="p">(</span><span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/PopNavigationTransition.html">PopNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
                             <tr>
                               <td>
                                 <code>
-                                <em>viewFinder</em>
+                                <em>isAnimated</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>object responsible for finding view on which route should be performed.</p>
+                                  <p>should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>performable route.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne6RouterC8popRoute10isAnimatedAA0D0CyAA10NonBuilderCAA23PopNavigationTransitionCGSb_tF"></a>
+                    <a name="//apple_ref/swift/Method/popRoute(isAnimated:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne6RouterC8popRoute10isAnimatedAA0D0CyAA10NonBuilderCAA23PopNavigationTransitionCGSb_tF">popRoute(isAnimated:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns route, that calls <code>popViewController</code> method on currently visible navigation controller. No view is getting built in the process of routing.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">popRoute</span><span class="p">(</span><span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/PopNavigationTransition.html">PopNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>performable route.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne6RouterC14popToRootRoute10isAnimatedAA0F0CyAA10NonBuilderCAA23PopNavigationTransitionCGSb_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/popToRootRoute(isAnimated:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne6RouterC14popToRootRoute10isAnimatedAA0F0CyAA10NonBuilderCAA23PopNavigationTransitionCGSb_tFZ">popToRootRoute(isAnimated:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns route, that calls <code>popToRootViewController</code> method on currently visible navigation controller. No view is getting built in the process of routing.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">popToRootRoute</span><span class="p">(</span><span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/PopNavigationTransition.html">PopNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>performable route.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne6RouterC20popToFirstInstanceOf_10isAnimatedAA5RouteCyAA10NonBuilderCAA23PopNavigationTransitionCGSo16UIViewControllerCm_SbtFZ"></a>
+                    <a name="//apple_ref/swift/Method/popToFirstInstanceOf(_:isAnimated:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne6RouterC20popToFirstInstanceOf_10isAnimatedAA5RouteCyAA10NonBuilderCAA23PopNavigationTransitionCGSo16UIViewControllerCm_SbtFZ">popToFirstInstanceOf(_:isAnimated:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns route, that calls <code>popToViewController(_:animated:)</code> method on currently visible navigation controller. No view is getting built in the process of routing. First instance of <code>type</code> view controllers available in navigation stack is selected</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">popToFirstInstanceOf</span><span class="p">(</span><span class="n">_</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/PopNavigationTransition.html">PopNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>type of view controller to search for in navigation stack</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the transition be animated.</p>
                                 </div>
                               </td>
                             </tr>
@@ -362,66 +555,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/popRoute(isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">popRoute(isAnimated:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Returns route, that calls <code>popViewController</code> method on currently visible navigation controller. No view is getting built in the process of routing.</p>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/popRoute(isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">popRoute(isAnimated:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Returns route, that calls <code>popViewController</code> method on currently visible navigation controller. No view is getting built in the process of routing.</p>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/popToRootRoute(isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">popToRootRoute(isAnimated:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Returns route, that calls <code>popToRootViewController</code> method on currently visible navigation controller. No view is getting built in the process of routing.</p>
-
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne6RouterC20popToFirstInstanceOf_10isAnimatedAA5RouteCyAA10NonBuilderCAA23PopNavigationTransitionCGSo16UIViewControllerCm_SbtF"></a>
                     <a name="//apple_ref/swift/Method/popToFirstInstanceOf(_:isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">popToFirstInstanceOf(_:isAnimated:)</a>
+                    <a class="token" href="#/s:7Ariadne6RouterC20popToFirstInstanceOf_10isAnimatedAA5RouteCyAA10NonBuilderCAA23PopNavigationTransitionCGSo16UIViewControllerCm_SbtF">popToFirstInstanceOf(_:isAnimated:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -432,24 +568,44 @@
                         <p>Returns route, that calls <code>popToViewController(_:animated:)</code> method on currently visible navigation controller. No view is getting built in the process of routing. First instance of <code>type</code> view controllers available in navigation stack is selected</p>
 
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/popToFirstInstanceOf(_:isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">popToFirstInstanceOf(_:isAnimated:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Returns route, that calls <code>popToViewController(_:animated:)</code> method on currently visible navigation controller. No view is getting built in the process of routing. First instance of <code>type</code> view controllers available in navigation stack is selected</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">popToFirstInstanceOf</span><span class="p">(</span><span class="n">_</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/PopNavigationTransition.html">PopNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
 
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>type of view controller to search for in navigation stack</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -457,9 +613,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne6RouterC19popToLastInstanceOf_10isAnimatedAA5RouteCyAA10NonBuilderCAA23PopNavigationTransitionCGSo16UIViewControllerCm_SbtFZ"></a>
                     <a name="//apple_ref/swift/Method/popToLastInstanceOf(_:isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">popToLastInstanceOf(_:isAnimated:)</a>
+                    <a class="token" href="#/s:7Ariadne6RouterC19popToLastInstanceOf_10isAnimatedAA5RouteCyAA10NonBuilderCAA23PopNavigationTransitionCGSo16UIViewControllerCm_SbtFZ">popToLastInstanceOf(_:isAnimated:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -470,15 +626,54 @@
                         <p>Returns route, that calls <code>popToViewController(_:animated:)</code> method on currently visible navigation controller. No view is getting built in the process of routing. Last instance of <code>type</code> view controllers available in navigation stack is selected.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">popToLastInstanceOf</span><span class="p">(</span><span class="n">_</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/PopNavigationTransition.html">PopNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>type of view controller to search for in navigation stack</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne6RouterC19popToLastInstanceOf_10isAnimatedAA5RouteCyAA10NonBuilderCAA23PopNavigationTransitionCGSo16UIViewControllerCm_SbtF"></a>
                     <a name="//apple_ref/swift/Method/popToLastInstanceOf(_:isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">popToLastInstanceOf(_:isAnimated:)</a>
+                    <a class="token" href="#/s:7Ariadne6RouterC19popToLastInstanceOf_10isAnimatedAA5RouteCyAA10NonBuilderCAA23PopNavigationTransitionCGSo16UIViewControllerCm_SbtF">popToLastInstanceOf(_:isAnimated:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -489,15 +684,54 @@
                         <p>Returns route, that calls <code>popToViewController(_:animated:)</code> method on currently visible navigation controller. No view is getting built in the process of routing. Last instance of <code>type</code> view controllers available in navigation stack is selected.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">popToLastInstanceOf</span><span class="p">(</span><span class="n">_</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/PopNavigationTransition.html">PopNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>type</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>type of view controller to search for in navigation stack</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne6RouterC14popToRootRoute10isAnimatedAA0F0CyAA10NonBuilderCAA23PopNavigationTransitionCGSb_tF"></a>
                     <a name="//apple_ref/swift/Method/popToRootRoute(isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">popToRootRoute(isAnimated:)</a>
+                    <a class="token" href="#/s:7Ariadne6RouterC14popToRootRoute10isAnimatedAA0F0CyAA10NonBuilderCAA23PopNavigationTransitionCGSb_tF">popToRootRoute(isAnimated:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -508,15 +742,46 @@
                         <p>Returns route, that calls <code>popToRootViewController</code> method on currently visible navigation controller. No view is getting built in the process of routing.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">popToRootRoute</span><span class="p">(</span><span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/PopNavigationTransition.html">PopNavigationTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>performable route.</p>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne6RouterC12dismissRoute10isAnimatedAA0D0CyAA10NonBuilderCAA17DismissTransitionCGSb_tFZ"></a>
                     <a name="//apple_ref/swift/Method/dismissRoute(isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">dismissRoute(isAnimated:)</a>
+                    <a class="token" href="#/s:7Ariadne6RouterC12dismissRoute10isAnimatedAA0D0CyAA10NonBuilderCAA17DismissTransitionCGSb_tFZ">dismissRoute(isAnimated:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -527,15 +792,46 @@
                         <p>Returns route, that calls <code>dismiss</code> method on currently visible view controller. No view is getting built in the process of routing.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">dismissRoute</span><span class="p">(</span><span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/DismissTransition.html">DismissTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>performable route.</p>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne6RouterC12dismissRoute10isAnimatedAA0D0CyAA10NonBuilderCAA17DismissTransitionCGSb_tF"></a>
                     <a name="//apple_ref/swift/Method/dismissRoute(isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">dismissRoute(isAnimated:)</a>
+                    <a class="token" href="#/s:7Ariadne6RouterC12dismissRoute10isAnimatedAA0D0CyAA10NonBuilderCAA17DismissTransitionCGSb_tF">dismissRoute(isAnimated:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -545,6 +841,37 @@
                       <div class="abstract">
                         <p>Returns route, that calls <code>dismiss</code> method on currently visible view controller. No view is getting built in the process of routing.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">dismissRoute</span><span class="p">(</span><span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Route.html">Route</a></span><span class="o">&lt;</span><span class="kt"><a href="../Classes/NonBuilder.html">NonBuilder</a></span><span class="p">,</span> <span class="kt"><a href="../Classes/DismissTransition.html">DismissTransition</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>performable route.</p>
                       </div>
                     </section>
                   </div>
@@ -688,7 +1015,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-01-30)</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-02-22)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

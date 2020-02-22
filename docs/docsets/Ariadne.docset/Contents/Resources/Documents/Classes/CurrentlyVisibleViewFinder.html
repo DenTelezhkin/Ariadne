@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           Ariadne Docs
         </a>
-         (95% documented)
+         (92% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -96,6 +96,9 @@
                 <a class="nav-group-task-link" href="../Classes/PopNavigationTransition/Behavior.html">– Behavior</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PopToRootNavigationTransition.html">PopToRootNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/PresentationTransition.html">PresentationTransition</a>
               </li>
               <li class="nav-group-task">
@@ -145,13 +148,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/Route.html">Route</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/UIWindow">UIWindow</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/ViewControllerBuilder.html">ViewControllerBuilder</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/c:objc(cs)UIWindow">UIWindow</a>
               </li>
             </ul>
           </li>
@@ -213,6 +210,12 @@
         <section class="section">
           <div class="section-content top-matter">
             <h1>CurrentlyVisibleViewFinder</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">CurrentlyVisibleViewFinder</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ViewFinder.html">ViewFinder</a></span></code></pre>
+
+                </div>
+              </div>
             <p>Class, capable of finding currently visible view, using recursive search through UIViewController, UINavigationController and UITabBarController APIs.</p>
 
           </div>
@@ -225,9 +228,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne26CurrentlyVisibleViewFinderC04rootD8ProviderAA04RootdG0_pSgvp"></a>
                     <a name="//apple_ref/swift/Property/rootViewProvider" class="dashAnchor"></a>
-                    <a class="token" href="#/">rootViewProvider</a>
+                    <a class="token" href="#/s:7Ariadne26CurrentlyVisibleViewFinderC04rootD8ProviderAA04RootdG0_pSgvp">rootViewProvider</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -238,15 +241,23 @@
                         <p>Provider of root view in hierarchy</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">rootViewProvider</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RootViewProvider.html">RootViewProvider</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne26CurrentlyVisibleViewFinderC04rootD8ProviderAcA04RootdG0_pSg_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(rootViewProvider:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">init(rootViewProvider:)</a>
+                    <a class="token" href="#/s:7Ariadne26CurrentlyVisibleViewFinderC04rootD8ProviderAcA04RootdG0_pSg_tcfc">init(rootViewProvider:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -257,24 +268,32 @@
                         <p>Creates <code>CurrentlyVisibleViewFinder</code>.</p>
 
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/"></a>
-                    <a name="//apple_ref/swift/Method/currentlyVisibleView(startingFrom:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">currentlyVisibleView(startingFrom:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Searches view hierarhcy for currently visible view. If no visible view was found, root view controller from <code><a href="../Classes/CurrentlyVisibleViewFinder.html#/rootViewProvider">rootViewProvider</a></code> is returned.</p>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">rootViewProvider</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RootViewProvider.html">RootViewProvider</a></span><span class="p">?)</span></code></pre>
 
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>rootViewProvider</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>provider of root view in hierarchy</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -282,9 +301,59 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne26CurrentlyVisibleViewFinderC09currentlycD012startingFromSo16UIViewControllerCSgAH_tF"></a>
+                    <a name="//apple_ref/swift/Method/currentlyVisibleView(startingFrom:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:7Ariadne26CurrentlyVisibleViewFinderC09currentlycD012startingFromSo16UIViewControllerCSgAH_tF">currentlyVisibleView(startingFrom:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Searches view hierarhcy for currently visible view. If no visible view was found, root view controller from <code><a href="../Classes/CurrentlyVisibleViewFinder.html#/s:7Ariadne26CurrentlyVisibleViewFinderC04rootD8ProviderAA04RootdG0_pSgvp">rootViewProvider</a></code> is returned.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">currentlyVisibleView</span><span class="p">(</span><span class="n">startingFrom</span> <span class="nv">view</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/ViewController">ViewController</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/ViewController">ViewController</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>view controller to start search from. When nil is passed as an argument, search starts from rootViewController. Defaults to nil.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>currently visible view or rootViewController if none was found.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:7Ariadne26CurrentlyVisibleViewFinderC04findbcD012startingFromSo16UIViewControllerCSgAH_tF"></a>
                     <a name="//apple_ref/swift/Method/findCurrentlyVisibleView(startingFrom:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">findCurrentlyVisibleView(startingFrom:)</a>
+                    <a class="token" href="#/s:7Ariadne26CurrentlyVisibleViewFinderC04findbcD012startingFromSo16UIViewControllerCSgAH_tF">findCurrentlyVisibleView(startingFrom:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -294,6 +363,37 @@
                       <div class="abstract">
                         <p>Recursively searches view hierarchy for currently visible view.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">findCurrentlyVisibleView</span><span class="p">(</span><span class="n">startingFrom</span> <span class="nv">view</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/ViewController">ViewController</a></span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/ViewController">ViewController</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>view to start search from</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>currently visible view.</p>
                       </div>
                     </section>
                   </div>
@@ -306,7 +406,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-01-30)</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-02-22)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

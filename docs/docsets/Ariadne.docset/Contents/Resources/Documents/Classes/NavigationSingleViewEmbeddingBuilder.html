@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           Ariadne Docs
         </a>
-         (95% documented)
+         (92% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -96,6 +96,9 @@
                 <a class="nav-group-task-link" href="../Classes/PopNavigationTransition/Behavior.html">– Behavior</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PopToRootNavigationTransition.html">PopToRootNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/PresentationTransition.html">PresentationTransition</a>
               </li>
               <li class="nav-group-task">
@@ -145,13 +148,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/Route.html">Route</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/UIWindow">UIWindow</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/ViewControllerBuilder.html">ViewControllerBuilder</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/c:objc(cs)UIWindow">UIWindow</a>
               </li>
             </ul>
           </li>
@@ -213,6 +210,12 @@
         <section class="section">
           <div class="section-content top-matter">
             <h1>NavigationSingleViewEmbeddingBuilder</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">NavigationSingleViewEmbeddingBuilder</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ViewControllerBuilder.html">ViewControllerBuilder</a></span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ViewControllerBuilder.html">ViewControllerBuilder</a></span></code></pre>
+
+                </div>
+              </div>
             <p>Builder for <code>UINavigationController</code> instance with a single embedded view. This builder keeps <code>Context</code> the same as <code>Context</code> of embedded view builder, thus allowing building a combination of those by passing embedded view Context.</p>
 
           </div>
@@ -225,9 +228,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC7Contexta"></a>
                     <a name="//apple_ref/swift/Alias/Context" class="dashAnchor"></a>
-                    <a class="token" href="#/">Context</a>
+                    <a class="token" href="#/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC7Contexta">Context</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -238,15 +241,23 @@
                         <p><code>NavigationSingleViewEmbeddingBuilder</code>.Context is identical to embedded view Context.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Context</span> <span class="o">=</span> <span class="kt">T</span><span class="o">.</span><span class="kt">Context</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC7builderxvp"></a>
                     <a name="//apple_ref/swift/Property/builder" class="dashAnchor"></a>
-                    <a class="token" href="#/">builder</a>
+                    <a class="token" href="#/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC7builderxvp">builder</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -257,15 +268,23 @@
                         <p>Embedded view builder.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">builder</span><span class="p">:</span> <span class="kt">T</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC020navigationControllerF0So012UINavigationH0Cycvp"></a>
                     <a name="//apple_ref/swift/Property/navigationControllerBuilder" class="dashAnchor"></a>
-                    <a class="token" href="#/">navigationControllerBuilder</a>
+                    <a class="token" href="#/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC020navigationControllerF0So012UINavigationH0Cycvp">navigationControllerBuilder</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -276,15 +295,23 @@
                         <p>Defines how <code>UINavigationController</code> should be created</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">navigationControllerBuilder</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UINavigationController</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC7builderACyxGx_tcfc"></a>
                     <a name="//apple_ref/swift/Method/init(builder:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">init(builder:)</a>
+                    <a class="token" href="#/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC7builderACyxGx_tcfc">init(builder:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -295,15 +322,42 @@
                         <p>Creates <code>NavigationSingleViewEmbeddingBuilder</code> from provided embedded view builder.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">builder</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>builder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Embedded view builder.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC5build4withSo22UINavigationControllerC7ContextQz_tKF"></a>
                     <a name="//apple_ref/swift/Method/build(with:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">build(with:)</a>
+                    <a class="token" href="#/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC5build4withSo22UINavigationControllerC7ContextQz_tKF">build(with:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -319,6 +373,37 @@
 </div>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">build</span><span class="p">(</span><span class="n">with</span> <span class="nv">context</span><span class="p">:</span> <span class="kt"><a href="../Classes/NavigationSingleViewEmbeddingBuilder.html#/s:7Ariadne36NavigationSingleViewEmbeddingBuilderC7Contexta">Context</a></span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">UINavigationController</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>context</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Argument to build embedded view.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Created <code>UINavigationController</code>.</p>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -330,7 +415,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-01-30)</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-02-22)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

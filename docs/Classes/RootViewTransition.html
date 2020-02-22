@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           Ariadne Docs
         </a>
-         (95% documented)
+         (92% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -96,6 +96,9 @@
                 <a class="nav-group-task-link" href="../Classes/PopNavigationTransition/Behavior.html">– Behavior</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/PopToRootNavigationTransition.html">PopToRootNavigationTransition</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/PresentationTransition.html">PresentationTransition</a>
               </li>
               <li class="nav-group-task">
@@ -145,13 +148,7 @@
             <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/Route.html">Route</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions.html#/UIWindow">UIWindow</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Extensions/ViewControllerBuilder.html">ViewControllerBuilder</a>
+                <a class="nav-group-task-link" href="../Extensions.html#/c:objc(cs)UIWindow">UIWindow</a>
               </li>
             </ul>
           </li>
@@ -213,6 +210,12 @@
         <section class="section">
           <div class="section-content top-matter">
             <h1>RootViewTransition</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RootViewTransition</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ViewTransition.html">ViewTransition</a></span></code></pre>
+
+                </div>
+              </div>
             <p>Class, that implements transition for <code>UIWindow.rootViewController</code>.</p>
 
           </div>
@@ -225,9 +228,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne18RootViewTransitionC14transitionTypeAA0dF0Ovp"></a>
                     <a name="//apple_ref/swift/Property/transitionType" class="dashAnchor"></a>
-                    <a class="token" href="#/">transitionType</a>
+                    <a class="token" href="#/s:7Ariadne18RootViewTransitionC14transitionTypeAA0dF0Ovp">transitionType</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -238,15 +241,23 @@
                         <p>Transition type, defaults to .show.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">transitionType</span><span class="p">:</span> <span class="kt"><a href="../Enums/TransitionType.html">TransitionType</a></span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne18RootViewTransitionC10viewFinderAA0cF0_pSgvp"></a>
                     <a name="//apple_ref/swift/Property/viewFinder" class="dashAnchor"></a>
-                    <a class="token" href="#/">viewFinder</a>
+                    <a class="token" href="#/s:7Ariadne18RootViewTransitionC10viewFinderAA0cF0_pSgvp">viewFinder</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -257,15 +268,23 @@
                         <p>CUrrently visible view finder. Defaults to nil and is not used in current transition.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">viewFinder</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ViewFinder.html">ViewFinder</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne18RootViewTransitionC6windowSo8UIWindowCvp"></a>
                     <a name="//apple_ref/swift/Property/window" class="dashAnchor"></a>
-                    <a class="token" href="#/">window</a>
+                    <a class="token" href="#/s:7Ariadne18RootViewTransitionC6windowSo8UIWindowCvp">window</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -276,15 +295,23 @@
                         <p><code>UIWindow</code> instance on which transition will be performed.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne18RootViewTransitionC8durationSdvp"></a>
                     <a name="//apple_ref/swift/Property/duration" class="dashAnchor"></a>
-                    <a class="token" href="#/">duration</a>
+                    <a class="token" href="#/s:7Ariadne18RootViewTransitionC8durationSdvp">duration</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -295,15 +322,23 @@
                         <p>Duration of animated transition. Defaults to 0.3 seconds.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">duration</span><span class="p">:</span> <span class="kt">TimeInterval</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne18RootViewTransitionC16animationOptionsSo015UIViewAnimationF0Vvp"></a>
                     <a name="//apple_ref/swift/Property/animationOptions" class="dashAnchor"></a>
-                    <a class="token" href="#/">animationOptions</a>
+                    <a class="token" href="#/s:7Ariadne18RootViewTransitionC16animationOptionsSo015UIViewAnimationF0Vvp">animationOptions</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -314,15 +349,23 @@
                         <p>Animation options for transition. Defaults to UIView.AnimationOptions.transitionCrossDissolve.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">animationOptions</span><span class="p">:</span> <span class="kt">UIView</span><span class="o">.</span><span class="kt">AnimationOptions</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne18RootViewTransitionC10isAnimatedSbvp"></a>
                     <a name="//apple_ref/swift/Property/isAnimated" class="dashAnchor"></a>
-                    <a class="token" href="#/">isAnimated</a>
+                    <a class="token" href="#/s:7Ariadne18RootViewTransitionC10isAnimatedSbvp">isAnimated</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -333,15 +376,23 @@
                         <p>Should the transition be animated.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne18RootViewTransitionC6window10isAnimatedACSo8UIWindowC_Sbtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(window:isAnimated:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">init(window:isAnimated:)</a>
+                    <a class="token" href="#/s:7Ariadne18RootViewTransitionC6window10isAnimatedACSo8UIWindowC_Sbtcfc">init(window:isAnimated:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -352,15 +403,54 @@
                         <p>Creates <code>RootViewTransition</code> from specified <code>UIWindow</code> instance.</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="p">,</span> <span class="nv">isAnimated</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>window</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>UIWindow</code>, on which transition will be happening.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>isAnimated</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Should the transition be animated.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/"></a>
+                    <a name="/s:7Ariadne18RootViewTransitionC7perform4with2on10completionySo16UIViewControllerCSg_AJySbcSgtF"></a>
                     <a name="//apple_ref/swift/Method/perform(with:on:completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/">perform(with:on:completion:)</a>
+                    <a class="token" href="#/s:7Ariadne18RootViewTransitionC7perform4with2on10completionySo16UIViewControllerCSg_AJySbcSgtF">perform(with:on:completion:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -370,6 +460,57 @@
                       <div class="abstract">
                         <p>Performs UIWindow.rootViewController switch using <code>UIView.transition(with:duration:options:animations:completion:)</code> method.</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">perform</span><span class="p">(</span><span class="n">with</span> <span class="nv">view</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/ViewController">ViewController</a></span><span class="p">?,</span> <span class="n">on</span> <span class="nv">visibleView</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/ViewController">ViewController</a></span><span class="p">?,</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">((</span><span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>view</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>View that will be set as a <code>rootViewController</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>visibleView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Currently visibleView. Unused in this method.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Called once transition has been completed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -382,7 +523,7 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-01-30)</p>
+      <p>&copy; 2020 <a class="link" href="https://github.com/DenTelezhkin" target="_blank" rel="external">Denys Telezhkin</a>. All rights reserved. (Last updated: 2020-02-22)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

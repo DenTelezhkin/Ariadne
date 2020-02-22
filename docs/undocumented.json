@@ -1,8 +1,78 @@
 {
   "warnings": [
     {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/CurrentlyVisibleViewFinder.swift",
+      "line": 89,
+      "symbol": "SplitViewCurrentlyVisibleViewFinder.Kind.master",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/CurrentlyVisibleViewFinder.swift",
+      "line": 90,
+      "symbol": "SplitViewCurrentlyVisibleViewFinder.Kind.detail",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/NavigationTransition.swift",
+      "line": 60,
+      "symbol": "PopNavigationTransition.Behavior.pop",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/NavigationTransition.swift",
+      "line": 61,
+      "symbol": "PopNavigationTransition.Behavior.popToRoot",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/NavigationTransition.swift",
+      "line": 62,
+      "symbol": "PopNavigationTransition.Behavior.popToFirstInstanceOf(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/NavigationTransition.swift",
+      "line": 63,
+      "symbol": "PopNavigationTransition.Behavior.popToLastInstanceOf(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/NavigationTransition.swift",
+      "line": 112,
+      "symbol": "ReplaceNavigationTransition.Behavior.replaceLast",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/NavigationTransition.swift",
+      "line": 113,
+      "symbol": "ReplaceNavigationTransition.Behavior.replaceAll",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/NavigationTransition.swift",
+      "line": 115,
+      "symbol": "ReplaceNavigationTransition.Behavior.custom(keepControllers:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/NavigationTransition.swift",
+      "line": 162,
+      "symbol": "PopToRootNavigationTransition",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/denystelezkin/Developer/Ariadne/Source/Ariadne/ViewControllerBuilder.swift",
-      "line": 64,
+      "line": 68,
       "symbol": "ViewBuilder",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
