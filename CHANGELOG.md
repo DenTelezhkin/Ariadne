@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+* Add support for Mac Catalyst.
+
 ## [0.6.0](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.6.0)
 
 ### Added 

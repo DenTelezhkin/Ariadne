@@ -37,9 +37,13 @@ public typealias ViewController = UIViewController
 #endif
 
 #if canImport(AppKit)
-import AppKit
-/// On macOS, `NSViewController` is considered to be a ViewController, that can participate in navigation and routing.
-public typealias ViewController = NSViewController
+    #if canImport(UIKit)
+    // Mac Catalyst
+    #else
+    import AppKit
+    /// On macOS, `NSViewController` is considered to be a ViewController, that can participate in navigation and routing.
+    public typealias ViewController = NSViewController
+    #endif
 #endif
 
 /// Type, that is capable of building a `ViewController`, given `Context`.
