@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.com/DenTelezhkin/Ariadne.svg?branch=master) &nbsp;
+![CI](https://github.com/DenTelezhkin/Ariadne/workflows/CI/badge.svg)
 [![codecov.io](http://codecov.io/github/DenTelezhkin/Ariadne/coverage.svg?branch=master)](http://codecov.io/github/DenTelezhkin/Ariadne?branch=master)
 [![Platform](https://img.shields.io/cocoapods/p/Ariadne.svg?style=flat)](https://dentelezhkin.github.io/Ariadne)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Ariadne.svg)](https://img.shields.io/cocoapods/v/Ariadne.svg)
