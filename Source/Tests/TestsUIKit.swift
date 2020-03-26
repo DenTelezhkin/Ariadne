@@ -436,6 +436,13 @@ class Tests_UIKit: XCTestCase {
         XCTAssertEqual(navigation?.viewControllers.count, 1)
         XCTAssert(navigation?.viewControllers.last is FooViewController)
     }
+
+    func testNonTransition() {
+        let sut = NonTransition()
+        XCTAssertEqual(sut.isAnimated, false)
+        XCTAssertEqual(sut.transitionType, .custom)
+        XCTAssertNil(sut.viewFinder)
+    }
 }
 
 #endif
