@@ -84,9 +84,9 @@ lane :release do |params|
     puts "Pushing to CocoaPods trunk."
     sh "bundle exec pod trunk push Ariadne.podspec --allow-warnings"
 
-    puts "Preparing Carthage binary framework."
-    sh "carthage build --no-skip-current"
-    sh "carthage archive Ariadne"
+    # puts "Preparing Carthage binary framework."
+    # sh "carthage build --no-skip-current"
+    # sh "carthage archive Ariadne"
 
     puts "Pushing as a GitHub Release."
     fastlane_require 'octokit'
@@ -97,9 +97,9 @@ lane :release do |params|
                      name: version,
                      body: stripped_changelog)
 
-    puts "Attaching Carthage prebuilt binary to release."
-    releases = client.releases('DenTelezhkin/Ariadne')
-    client.upload_asset(releases[0].url, 'Ariadne.framework.zip')
-    sh "rm -rf Ariadne.framework.zip"
+    # puts "Attaching Carthage prebuilt binary to release."
+    # releases = client.releases('DenTelezhkin/Ariadne')
+    # client.upload_asset(releases[0].url, 'Ariadne.framework.zip')
+    # sh "rm -rf Ariadne.framework.zip"
   end
 end

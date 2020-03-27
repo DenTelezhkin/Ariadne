@@ -70,12 +70,6 @@ router.navigate(to: route, with: user)
 pod 'Ariadne'
 ```
 
-### Carthage
-
-```ruby
-github "DenTelezhkin/Ariadne"
-```
-
 ## Overview
 
 `Ariadne` architecture fundamentally starts with `ViewBuilder`. Because view controllers are so tightly coupled with their views on iOS, `UIViewController` is considered to be a view and is typealiased to `ViewController`.
