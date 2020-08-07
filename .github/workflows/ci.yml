@@ -51,7 +51,7 @@ jobs:
       - name: macOS
         run: bundle exec fastlane test_macos
   macOS:
-    name: macOS
+    name: Xcode 11 macOS
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
