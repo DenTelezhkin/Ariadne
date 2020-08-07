@@ -34,7 +34,7 @@ end
 lane :build_watchos_xcode12 do
   xcodebuild(
     build: true,
-    destination: "OS=7.0.0,name=Apple Watch Series 4 - 44mm",
+    destination: "OS=7.0,name=Apple Watch Series 4 - 44mm",
     scheme: 'Ariadne'
   )
 end
