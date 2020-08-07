@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
-        run: bundle install
+        run: bundle install --jobs 3
       - name: List simulators
         run: instruments -s devices
       - name: iOS - ${{ matrix.destination }}
@@ -36,7 +36,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
-        run: bundle install
+        run: bundle install --jobs 3
       - name: tvOS - ${{ matrix.destination }}
         run: bundle exec fastlane ${{ matrix.destination }}
   macOS-Xcode12:
@@ -47,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
-        run: bundle install
+        run: bundle install --jobs 3
       - name: macOS
         run: bundle exec fastlane test_macos
   macOS:
@@ -58,7 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
-        run: bundle install
+        run: bundle install --jobs 3
       - name: macOS
         run: bundle exec fastlane test_macos
   iOS:
@@ -72,7 +72,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
-        run: bundle install
+        run: bundle install --jobs 3
       - name: List simulators
         run: instruments -s devices
       - name: iOS - ${{ matrix.destination }}
@@ -88,7 +88,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
-        run: bundle install
+        run: bundle install --jobs 3
       - name: tvOS - ${{ matrix.destination }}
         run: bundle exec fastlane ${{ matrix.destination }}
   watchOS:
@@ -99,7 +99,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
-        run: bundle install
+        run: bundle install --jobs 3
       - name: watchOS - ${{ matrix.destination }}
         run: bundle exec fastlane build_watchos
   watchOS-Xcode12:
@@ -110,7 +110,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
-        run: bundle install
+        run: bundle install --jobs 3
       - name: watchOS - ${{ matrix.destination }}
         run: bundle exec fastlane build_watchos_xcode12
   cocoapods:
@@ -121,6 +121,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
-        run: bundle install
+        run: bundle install --jobs 3
       - name: CocoaPods spec lint
         run: bundle exec fastlane pod_lint
