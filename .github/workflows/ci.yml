@@ -9,11 +9,52 @@ on:
       - '*'
 
 jobs:
+  iOS-Xcode-12:
+    name: Test iOS
+    runs-on: macOS-latest
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12_beta.app/Contents/Developer
+    strategy:
+      matrix:
+        destination: ["test_ios14"] #,"test_ios12"]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install gems
+        run: bundle install
+      - name: List simulators
+        run: instruments -s devices
+      - name: iOS - ${{ matrix.destination }}
+        run: bundle exec fastlane ${{ matrix.destination }}
+  tvOS-Xcode-12:
+    name: Test tvOS
+    runs-on: macOS-latest
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12_beta.app/Contents/Developer
+    strategy:
+      matrix:
+        destination: ["test_tvos14"] #,"test_tvos12"]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install gems
+        run: bundle install
+      - name: tvOS - ${{ matrix.destination }}
+        run: bundle exec fastlane ${{ matrix.destination }}
+  macOS-Xcode12:
+    name: Test macOS
+    runs-on: macOS-latest
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12_beta.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install gems
+        run: bundle install
+      - name: macOS
+        run: bundle exec fastlane test_macos
   macOS:
     name: Test macOS
     runs-on: macOS-latest
     env:
-      DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
@@ -24,7 +65,7 @@ jobs:
     name: Test iOS
     runs-on: macOS-latest
     env:
-      DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
     strategy:
       matrix:
         destination: ["test_ios13"] #,"test_ios12"]
@@ -40,7 +81,7 @@ jobs:
     name: Test tvOS
     runs-on: macOS-latest
     env:
-      DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
     strategy:
       matrix:
         destination: ["test_tvos13"] #,"test_tvos12"]
@@ -54,30 +95,32 @@ jobs:
     name: Build watchOS
     runs-on: macOS-latest
     env:
-      DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
         run: bundle install
       - name: watchOS - ${{ matrix.destination }}
         run: bundle exec fastlane build_watchos
+  watchOS-Xcode12:
+    name: Build watchOS
+    runs-on: macOS-latest
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12_beta.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install gems
+        run: bundle install
+      - name: watchOS - ${{ matrix.destination }}
+        run: bundle exec fastlane build_watchos_xcode12
   cocoapods:
     name: Lint podspec
     runs-on: macOS-latest
     env:
-      DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
     steps:
       - uses: actions/checkout@v2
       - name: Install gems
         run: bundle install
       - name: CocoaPods spec lint
         run: bundle exec fastlane pod_lint
-  # spm:
-  #   name: Test with SPM
-  #   runs-on: macOS-latest
-  #   env:
-  #     DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: SPM Test
-  #       run: swift test -c debug

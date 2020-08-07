@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.2
 
 //  Created by Denys Telezhkin on 09/06/19.
 //  Copyright © 2019 Denys Telezhkin. All rights reserved.
@@ -25,12 +25,6 @@ import PackageDescription
 
 let package = Package(
     name: "Ariadne",
-    platforms: [
-        .iOS(.v10),
-        .tvOS(.v10),
-        .macOS(.v10_12),
-        .watchOS(.v3)
-    ],
     products: [
         .library(name: "Ariadne", targets: ["Ariadne"])
     ],
