@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '3.0'
   s.source   = { :git => 'https://github.com/DenTelezhkin/Ariadne.git', :tag => s.version.to_s }
   s.source_files  = "Source/Ariadne/*.{swift}"
-  s.swift_versions = ['4.2', '5.0']
+  s.swift_versions = ['4.2', '5.0', '5.1', '5.2', '5.3']
   s.ios.frameworks = "Foundation", "UIKit"
   s.tvos.frameworks = "Foundation", "UIKit"
   s.osx.frameworks = "Foundation", "AppKit"

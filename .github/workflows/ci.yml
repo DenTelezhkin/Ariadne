@@ -10,7 +10,7 @@ on:
 
 jobs:
   iOS-Xcode-12:
-    name: Test iOS
+    name: Xcode 12 iOS 14
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_12_beta.app/Contents/Developer
@@ -26,7 +26,7 @@ jobs:
       - name: iOS - ${{ matrix.destination }}
         run: bundle exec fastlane ${{ matrix.destination }}
   tvOS-Xcode-12:
-    name: Test tvOS
+    name: Xcode 12 tvOS 14
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_12_beta.app/Contents/Developer
@@ -40,7 +40,7 @@ jobs:
       - name: tvOS - ${{ matrix.destination }}
         run: bundle exec fastlane ${{ matrix.destination }}
   macOS-Xcode12:
-    name: Test macOS
+    name: Xcode 12 macOS
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_12_beta.app/Contents/Developer
@@ -51,7 +51,7 @@ jobs:
       - name: macOS
         run: bundle exec fastlane test_macos
   macOS:
-    name: Test macOS
+    name: macOS
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
@@ -62,7 +62,7 @@ jobs:
       - name: macOS
         run: bundle exec fastlane test_macos
   iOS:
-    name: Test iOS
+    name: Xcode 11 iOS 13
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
@@ -78,7 +78,7 @@ jobs:
       - name: iOS - ${{ matrix.destination }}
         run: bundle exec fastlane ${{ matrix.destination }}
   tvOS:
-    name: Test tvOS
+    name: Xcode 11 tvOS 13
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
@@ -92,7 +92,7 @@ jobs:
       - name: tvOS - ${{ matrix.destination }}
         run: bundle exec fastlane ${{ matrix.destination }}
   watchOS:
-    name: Build watchOS
+    name: Xcode 11 watchOS 6
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
@@ -103,7 +103,7 @@ jobs:
       - name: watchOS - ${{ matrix.destination }}
         run: bundle exec fastlane build_watchos
   watchOS-Xcode12:
-    name: Build watchOS
+    name: Xcode 12 watchOS 7
     runs-on: macOS-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_12_beta.app/Contents/Developer

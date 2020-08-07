@@ -3,13 +3,17 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+### Added
+
+* Support for Xcode 12 and Swift 5.3
+
 ## [0.6.1](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.6.1)
 
 * Add support for Mac Catalyst.
 
 ## [0.6.0](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.6.0)
 
-### Added 
+### Added
 
 * `ReplaceNavigationTransition` to encapsulate `UINavigationController.setViewControllers(_:animated:)` method call.
 * `PopNavigationTransition` `popToFirstInstanceOf` and `popToLastInstanceOf` behaviors for calling `popToViewController(_:animated:)` method on found navigation controller.
