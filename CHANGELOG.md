@@ -3,13 +3,17 @@ All notable changes to this project will be documented in this file.
 
 # Next
 
+## [0.7.0](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.7.0)
+
 ### Added
 
 * Support for Xcode 12 and Swift 5.3
 
 ## [0.6.1](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.6.1)
 
-* Add support for Mac Catalyst.
+### Added
+
+* Support for Mac Catalyst.
 
 ## [0.6.0](https://github.com/DenTelezhkin/Ariadne/releases/tag/0.6.0)
 
