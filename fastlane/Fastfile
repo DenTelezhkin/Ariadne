@@ -2,12 +2,10 @@ fastlane_version "1.98.0"
 
 lane :test_ios14 do
   scan(devices: ["iPhone 11 Pro (14.0)"], scheme: 'Tests-iOS')
-  sh "bash ../codecov.sh"
 end
 
 lane :test_ios13 do
   scan(devices: ["iPad Pro (12.9-inch) (3rd generation) (13.5)"])
-  sh "bash ../codecov.sh"
 end
 
 lane :test_tvos14 do
@@ -20,7 +18,6 @@ end
 
 lane :test_macos do
   scan(destination: "arch=x86_64")
-  sh "bash ../codecov.sh"
 end
 
 lane :build_watchos do
@@ -42,15 +39,6 @@ end
 lane :pod_lint do
   sh "bundle exec pod repo update"
   pod_lib_lint(allow_warnings: true, verbose: true)
-end
-
-lane :carthage_build do
-  sh "brew outdated carthage || brew upgrade carthage"
-  carthage(command: "build", no_skip_current: true, verbose: false)
-end
-
-lane :spm_macos do
-  sh "swift build"
 end
 
 lane :release do |params|
