@@ -1,12 +1,12 @@
 ![CI](https://github.com/DenTelezhkin/Ariadne/workflows/CI/badge.svg)
-[![codecov.io](http://codecov.io/github/DenTelezhkin/Ariadne/coverage.svg?branch=master)](http://codecov.io/github/DenTelezhkin/Ariadne?branch=master)
+[![codecov.io](http://codecov.io/github/DenTelezhkin/Ariadne/coverage.svg?branch=main)](http://codecov.io/github/DenTelezhkin/Ariadne?branch=main)
 [![Platform](https://img.shields.io/cocoapods/p/Ariadne.svg?style=flat)](https://dentelezhkin.github.io/Ariadne)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Ariadne.svg)](https://img.shields.io/cocoapods/v/Ariadne.svg)
 [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
 
 <p align="left">
-  <img height="160" src="https://github.com/DenTelezhkin/Ariadne/raw/master/logo.jpg" />
+  <img height="160" src="https://github.com/DenTelezhkin/Ariadne/raw/main/logo.jpg" />
 </p>
 
 # Ariadne
