@@ -6,7 +6,7 @@
 [![Packagist](https://img.shields.io/packagist/l/doctrine/orm.svg)]()
 
 <p align="left">
-  <img height="160" src="https://github.com/DenTelezhkin/Ariadne/raw/main/logo.jpg" />
+  <img height="160" src="logo.png" />
 </p>
 
 # Ariadne
