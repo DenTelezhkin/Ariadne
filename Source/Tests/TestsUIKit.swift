@@ -26,7 +26,7 @@
 import XCTest
 @testable import Ariadne
 
-//swiftlint:disable type_body_length
+// swiftlint:disable type_body_length
 
 #if canImport(UIKit)
 import UIKit
@@ -220,7 +220,7 @@ class Tests_UIKit: XCTestCase {
     func testViewCanBeConfiguredPriorToKickingOffTransition() {
         testableWindow.rootViewController = UINavigationController()
         let route = XibBuildingFactory<FooViewController>().pushRoute()
-        route.prepareForShowTransition = { newView, transition, oldView in
+        route.prepareForShowTransition = { newView, _, oldView in
             newView.title = "Foo"
             oldView?.title = "Bar"
         }
@@ -235,7 +235,7 @@ class Tests_UIKit: XCTestCase {
     func testViewCanBeConfiguredPriorToHideTransition() {
         let exp = expectation(description: "NavigationCompletion")
         let popRoute = router.popRoute(isAnimated: false)
-        popRoute.prepareForHideTransition = { view, transition in
+        popRoute.prepareForHideTransition = { view, _ in
             view.title = "Foo"
         }
         let navigation = UINavigationController()
@@ -267,7 +267,7 @@ class Tests_UIKit: XCTestCase {
     }
 
     func testSplitViewIsBuildable() throws {
-        let builder = SplitViewBuilder(masterBuilder: XibBuildingFactory<FooViewController>(),
+        let builder = SplitViewBuilder(mainBuilder: XibBuildingFactory<FooViewController>(),
                                        detailBuilder: XibBuildingFactory<BarViewController>())
         let split = try builder.build(with: ((), ()))
 
@@ -390,7 +390,7 @@ class Tests_UIKit: XCTestCase {
         XCTAssert(rootNavigation?.viewControllers.last is BarViewController)
     }
 
-    func testSplitViewMasterViewIsFindable() {
+    func testSplitViewMainViewIsFindable() {
         guard UIDevice.current.userInterfaceIdiom == .pad else {
             return
         }
@@ -401,7 +401,7 @@ class Tests_UIKit: XCTestCase {
         tabBarContainer.viewControllers = [split]
 
         let transition = PushNavigationTransition(finder:
-            SplitViewCurrentlyVisibleViewFinder(kind: .master, rootViewProvider: router.rootViewProvider),
+                                                    SplitViewCurrentlyVisibleViewFinder(kind: .main, rootViewProvider: router.rootViewProvider),
                                                   isAnimated: false)
         let pushRoute = XibBuildingFactory<FooViewController>().with(transition)
 

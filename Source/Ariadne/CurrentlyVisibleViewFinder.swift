@@ -86,7 +86,7 @@ open class SplitViewCurrentlyVisibleViewFinder: CurrentlyVisibleViewFinder {
 
     /// Kind of view controller that should be prioritized when searching for currently visible view controller
     public enum Kind {
-        case master
+        case main
         case detail
     }
 
@@ -114,7 +114,7 @@ open class SplitViewCurrentlyVisibleViewFinder: CurrentlyVisibleViewFinder {
             printSplitViewControllerWarning
         }
         switch kind {
-        case .master:
+        case .main:
             return splitView.viewControllers.first
         case .detail:
             return splitView.viewControllers.last

@@ -31,13 +31,13 @@ import UIKit
 #if os(iOS) || os(tvOS)
 
 /// Builder for `UISplitViewController` instance.
-open class SplitViewBuilder<MasterBuilder: ViewControllerBuilder, DetailBuilder: ViewControllerBuilder>: ViewControllerBuilder {
+open class SplitViewBuilder<MainBuilder: ViewControllerBuilder, DetailBuilder: ViewControllerBuilder>: ViewControllerBuilder {
 
     /// Defines how `UISplitViewController` should be created.
     open var splitViewControllerBuilder: () -> UISplitViewController = { .init() }
 
     /// Builder for master view
-    public let masterBuilder: MasterBuilder
+    public let mainBuilder: MainBuilder
 
     /// Builder for detail view
     public let detailBuilder: DetailBuilder
@@ -47,8 +47,8 @@ open class SplitViewBuilder<MasterBuilder: ViewControllerBuilder, DetailBuilder:
     /// - Parameters:
     ///   - masterBuilder: Builder to create master view.
     ///   - detailBuilder: Bulder to create detail view.
-    public init(masterBuilder: MasterBuilder, detailBuilder: DetailBuilder) {
-        self.masterBuilder = masterBuilder
+    public init(mainBuilder: MainBuilder, detailBuilder: DetailBuilder) {
+        self.mainBuilder = mainBuilder
         self.detailBuilder = detailBuilder
     }
 
@@ -57,13 +57,14 @@ open class SplitViewBuilder<MasterBuilder: ViewControllerBuilder, DetailBuilder:
     /// - Parameter context: tuple of master view context and detail view context.
     /// - Returns: creates UISplitViewController instance.
     /// - Throws: Master view builder error or detail view builder error.
-    open func build(with context: (MasterBuilder.Context, DetailBuilder.Context)) throws -> UISplitViewController {
+    open func build(with context: (MainBuilder.Context, DetailBuilder.Context)) throws -> UISplitViewController {
         let splitView = splitViewControllerBuilder()
-        let master = try masterBuilder.build(with: (context.0))
+        let main = try mainBuilder.build(with: (context.0))
         let detail = try detailBuilder.build(with: (context.1))
-        splitView.viewControllers = [master, detail]
+        splitView.viewControllers = [main, detail]
         return splitView
     }
+
 }
 
 #endif
